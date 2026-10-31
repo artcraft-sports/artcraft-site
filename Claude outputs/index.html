@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Artcraft Sports Concept Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=Graduate&display=swap">
+<style>
+:root{
+  /* Layout idea: full-bleed bands that alternate navy "felt" and white "mesh"; colors taken from the Artcraft logo (navy, flag red, white); tackle-twill jersey numbers and stitched patches carry the identity. */
+  --navy:#052554;
+  --navy-2:#0D3272;
+  --night:#03173A;
+  --accent:#BB1916;
+  --accent-deep:#961210;
+  --on-accent:#FFFFFF;
+  --focus:#F2B01E;
+  --paper:#F1F3F7;
+  --white:#FFFFFF;
+  --ink:#0E1A33;
+  --muted:#4A5468;
+  --line:#D3D8E2;
+  --on-navy:#C9D3E6;
+  --error:#B42318;
+  --f-display:"Graduate","Rockwell","Georgia",serif;
+  --f-head:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--f-head);text-wrap:balance;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:2px}
+a,button,label{-webkit-tap-highlight-color:transparent}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+[hidden],.view[hidden]{display:none !important}
+.sr{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Concept bar */
+.concept-bar{background:var(--night);color:var(--on-navy);font-size:14px}
+.concept-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.concept-bar strong{color:var(--white);font-weight:600}
+.notes-toggle{font:600 14px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.7);border-radius:3px;padding:8px 12px;cursor:pointer;min-height:36px}
+.notes-toggle[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+/* Placeholders + pitch notes */
+.ph{background:#FFF1C7;color:#5C4300;padding:0 5px;border-radius:3px;font-weight:600;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.note{display:none;border:2px dashed #D99A0B;background:#FFFBEA;color:#3D2E00;font-size:15px;line-height:1.45;padding:12px 14px;border-radius:6px;max-width:420px;margin-top:20px}
+.note b{display:block;font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;color:#6B4E00}
+body.notes-on .note{display:block}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--line)}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;flex:none}
+.brand-logo{display:block;height:62px;width:auto}
+.site-footer .logo-patch{max-width:280px;padding:12px 16px;margin:0;box-shadow:none}
+.brand-mark{font-family:var(--f-display);font-size:28px;letter-spacing:.02em;color:var(--navy)}
+.brand-sub{font:700 12px/1 var(--f-head);text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-top:6px;white-space:nowrap}
+.site-nav{display:flex;align-items:center;gap:6px}
+.site-nav > a:not(.btn), .dd-btn{font:600 17px/1 var(--f-head);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;color:var(--ink);background:none;border:0;padding:12px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;border-radius:3px;min-height:44px;white-space:nowrap}
+.site-nav > a:not(.btn):hover, .dd-btn:hover{color:var(--navy-2);background:var(--paper)}
+.site-nav [aria-current="page"]{box-shadow:inset 0 -3px 0 var(--accent)}
+.dd{position:relative}
+.dd-btn svg{transition:transform .15s}
+.dd-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.dd-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;list-style:none;margin:0;padding:8px;background:var(--white);border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 30px rgba(14,26,51,.14);min-width:230px}
+.dd-menu.open{display:block}
+.dd-menu a{display:block;padding:11px 12px;text-decoration:none;font-weight:600;border-radius:4px}
+.dd-menu a:hover{background:var(--paper)}
+.menu-btn{display:none;font:700 16px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;background:var(--navy);color:var(--white);border:0;border-radius:4px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+/* Buttons */
+.btn{font-family:var(--f-head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:18px;line-height:1;white-space:nowrap;padding:15px 24px;border-radius:4px;border:2px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;min-height:50px;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.btn-sm{font-size:16px;padding:11px 18px;min-height:44px;margin-left:8px}
+.btn-gold{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn-gold:hover{background:var(--accent-deep);border-color:var(--accent-deep)}
+.btn-line{background:transparent;color:var(--white);border-color:rgba(255,255,255,.7)}
+.btn-line:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.btn-dark{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.btn-dark:hover{background:var(--navy-2)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{background:var(--paper)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Bands + section heads */
+.band{padding:88px 0}
+.band-navy{background:var(--navy);color:var(--white)}
+.band-paper{background:var(--paper)}
+.kicker{display:flex;align-items:center;gap:12px;font:700 15px/1 var(--f-head);text-transform:uppercase;letter-spacing:.14em;color:var(--navy);margin-bottom:14px}
+.kicker::before{content:"";width:30px;height:5px;background:var(--accent);flex:none}
+.band-navy .kicker, .page-head .kicker{color:var(--white)}
+.h2{font-weight:800;text-transform:uppercase;font-size:clamp(34px,4.2vw,52px);line-height:.98;letter-spacing:.005em}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head p{max-width:520px;color:var(--muted);margin-top:12px}
+.band-navy .sec-head p{color:var(--on-navy)}
+.text-link{font:700 17px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;color:var(--navy);text-decoration:none;border-bottom:3px solid var(--accent);padding:16px 0 6px;display:inline-flex;align-items:flex-end;min-height:44px;white-space:nowrap}
+.text-link:hover{color:var(--navy-2);border-color:var(--accent-deep)}
+.band-navy .text-link{color:var(--white)}
+
+/* Hero */
+.hero{padding:56px 0 64px;overflow:hidden;position:relative}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:10px;background:repeating-linear-gradient(90deg,var(--accent) 0 60px,var(--white) 60px 72px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow-display{font-family:var(--f-display);color:var(--white);font-size:20px;letter-spacing:.02em}
+.hero-badges{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-bottom:20px}
+.vet-badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--on-accent);font:800 16px/1 var(--f-head);text-transform:uppercase;letter-spacing:.08em;padding:10px 14px 10px 12px;border-radius:3px;box-shadow:0 0 0 2px var(--navy),0 0 0 4px rgba(255,255,255,.9)}
+.vet-badge svg{width:18px;height:18px;flex:none}
+.logo-patch{display:block;background:var(--white);border-radius:10px;padding:18px 22px;margin:0 0 26px;max-width:440px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.logo-patch::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(187,25,22,.55);border-radius:6px;pointer-events:none}
+.logo-patch img{display:block;width:100%;height:auto}
+.hero h1{font-weight:800;text-transform:uppercase;font-size:clamp(40px,5vw,66px);line-height:.92;letter-spacing:-.005em;margin-bottom:22px}
+.lede{font-size:20px;line-height:1.5;color:var(--on-navy);max-width:56ch;margin-bottom:30px}
+.facts{display:grid;grid-template-columns:repeat(4,auto);gap:20px 32px;margin:40px 0 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);justify-content:start}
+.facts dt{font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.12em;color:var(--on-navy);margin-bottom:6px}
+.facts dd{margin:0;font:800 23px/1.05 var(--f-head);text-transform:uppercase;color:var(--white);max-width:12ch}
+.hero-art{position:relative;display:flex;justify-content:center}
+.hero-jersey{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.num{font-family:var(--f-display);font-size:186px}
+.num-border{fill:var(--white);stroke:var(--white);stroke-width:26px;stroke-linejoin:round}
+.num-fill{fill:var(--accent)}
+.num-stitch{fill:none;stroke:var(--white);stroke-opacity:.7;stroke-width:1.6px;stroke-dasharray:6 5}
+.j-name{font-family:var(--f-head);font-weight:800;font-size:38px;letter-spacing:7px;fill:var(--white)}
+@media (prefers-reduced-motion:no-preference){
+  .num-border{animation:twill-in .5s ease-out both}
+  .num-fill,.num-stitch{animation:twill-drop .6s .18s cubic-bezier(.2,.9,.3,1.2) both}
+  @keyframes twill-in{from{opacity:.0;transform:scale(1.04)}to{opacity:1;transform:none}}
+  @keyframes twill-drop{from{transform:translateY(-14px)}to{transform:none}}
+  .num-border,.num-fill,.num-stitch{transform-box:fill-box;transform-origin:center}
+}
+
+/* Path cards */
+.path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.path-card{display:flex;flex-direction:column;gap:12px;padding:28px 24px 24px;border:2px solid var(--line);border-radius:6px;text-decoration:none;background:var(--white);transition:border-color .15s,transform .15s,box-shadow .15s;min-height:230px}
+.path-card:hover{border-color:var(--navy);transform:translateY(-3px);box-shadow:0 14px 28px rgba(14,26,51,.10)}
+.path-card svg{width:40px;height:40px;color:var(--navy)}
+.path-card h3{font-weight:800;text-transform:uppercase;font-size:26px;line-height:1}
+.path-card p{color:var(--muted);font-size:16px;flex:1}
+.path-card .go{font:700 15px/1 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--navy);display:flex;align-items:center;gap:8px}
+.path-card .go::after{content:"";width:22px;height:3px;background:var(--accent);transition:width .15s}
+.path-card:hover .go::after{width:36px}
+
+/* Products */
+.prod-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:20px}
+.prod{background:var(--white);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:10px;text-decoration:none;border:1px solid var(--line);transition:transform .15s,box-shadow .15s}
+.prod:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(14,26,51,.10)}
+.prod svg.ico{width:36px;height:36px;color:var(--navy)}
+.prod h3{font-weight:800;text-transform:uppercase;font-size:24px;line-height:1}
+.prod p{color:var(--muted);font-size:16px}
+.prod-feature{grid-row:span 3;background:var(--navy);color:var(--white);border-color:var(--navy);padding:32px;justify-content:space-between;gap:24px}
+.prod-feature h3{font-size:clamp(32px,3.4vw,44px)}
+.prod-feature p{color:var(--on-navy);font-size:17px}
+.patch-art{display:flex;gap:14px;align-items:flex-end}
+.patch-art svg{width:120px;height:auto}
+.patch-art svg + svg{width:92px}
+
+/* Decorate strip */
+.method-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--navy);border-radius:6px;overflow:hidden}
+.method-strip > div{padding:24px;border-right:2px solid var(--navy)}
+.method-strip > div:last-child{border-right:0}
+.method-strip h3{font-weight:800;text-transform:uppercase;font-size:22px;margin-bottom:6px}
+.method-strip p{color:var(--muted);font-size:15.5px}
+.method-strip h3 small{display:block;font:700 14px/1.2 var(--f-head);letter-spacing:.06em;color:var(--accent);margin-top:3px}
+.method-strip .ex{margin-top:10px;color:var(--ink)}
+.method h3 small{display:block;font-size:17px;letter-spacing:.06em;color:var(--accent);margin-top:6px}
+
+/* Process */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;list-style:none;margin:0;padding:0;counter-reset:step}
+.process li{counter-increment:step;display:flex;flex-direction:column;gap:10px}
+.process li::before{content:counter(step);font-family:var(--f-display);font-size:30px;line-height:1;width:58px;height:58px;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);border-radius:4px;box-shadow:0 0 0 3px var(--navy),0 0 0 6px var(--white)}
+.band-navy .process li::before{box-shadow:0 0 0 3px var(--white),0 0 0 6px var(--navy)}
+.process h3{font-weight:800;text-transform:uppercase;font-size:23px;margin-top:8px}
+.process p{color:var(--on-navy);font-size:16px}
+.band-paper .process p, .light .process p{color:var(--muted)}
+
+/* Proof */
+.logo-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:28px}
+.logo-ph{aspect-ratio:3/2;border:2px dashed var(--line);border-radius:6px;display:grid;place-items:center;color:var(--muted);font:700 14px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:8px;background:var(--white)}
+.quote-ph{border-left:0;background:var(--white);border-radius:6px;padding:32px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;border:1px solid var(--line)}
+.quote-ph .qmark{font-family:var(--f-display);font-size:72px;line-height:.8;color:var(--accent-deep)}
+.quote-ph blockquote{margin:0;font-size:22px;line-height:1.4;font-weight:500}
+.quote-ph cite{display:block;margin-top:12px;font-style:normal;color:var(--muted);font-size:15px}
+
+/* Visit */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.visit-list{display:grid;gap:22px;margin:28px 0 32px}
+.visit-list dt{font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.12em;color:var(--on-navy);margin-bottom:4px}
+.visit-list dd{margin:0;font-size:19px}
+.map-ph{border-radius:6px;overflow:hidden;border:2px solid var(--navy-2)}
+.map-ph svg{display:block;width:100%;height:auto}
+
+/* Footer */
+.site-footer{background:var(--night);color:var(--on-navy);padding:56px 0 28px;font-size:15.5px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.site-footer h4{font:700 14px/1 var(--f-head);text-transform:uppercase;letter-spacing:.14em;color:var(--white);margin-bottom:14px}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.site-footer a{text-decoration:none}
+.site-footer a:hover{color:var(--white);text-decoration:underline}
+.site-footer .brand-mark{color:var(--white)}
+.site-footer .brand-sub{color:var(--on-navy)}
+.foot-base{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px}
+
+/* Interior page heads */
+.page-head{background:var(--navy);color:var(--white);padding:64px 0 56px;position:relative}
+.page-head::after{content:"";position:absolute;inset:auto 0 0 0;height:8px;background:repeating-linear-gradient(90deg,var(--accent) 0 60px,var(--white) 60px 72px)}
+.page-head h1{font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.4vw,72px);line-height:.95;margin-bottom:16px;max-width:18ch}
+.page-head .lede{margin-bottom:24px}
+
+/* Segment page */
+.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.check-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+.check-list li{display:flex;gap:12px;align-items:flex-start;font-size:18px;font-weight:500}
+.check-list svg{flex:none;width:24px;height:24px;color:var(--on-accent);background:var(--accent);border-radius:3px;padding:3px;margin-top:2px}
+.spec-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.spec{border:2px solid var(--line);border-radius:6px;padding:16px 18px}
+.spec dt{font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+.spec dd{margin:0;font-weight:600}
+.callout{background:var(--paper);border-radius:6px;padding:28px;margin-top:28px}
+.callout h3{font-weight:800;text-transform:uppercase;font-size:24px;margin-bottom:8px}
+.callout p{color:var(--muted)}
+.callout .text-link{display:inline-block;margin-top:14px}
+
+/* Gallery */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.chip{font:700 15px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;padding:11px 16px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--ink);cursor:pointer;min-height:44px}
+.chip:hover{border-color:var(--navy)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tile{margin:0;display:flex;flex-direction:column;gap:10px}
+.tile .art{aspect-ratio:1/1;background:linear-gradient(180deg,#E7EAF0,#DCE0E8);border-radius:6px;display:grid;place-items:center;position:relative;overflow:hidden}
+.tile .art svg{width:72%;height:auto}
+.tile .art.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tile .tag{position:absolute;top:10px;left:10px;font:700 12px/1 var(--f-head);text-transform:uppercase;letter-spacing:.1em;background:#FFF1C7;color:#5C4300;padding:6px 8px;border-radius:3px}
+.tile figcaption strong{display:block;font:700 19px/1.15 var(--f-head);text-transform:uppercase}
+.tile figcaption span{color:var(--muted);font-size:15px}
+.empty{color:var(--muted)}
+
+/* Decorate page */
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.method{border:2px solid var(--line);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.method h3{font-weight:800;text-transform:uppercase;font-size:30px;line-height:1}
+.method > p{color:var(--muted)}
+.method dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:0}
+.method dt{font:700 14px/1.5 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--navy)}
+.method dd{margin:0}
+.table-box{overflow-x:auto;margin-top:40px;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:16px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{font:700 15px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.08em;background:var(--navy);color:var(--white)}
+tbody th{font-weight:600}
+tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
+.fit{font:700 14px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;padding:5px 8px;border-radius:3px;display:inline-block}
+.fit-great{background:var(--navy);color:var(--white)}
+.fit-good{background:#DCE3F1;color:var(--navy)}
+.fit-no{background:transparent;color:var(--muted);border:1px solid var(--line)}
+
+/* Jacket builder */
+.builder{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start}
+.jacket-stage{background:linear-gradient(180deg,#E9ECF2 0%,#DDE1E9 100%);border-radius:8px;padding:28px;position:sticky;top:96px}
+.jacket-stage svg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto}
+.jk-body{fill:var(--jk-body)}
+.jk-sleeve{fill:var(--jk-sleeve)}
+.jk-knit{fill:var(--jk-body)}
+.jk-knit-line{stroke:var(--jk-sleeve)}
+.jk-collar{stroke:var(--jk-body)}
+.jk-letter{fill:var(--jk-letter)}
+.jk-letter-border{fill:var(--jk-trim);stroke:var(--jk-trim)}
+.jk-out{stroke:rgba(14,26,51,.38);stroke-width:2px}
+.combo{margin-top:18px;text-align:center;font:700 18px/1.3 var(--f-head);text-transform:uppercase;letter-spacing:.04em}
+.swatch-group{border:0;padding:0;margin:0 0 26px}
+.swatch-group legend{font:800 20px/1 var(--f-head);text-transform:uppercase;margin-bottom:12px;padding:0}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.swatch{position:relative}
+.swatch input{position:absolute;opacity:0;width:1px;height:1px}
+.swatch label{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border:2px solid var(--line);border-radius:999px;cursor:pointer;font-weight:600;font-size:15.5px;min-height:46px}
+.swatch label:hover{border-color:var(--navy)}
+.swatch .dot{width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(14,26,51,.3)}
+.swatch input:checked + label{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy);background:#F6F8FC}
+.swatch input:focus-visible + label{outline:3px solid var(--focus);outline-offset:2px}
+.faq{display:grid;gap:12px;margin-top:8px}
+.faq details{border:2px solid var(--line);border-radius:6px;padding:0 20px}
+.faq summary{cursor:pointer;font:700 20px/1.3 var(--f-head);text-transform:uppercase;padding:18px 0;list-style-position:outside}
+.faq details[open]{border-color:var(--navy)}
+.faq details p{padding:0 0 18px;color:var(--muted)}
+
+/* Story */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:4px solid var(--accent);margin-left:10px}
+.timeline li{padding:0 0 32px 32px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-14px;top:4px;width:24px;height:24px;background:var(--navy);border:4px solid var(--accent);border-radius:50%}
+.timeline .yr{font-family:var(--f-display);font-size:30px;line-height:1;display:block;margin-bottom:6px}
+.timeline p{color:var(--muted);max-width:60ch}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.big-year{font-family:var(--f-display);font-size:clamp(90px,14vw,180px);line-height:.9;color:var(--accent);-webkit-text-stroke:0}
+
+/* Quote */
+.quote-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;padding-top:48px;padding-bottom:88px;align-items:start}
+.quote-card{border:2px solid var(--navy);border-radius:8px;padding:32px;background:var(--white)}
+.steps{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;counter-reset:qs}
+.steps li{counter-increment:qs;font:700 14px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:12px;border-top:5px solid var(--line)}
+.steps li::before{content:counter(qs) ". "}
+.steps li.done{border-color:var(--navy);color:var(--navy)}
+.steps li.current{border-color:var(--accent);color:var(--navy)}
+.q-step{border:0;padding:0;margin:0;min-width:0}
+.q-step:focus{outline:none}
+.q-step legend{font:800 30px/1.05 var(--f-head);text-transform:uppercase;padding:0;margin-bottom:6px}
+.q-help{color:var(--muted);margin-bottom:22px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:6px;padding:14px 16px;cursor:pointer;min-height:56px}
+.choice:hover{border-color:var(--navy)}
+.choice:has(input:checked){border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy);background:#F6F8FC}
+.choice input{accent-color:var(--navy);width:20px;height:20px;margin:2px 0 0;flex:none}
+.choice strong{display:block;font-weight:700}
+.choice small{display:block;color:var(--muted);font-size:15px}
+.sub-legend{font:800 20px/1 var(--f-head);text-transform:uppercase;margin:28px 0 12px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.field label{font-weight:600}
+.field .hint{color:var(--muted);font-size:15px;font-weight:400}
+.field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field select,.field textarea{font:inherit;font-size:17px;padding:12px 14px;border:2px solid var(--line);border-radius:4px;background:var(--white);color:var(--ink);min-height:50px;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy);outline:3px solid var(--focus);outline-offset:1px}
+.field [aria-invalid="true"]{border-color:var(--error)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.err{color:var(--error);font-weight:600;font-size:15.5px;min-height:0}
+.err:empty{display:none}
+.rush{background:#FFF1C7;color:#4A3600;border-radius:6px;padding:12px 14px;font-size:15.5px;margin-bottom:18px}
+.drop{border:2px dashed var(--line);border-radius:6px;padding:22px;text-align:center;background:var(--paper)}
+.drop label{font-weight:700;color:var(--navy);cursor:pointer;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:3px;text-underline-offset:4px}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop input:focus-visible + label{outline:3px solid var(--focus);outline-offset:3px}
+.drop p{color:var(--muted);font-size:15px;margin-top:6px}
+.art-list{margin:10px 0 0;padding:0;list-style:none;font-weight:600}
+.drop .file-row{position:relative}
+.drop .file-row + .file-row{margin-top:12px}
+.drop .file-row + .file-row label{font-weight:600}
+.send-err{margin-top:18px}
+.inline-check{display:flex;gap:10px;align-items:center;margin:14px 0 22px;font-weight:500}
+.inline-check input{width:20px;height:20px;accent-color:var(--navy)}
+.pref{display:flex;flex-wrap:wrap;gap:10px}
+.pref .choice{min-height:48px;padding:10px 14px;align-items:center}
+.pref .choice input{margin:0}
+.q-nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.q-nav .spacer{flex:1}
+.review{display:grid;gap:0;margin:0}
+.review > div{display:grid;grid-template-columns:150px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.review dt{font:700 14px/1.4 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.review dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.edit{font:700 14px/1 var(--f-head);text-transform:uppercase;letter-spacing:.06em;background:none;border:0;color:var(--navy);cursor:pointer;padding:8px;min-height:36px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.done-panel{text-align:left}
+.done-panel .badge{display:inline-grid;place-items:center;width:64px;height:64px;background:var(--accent);color:var(--on-accent);border-radius:4px;box-shadow:0 0 0 3px var(--navy),0 0 0 6px var(--white),0 0 0 8px var(--navy);margin-bottom:24px}
+.done-panel h2{font-weight:800;text-transform:uppercase;font-size:36px;margin-bottom:10px}
+.done-panel p{color:var(--muted);margin-bottom:12px;max-width:60ch}
+.quote-side{display:grid;gap:20px}
+.side-box{background:var(--paper);border-radius:8px;padding:26px}
+.side-box h3{font-weight:800;text-transform:uppercase;font-size:22px;margin-bottom:14px}
+.side-box ol{margin:0;padding-left:20px;display:grid;gap:10px;color:var(--muted)}
+.side-box ol strong{color:var(--ink)}
+.side-box p{color:var(--muted)}
+.phone-big{font:800 30px/1 var(--f-head);color:var(--navy);display:block;margin:6px 0 8px;text-decoration:none}
+
+.tel{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.step-label{display:none;font:800 18px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.04em;margin:-14px 0 20px;color:var(--navy)}
+
+/* Mobile CTA */
+.mobile-cta{display:none}
+
+@media (max-width:1360px){
+  .brand-logo{height:52px}
+  .site-nav{gap:2px}
+  .site-nav > a:not(.btn), .dd-btn{font-size:16px;padding:12px 8px}
+}
+@media (max-width:1040px){
+  .site-nav > a:not(.btn), .dd-btn{font-size:16px;padding:12px 7px}
+  .facts{grid-template-columns:repeat(2,auto)}
+}
+@media (max-width:960px){
+  .hero-grid,.visit-grid,.seg-grid,.story-grid,.builder,.quote-grid{grid-template-columns:1fr}
+  .hero-jersey{max-width:280px}
+  .path-grid,.work-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .prod-feature{grid-row:auto;grid-column:span 2}
+  .method-strip{grid-template-columns:1fr 1fr}
+  .method-strip > div:nth-child(2){border-right:0}
+  .method-strip > div:nth-child(-n+2){border-bottom:2px solid var(--navy)}
+  .process{grid-template-columns:1fr 1fr}
+  .logo-grid{grid-template-columns:repeat(3,1fr)}
+  .jacket-stage{top:92px;z-index:5;padding:10px 12px;box-shadow:0 10px 24px rgba(14,26,51,.12)}
+  .jacket-stage svg{max-width:210px}
+  .combo{margin-top:6px;font-size:15px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:1180px){
+  .menu-btn{display:inline-flex}
+  .site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 16px 20px;gap:2px;box-shadow:0 16px 30px rgba(14,26,51,.12)}
+  .site-nav.open{display:flex}
+  .site-nav > a:not(.btn), .dd-btn{font-size:19px;padding:14px 8px;width:100%;justify-content:space-between}
+  .dd-menu{position:static;display:block;border:0;box-shadow:none;padding:0 0 6px 12px;min-width:0}
+  .dd-btn svg{display:none}
+  .btn-sm{margin:10px 0 0}
+  .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
+  .mobile-cta .btn{width:100%}
+  body{padding-bottom:76px}
+  body[data-view="quote"] .mobile-cta{display:none}
+  body[data-view="quote"]{padding-bottom:0}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .band{padding:64px 0}
+  .hero{padding:40px 0 64px}
+  .hero h1{font-size:44px}
+  .concept-bar{font-size:13px}
+  .notes-toggle{padding:6px 10px;font-size:13px}
+  .btn{white-space:normal;text-align:center}
+  .lede{font-size:18px}
+  .path-grid,.work-grid,.prod-grid,.method-grid,.process,.choice-grid,.two,.spec-row,.foot-grid{grid-template-columns:1fr}
+  .prod-feature{grid-column:auto}
+  .method-strip{grid-template-columns:1fr}
+  .method-strip > div{border-right:0;border-bottom:2px solid var(--navy)}
+  .method-strip > div:last-child{border-bottom:0}
+  .logo-grid{grid-template-columns:repeat(2,1fr)}
+  .quote-card{padding:22px 18px}
+  .steps li{font-size:0;letter-spacing:0}
+  .steps li::before{font-size:14px;content:counter(qs)}
+  .step-label{display:block}
+  .review > div{grid-template-columns:1fr auto}
+  .review dd{grid-column:1 / -1;grid-row:2}
+  .quote-ph{grid-template-columns:1fr;padding:24px}
+  .quote-ph blockquote{font-size:19px}
+  .brand-mark{font-size:24px}
+  .brand-logo{height:46px}
+  .head-row{min-height:68px}
+  .jacket-stage{top:76px}
+  .logo-patch{padding:14px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body data-view="home">
+
+<!-- Shared SVG defs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="chenille" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4" result="n"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    </filter>
+    <pattern id="mesh" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="1.5" fill="#ffffff" fill-opacity="0.07"></circle>
+    </pattern>
+    <clipPath id="jerseyClip">
+      <path d="M128 28 Q210 82 292 28 L392 70 L418 178 L338 196 L338 446 L82 446 L82 196 L2 178 L28 70 Z"></path>
+    </clipPath>
+  </defs>
+</svg>
+
+<div class="concept-bar">
+  <div class="wrap">
+    <span><strong>Concept preview</strong> for Artcraft Sports Apparel, prepared by Christian Howarth. Not the live site. Text in <span class="ph">[brackets]</span> is a placeholder.</span>
+    <button type="button" class="notes-toggle" id="notes-toggle" aria-pressed="false">Show pitch notes</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap head-row">
+    <a href="#home" class="brand" aria-label="Artcraft Sports Apparel, home">
+      <img class="brand-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuoAAADWCAMAAACwnldrAAAAwFBMVEXWnZyuWVmcLS0nOFrf4ebJamm7w88PGTlbbYp6i6PBKylUWnGSjJs0QlyhQT2mrsCePkDpvsDnwL66gH7FQD07V4FjJTO7fIPHfoDBgH7///8FJVMDAwO4GRb7/PwYFxjo5OYnJyfV1tdZWVmoqarGx8q1trhnZ2dISEiGh4g2Nja4JyV3d3cVMlsvR2uXl5dnd5GUFxbz2dnX2+OLmKuvt8XtyMhSZ4YLHEWZpLZHWHa4IR3ntbV0g5saOGI6U3cd/RKgAAAAQHRSTlP//////////////////////////////////wD/////////////////////////////////////////////////XX4FXQAAOPZJREFUeNrtnQl7osjasE0wajrdM2fmvN+mdihKii0qdtR26Tb5///qqxUKKIpiMcsMz3td7+lJDEJx8/DsNZj20su/Qgb9EvTSo95LLz3qvfTSo/4PFRiD8l+iMAT9EvWo/xM4352tnYZ0ez4P+lXqUf/0clqvZrON5gOL+XzutP+eOAwR/yeI/cUi+S/ysLleIvwjrr8IgiXq70+PeicC3M16huWsM1CCeXutDsMIvxti9m/fmROxFwnI/jyRiD1eNvsvO/D6u9Sj3lq2O8r5bGZB3cdc27bddgo9YORSbJGTYG0L1tMfzUP6mfS/5z3rPeptDZfzioE+W1WADBFs91URJxtK/yGp8Kmb/oR9JpY+4/QucY96C0Eba5bI5tpuL7dGHGH5z30PusQu4iYN+eeCScjsF8ePPeSFUa/We9RbyW69SkGfWUBhwy/9ZczNC4iF/pD9L4z9nLfohb6fOpleuAy9XAgniAnhCx7OmYePWEDiA5BHYZE9ojgP8pllf8N61BvJ/rKeyWIVohyp30iNCWyqB8xVtG3PpWa3vUhMGo9/2IHyn0Zx5oBMcRONHZJfPlIh1NuA2y8lNtSyR71HvWHIZX9ezbISF0h3MqY0iY74wndciF/5gkVb/mzqcuYd2YhbIoFQ6ljIzyCzaewSb8BPjJxeetTrGM2b9Swv56kqjo7hEzwHnDZgz2UBiYHBhOhej37EdiSPUzxiNseZ/IHLUSf/Rvx3S6VF7tnlT0EvPeqllsthVpRinNEjtOI6AeguYqHMUeJcOksE/cRZpP+yfRchYtjT10Hkgkei3G2QPygNpchanaPOwy1O1gOAEHm+/P7opUfd0BW1VgrSZ26VeQyFYvUSi5xC74ogYQTlXFMECMQFk2Qp9PwitdWFAZO8GWxf1uc2e4ss+lvXo15D0GU9U8pGbR5LfLlCH8dJzoeaMh43wB0o18o4kAZXnHw4PBDqmapwH8huKYp9EWsPkoOFnP64j6r3qJvL6DArEVWalMEIZX0cZB8BqtURz2m6mWdkCR4B8KKCNnZEHpT5vI4fLmkoR1j0SMRxQMZhwIfpLfUeddOYy+5cBvpstVf9AYcRpKGTxD0NU2dRtkrSv4sWi8gp5vOhnfzEzTi3qaUEYiepCyDPDT6Q3SdLe9Rr1OeuZ+WyKal5YQrWS/QxdU9TWmOOeJBR3kiO0DhZH4D+jutnVyp4mcs6m0Yq5cANCO3eWO9RNwP9wdKAPluX/ZmTlqMIY2UKkwIVqs19/hQsM0EW4V/mWzncTB2wu4iiQBFdcQvVwmGv1nvUTQp0Dysd6GrzhavTJDTuySlNTh03ZUAWdZfGUPxlGHsFOMN8HTCAwbwQMoeFKDq0c5q/lx71Aq3eelYhk2lFkTrR5q4wKiTDnBApAjCLYqhmqu7uyOT3GelxsSzMLjV8eulRV6rlStBna61hgLhpLowVSiuzNxJTZpFRzJ5cgJ4TJ1flIrugIKP7o8xP/HmfLe1R15noF2tWLSW1sTxDj7iNnsRdoqQaJVHfLIOE5AgMD4zDuFgWgNKW7Wguke74zOABIQ/JuDbPm0L6k76ttUe9DPTzzEQO0zIF7Cw9RNUu4dnhcRcCMqdVKF8elrSDMPRJIilk1ZD4vyI7KNYaCOUseum4lifBeTsSoUWbHcd2oiCI7L4LqUd9qil0WRmRvt6WGC5SHMXlxooIwDip4e3nYuR2Qv5ckc6PpdAKK6VJ+0ozcXZbFD9KwZye4h51ZYmuiJhXmTCnkkOkrW60IoWGVYSxEqRJJW6ghCKWHuS6RsNCrUEgB2qiVFXHdj4aL6Pu9BW8PepTVXNRkvDfNjRfMHq8HoW16pO+jIhBbdsshgIi204KXxCv+BWzAGxlXJ00dSRpUDsKM84rWvInJOL1LsAVNk4U9i5pj7qiAEAKumwfv2lJ144IgMh1zRungee6aSAd4L91aw9vgfgYCGTC7uSoPec96iqNLpnox83j47mR+dJLj/pHjy5mwugWrpF9ODYyX3rpUf/Asg1zPugeF4NvNKiv+vFwPeqfEfRN3iw/kL6HUIP6rgejR336+dqLrJllHY8S2BZtZjuVo37uSwV71D+bgAdqjwyB+zAec7bHrB/fLUe9N1961D/rMLpvw8fH7R53GxG8J6xFeV+K+qXHokd9+rlmuqThxQ3DG+wPlgX46Kxjo4LGXnrUP3Z/0eVRCCf9cXusV9DYS4/6R5RRocRl/5iT7bhOO2kvPeofU6MXCR6jPOuhNVbR3ifbe9Q/jzOqrNJdPxZk64UPs2NfEdCj/umd0UrWsQxPZ0s7i7SXHvUPCfpEU4Z+eVQLgH8e+pB6j/rnKurSNhgd3RLWkSjvXfUh9R71zyCbqh66ByXoe2us2Qmmlx71DyagegjAESk4ly2e8hFHvfSofxAZ7kbVzdEFW317suRw46oPqfeof3T5iqsXK1EXFQGJhf7Ql3n1qH/enlGN5POl577Jrkf9U4lrGYEuKr5SySv1156GD6XBwBaO9vvTabe7v7+/ELnf/ptRd80mdZFpGBWor0ZdntduM9lkZJLIZthzXA442u/uJ4fz6/rlBZukq9lKMwN8ix+FMkH/MNTRw8xUkPBEvwmbfXPFKvX9qunU038x5dv9/flF53Ll+yB1c9ou/yjU4cEyJv1M6R7R5gzem3HJav1Ode3rrG9cndasRV2/1JyMPNSQrnhHDz5xscushmBNDr+K0OJXivpOLvRadeqTIs1de+lLJ4v38t4ksrCrkTKc/HNsdXBZ1SHdA1JOdHakwZiTFFM/798sb9uPmCkohonRPVzldMRWR8D+n4K6aXwxWaWJlanVtUYkUSpQP+86Dqhve6VeZzLyi9lNzFvfu5qbWH1K1N16oKviMbivGlHU15NR5+d33yt1Y61wMb1lL9sa/tD9PwP1vQnor0d9OQwuXodjYrhcIxyiO8E/e7yVo5Fr7+ygC3LNtv8E1NHExEi/3+hRn403j8Nvl+tUAuxnfaTRTKUfaryIRzWU+uafkEIaBeNx9bI8TC/Hqs+4VzOaX/sJv63jVMXXdP6PNRrvZfT5UQckZrirXJbxaBprUV+t769X2tUr9c6NF3zH/qwR5Fp/+sIAQHd4MUiQ4v0ndro5u6+7axI3qb2R+7+T9Do6vaAjtJHG0ydHndgbw41JftQiQZpS1Feb69bqQt0t7CONQurlRQrpo0v9V+fg85gu4HQ+Hg1W5UjSB/sSi359D9+x7W/SI87lVC84vB7WCHLdTz8z6vBxexgfZ+apBqREfX39jjpd+mg16hln4tbMg9zX8IfK9oEYfA4jXbur7m6zlgYXsVZoxZi61eYtSNvVdpf+hQINPNKX9evhsCFV6rhaPfcqBusGSbrBZ7Bd9E/x7AFMt7tkcBFT3GCcj7ls3sZOXvc1jdVSEU9/eZ3sRtuGNdKlbZOfxIAZ6YyXI4trwNMa2zgixpFDffdGUb59r9Tbmi/r3baNP/T6SbuQttwdQVo7fZxEl/YXsUyZYvW3S9yc67tL/zoBuhzbykAp6fyh8lfnx0Z9Z/FyNliRMyq6mxLob+gM6sK9/bZ50+rEg9EoHp1Sf5l+RtRP56Q8als5+KJgM7PA5Nv4okZ3sY80cmN01bJwQqvU7z8h6rxv9Ei9yeGsNuvby9myDm+rSXWFGSv48fx9MKQCwFvWK5ybGNqmMXlNO8BHRR34Vgbi6tkXqphWBV3QNMwOhls02rtkUAMXF/ekwy3IULPdagsz4LYgcPsOKwv3p/vN4bzOyuvksLk/bZPLKcpwqxd9i/SWPlP4yNoSptMWMmGHZE8iV114uSDCt0FbxL2GxWUego+M+i4tADjSXUSrBzLuijpLq4B3h/VKH/0bIgoFntOw0oVwD3iMQ70sd7VpCkanHZ59IoZqHMpFGrqx2VU82LvNoaJXecdLM1dFqa7HeN2UtXONmq5PErhCbY5w/rioo3VBYRvUvsBCyYx23166n2mpFiJzGmYrE1Db38YCk7vXZscsRx2ejNraXlqDuT6BJjOSK6/q0OYIp4+KOizUdO2MULegGej7jSBJjQbcTV6tlXENdavbWFDqwN2sm5L2orYhtrvD+qVO/r0VVjgsXoAdtGmQpMVbrfQJX5fBx+uQtlQFXAaL9c0EdChVSasq4LD6M7dGdlWFjDVLUwHemK/FPVVlxLf7g/kRmU8H2zbunmGNMkSzx6/VESYf0y0t8TmG1agfxQIj3dg7SzsAanSoBW43t1HqVWiju2YvqN5+OWU27WbWukkddqfUWTai1RHgR0Qdlr071/+rkvRLUjBTun1MdsFeQGFMQ31QW93Gl6E8Id5qCVhBqaOa18MKL4fWrD3rmafutGp7VbtVB+vyoVBvc0VWhelSHO8Y5iynyaqB7jq1IUJ6rexfWvOVz75sVo2Y2M06kFfTXlujVxWwuliXD4S612ZJaEM51Fguq4qUzp/rJtqinVJHjR+z6u6F0WszJrpQ6lnTbD9rGyfcr1qN/PloqMNN27d3qekCXFXwLpNzAvdWI1DdTlQfXHcAVzac1OAtwZjoRKmTGd9Tw4pdg8fv3Mm6fBTUw3bKZA2gSTqqrJJg2CCQfWh9G/ddvOHVk4SbmIL309ZYSe9MN1nbl7Z5h9GsE3/oY6C+b7vA5ZWfp3X1BED42lDfoJf2MbDptgudnn1JXRrr4f2qG9TT4rZda5U8mXXirH8E1EHb8FZ5y2hpvYRcUduINapFO8jhTYedkJ4ZfnVpzsRrR6TzMAFeXKtt8qfVa0EaHPgBUD+1vNdrt0yljx5WBkpwtG6qb1qlj7jF0RHpkzahl/RZQV0pdTzRvtFoAMXj1ypzsf5AlY019nhRX8sFGBcYpGap5DU18wlpnnP30tpd6sZ6kUzjpiHbc/u85kxVktTGNKXZ2+1LR876e6P+taUaKd9DS5OS2bt+S9KZqb9ur9QP3XAlRRobJmxO09ZYqVAftU7+tHotyOXr74s6aumOnkuLAEZnXblvjIz6HCtu5Km9G7npiKv7ZjM/89U4u+5I5437rVxKt3VI6PxRWjNaqvRyb1Tr6OJ3mtc26Hto7cKh1tkVpVLfrtokbl87RH3b2vanj1+rJcrMmBp82gijVR5glHfVWN/PjopJGuJt/9K8o2L00vbdvLU6wmrTsDI86btgzwo4nAvyqpTqwrRVk8mMXaePzh+i4Q6084CsTWmD1zB7u0fZmaaTqZRXhXXuxOrlxaKtaefJhtXHUnFxH54O2clFIWzm9cH0i6W+uCxxXPb1kvDWejK5xz2DCDZu/EObF5NUMO1QvKeic2xeNiqhk5fpX9MeR91TvLooZf8RUB+tuy2Jlm7Ct1luWwHcU5R27z3KtTJmrK1J1yXtJSUdxzXnHL2UU7Q327EMD7rSNw9KvzQZELfZD6/e+F/s9d2u207Iabtt4PugDobtgqVu+aELBz5Sw/z0QIZlHM9TWakbpAaNdr87N2qCMykVO5yGXW2CrWuIm3Y+ja4wibVhm3+Hc18H77QnQAtff7WpN/eS5+0Q3s/RmmZQr2JtZTZbY6TbnmPYYu5y7cHBkxZL1+kg1mLT7GvbXf9ObUcEDt5p9wvPZEujjHJODBI0rVnZJQqWRyzblKgQd9UNaZdZna3ujd4FzeZMVrke1v6tZg7P3Do2Hmq7w9T+Y6LOLcvh7qFO/OF4OPIm3fo7VB+36lkCFay9Gs4o0hkiOkt91bFKrwq/rM7dTp2ptRvRoa1S37cdlPT2qEv8PG7d89hsg4DjmW2DsdEoOnDW9+LVsDvo3dp2oN0OzbRUna83Nf5Xr9O328hvV2f23KmtZ7D7iKgXy8r3oUnk1AKIbqire+wtsx1bDcMvFuoAMI27VJHVXMOOLYrZwdgcAmyOFhrlBVGBdAIX2tfxMzdtd/2D7feyH7yXSq+1U+t4h7fBsMLG9/msOAV9bejLvouox2szA19r+DRU6meDIwxHpwueGbNadVo833hKtOmzYuhrD94d9NPZMsl6AV+rZisKV0cZn5jKfcNBWTXerJoJyhWFVe604520Kl2/4cl00JP5OAqzXXOGbSON8MOhrnpPjb5aJsY60nSOGjV3FHWavnr2MO1iS2WNJr2vPWu1XZy7wh6Glw5rGour99r2Wncd3Ks3Qx0oFJVrmfmk4aP+ya9sb0i31YBGta6rbSdxiKbpo0Z7Vmsrq85dbpc7qzueT9vTjd5qL/vBm43WLQwYmsxKQc/uT3oGevKqW0N3NbMt5nE+3VOmcZd2HVlPhmF6veM23HQKetFDWbfVya5BZ98HQR3vxZinxxprCsr3D7K+rzBcKxt5jvdFI0pbwTHpxkDeNFXqTZZYZ0jph2t31AhVrmZ1a220IYxWqd9/KNRx96if/5nWF90/AuRu2NPwzdMffFTl1R6/KvyFjpS6NtKIGhZ6Ndoe7NI0xQK7Jv1lWOMFamSr6Wyzl9EHQp0MYhzDWqjzQDjCe7xMtrVmset1tFn17qGbbQlfG6Y1G20PpgudajUnOHdMeqEWAs6uGWk0fwVeH3XXknegS7r7H4xGK0yr/MNKnZ4BF5rowBfUTdTjvtk+vs22B9s1PeCha9ILTtl9W1C1nVX3HwZ1tj3QWQzxn40to07y44MR6FNUHZJXvSHBSzdKHTYL9546V+rah0cXojitukZ9U8cvuW9rm73Aj4I665M4Dml912wsYV/x3jyeqjZ5oahV6vQHkeveb6w9MNGBq46U+rlhTeN52vEm2Na2md3TUaTRbbvW2melxmpdF3Wew9zJQ/y5wq4a/zJ2qx0WVOmR4lKSx9HuwIooz90VTxvk8HYNM6W7a5de1Slwbx9pBOtr1jTWWa3BG+yAYe2/ZnJFOxPU9RUvprGD3eaMg/TH3KtVG2l0u5kHr7H4teW7L8M3VOpodXWlvp+1TB/px5fsPwTqSfX4KpsRYk5qRdrCoLLPJB58VJYZnrvJVGon3K8bVnodui4dP0wbFxLPOtiy79DWAe9MMQzeY5oRmWylr+zbVGfma0fJ1kaLd+qoaPbQMP5yarDW2iEbqE0r6qztfpKwdaH6pivFMHifvV7AdKcpf7FMjIiHxkm8TUflJ6/NjMht5/GXTUO/7WA+KeYq6aO2lRf1FMN1UIcPFWvz8Hg6Npl80WKw8tpo8TZdTYcYNXOzmpjqWjd33yxUSkftuLwZIyPa2q3Lmxaq61b5jVD3qq3oy/7Yqqt91zyJd99NmFavEzW9FZdZF8VLptXgoOkF3A8flaKzel7qFKobrbU+GrravjPqRntY3R/b1P+gWcNxmV1Ev0yiF1ZDwtYdp4/uG1r4s9NjiRzetKZRP0HkBbwr6u3mdp1Raz+sYmH/XHXRZlf1XtHkSl9rpdXb1eHolLp2NsimjHQ4q1Fs47YfibH6uKjvOs0qNx2hoglEnDvSqedZs/JEfQHvC+q0UP3S0ABboTLUa7nA59bpoxej/QreA3V4bhO/Wp26mHeif7WOOnLoq7IvpS8IsOq2gld3IroBb9rzWJeRPqwTPEStU3VVMaIJeC/U962Ml7WhP60ZgzFZV3n7m46UeuXj9nJqEGs0f9xbDxPSWsH3ZahP6rjirQvVq3fxOLxTuVfYKiVxBu3VWGleySjDed+RLyjeJKMGk5YqWobqOeio6bNa5pS6dV5IqHWqzsAafrls3x51AMI2pK8uuxMX16U7y5PJ5ScyoRtk5gVockfu4+So9wG+VqRvABd6Qc8/B4PB74IMnk03t1tvdnsI0nrkATDZcPZ1NwLddR8B8Pz8/JMIO3kiz1Xe8aQk0Liu2N3pJ1kvsmSVher4CtlZ8fOSlpeLsU/2ujnt4RaIIYmgKB2jDrvcSgdNoTRq9CyjftHUMWKv6ai1CrSmJi7JAPh+Yjbw8g/ubm5vn55+CfnOBf/zaVBv3xK2LwVZ7Kefhnsrr9aHgmT2EHjdGzi5O/KVv35J18Cu49cdXglL72koQAf6FDipaLmjx//y/a7qxYf95Z/yqT0x+fWd/P/b2z9ubvDzWLPE+AWrS81clkGXU15OXZG+2T2UTZDVvBWt7eOjut4gCeGd9PFBMLi5oYSTRS+TX79+N3iqMXbPX8hfjmZd7n5UkT56vlVewqAyM/GCtwZJZDKhz9q6cuPT5yd2/NtBVVMAVox32XP68eP29hYTPvj98/kZNCu8LCur6BR1ejCvM60+LgtiaUo6jztiTB61MbeKXopBOeCSEN28abCvMtawg4pWy7pR2aoWH0SfXawms1fws0O1JCv1gbRCVemjn+KxoIQTxn8+g3pujdINh2XDtjp1S73ZVUROx2x02RdiTWqV+kjvKD1/+W6K+qHBTbj7TlDfdlFOKDLiVTNCuc/x/Bsjf/sDy3fyMP8CnW7Gm6SPAF+/p7uKskkSBL3BZ3N7czf46/kZtNlBJxdmVx3ruTvUYdNTm9VtQc+80iZWphB+S+zJrdYpPegjjYOroU4yQ7+fqJEMrA5HxU30n8kFJ7Cb/ZVq+Q53TJUDtRmlXrHW4OczaNV/VJLCksrlnrFvS673j0FnqCdKd2Q2LL2mSG00mff18QDA7luCO0tlg5mmuk9r++0K1mOpsV4fdYLmDf7Tm476IfbVb/iK/YEOVyhUF+t3VzUS42TQN9zAgDnRbbZwUAHHFPhLDFtH7MnrAnX5nPcX61iH9nPNFq7cW/dC0nfodJ7hR4yaL2rUz0Y1jVtsS5uh/v13baWIU4OABi670aci/1Kh1AF4M9TJGf1m6/eDOqXtU3Wgrq1HDvv7htj+2Rv5pSNbPb+asM7GLyaP7YNmQIDLo2D7zZlHx4DmWdGaDhtjpU4DGLvaIECxXPvORsVV7UUxIDE7hbt3BdSJUr+hcjcg2YMqfxkYkfXa+MUiy103KSTle2i7+2ayqxfeuKVOnZbiyo+jQuzXKk9B7/RK/ecXU9Tv6vaqnTLrZXWl1O8riv5ukygeCVNndfym8+F1QL7Gqr0bYfeJGhLk+v10NdRL2/qBNzHxIqw6OzcqxvNY2zzrRQtqZ1g8barUf/y4qTlAhaAJTGerm0cataXMu3zo9MePp//c3Hwd/GQn02mwkQxOzDxJoKLTC7Yfz6dcFdU9fPrdAerD86yEdTA6V9rsZHDAuk6g0VJSVEheYwMqMygAmDg5++pII0txYFaeyZ26XzWeYri1WueSK99SJEt/U7zrhHgc4hs0am7RV78A02QiCZSCjjZizRebqe4hN9VboU6aMHz19DrLZIMAgyIHOdN7UW99p0hgQ9k9vphGGkuVuEjipTYvqGXsknsLu6vpTyKNFXtRkAoeGohQvtJBhwN4NxlLFjYfe1Yw1ofreiksjf3SBnVaEVHMxOIdGo2iMDSvU4G6vAFhSdHG8aKuTNruHtYrOVc8qoiQ3CmV+I3aqwN1hjUfapFglKypGm1B4vjcD/75m1U7yBnT/wEdmFHJ+WSLxkHV9n1uJvithvz5J6n6AtW9GZngA/jy/SqokyF1x0L/AXgwja2PTF5QJwM/6s/SNgJSEHM2KQHExjR3aEg9FHvH/35+1u8zbKpxSIAbZN2t4boDp1Q32v2soAcjf0vzpbjM6qdZGbKx9ZKzSA4NI40A/Bz8lz6X9F00qJFGIkpRXdcxaIk6OOQCgUzRr8sV+uGyPkq/3ZjEAaT6fY1SVjeHsQ1oknZHUFFnd8dNlTuixs1irMDMXn9VhGTBpPVUoX3FXhRqcxhnEP8fZukGdLWHANs0G2ZfeBUjMTIO7PPfLKeJk7i/fmStrS8/zdt99tOywMLPdqjzZcpXxX/T2eboEeCNG4+p21RRPp5ty53UQn144hvQGKWPsDH91w3R43UartguCSujLsL03tJk3nP17pPVj39Vjmao7y0gpmb7vO0L2x5cMmNRxVqT3PeA9AHc3THtTfHGpaSqtDRlfbp5MUsf/a1MAd6CVqjzlrddrdZiSjfe+OWBDAwdmThoZ5Pa3WOxuX2fboW6M4x+PTfMnaHN2kCp/8TWA0lWk5v7hP+PrPqoYRvuxmDfjx1LH5FXFC6JVSZNiR4Gu1axoNX6fssUM8iuylrvPQ5wRfovsxIMxjrcrZumj76TyHAL1F22Qt8STxQZpeBEjTVOboYG0xNmM8/kIcp3/OJ1ORbrZ/5cNa4WqYAdnDbavW1JofptNg7y6+mOPFruYd2A9pGR6zH98ivjXd8N8tQDluwju0830uevhxNPuN/+cZvITcUQQwvWyEoTG2bAkbnHJ6qPceSixUlYoQ3qYsQuX7btw5ibI9PNseboC89w9mS5Uh/n+mVOY2X66HJ+Pb+WyME4pVFWFLHd7y5c7u93XGjv4I7wUIyB/WK3EOwP65obnYs33eZQLthk+v2lPGzKgYfpyW9wi9OayPmM/3xTKhP+BZvTSNhH4O4p7wPuT+WyTwvVzeTpTlrl+4lqtVbr11NaV4lNIRJXuBORM9AC9U2S1icWYUh1KL8BYUX0pZBw8jTxGtlSPxibL+44bzNdU4DRM/JFGe4dPEumMxgOh1sqMBGkEsMrutNaCL8w8v9nMPi79fU/331Rpmu0p1YLdXzMu5+ZJd9CNBrtqYwQ3G75V4Jb8iw/UaPtuZM2atGTfyTvjNFZoMpiMbsK1BXByd26rBhybaLUrfxkwf24wbBR0AJ2hKr+uiQ59fQk096tPBvhhA2pO31QVR/8HuSpfRp0dWq50xxUF7cPquIKg2ahF2IzZnOi1FRwK2PqikkGQ7Q7j4va3UypiykOww1QoI5MZx00utOsLBp7mXd3yskCogO+3Db98uWOwPazW8ExnjtzjJ7YSZAY6/MQqOUZIXyBopX/jsmX4svqCT83VXL3vYE8ffkfeZHJlIG/SAsqgFebA5NOG7IO2X3TqcLeH2tv9cdxP20eysMv5UUjrCwA4KjO+IGxjiTUx8lQCHaPvroDRO7cFhJDAYBmypxm8mikLNNbXSK6hmyh3QuSdNEXWurJz6QPqf7sC/lHfZieblnAZqhaleFvUmTAIki6C/pCJXc16U/ov743Fdre/sRbUbHP8ddzrdLbQWeTMImXOqxE/VhaAfE4vC9LlJZHGyAB/UJfCUc2u2Sbon4c37Luf7ZAtzcGr0G9Ih/+hTOOyqqSq4g81uJHHfnOsW/wncR1xdWPJWoADMmrjEXD8YP2602W4YlVqTGnuix42jHq+jkg2AcERkXq6lPKlYhJidLSLRvJjADcg3QUG6xTDS9p9f/NK/lY3KEN5Kxy6m0A/8Fu6xNVXvS1LeRvYp08k/d29m6T/x7ywUbpp7GNwUZ93HL+a+F1o82pgWf6DTc3LAl0tXWgKpwuwc/Wbs2go23sWXAQGBY0Ft6P+/W4fEuFU/mE6os8RoM2akiojx9EfXZzPU7KA+9o6cj3q5J+m86IwHqr68ARK5/iFsjtD3PYiFHzu4Iycuz/8kPftuT+x61YiP92QXcmimyOOqja9AUH/obVpCuM9dHZ0tr0pemjlapEoNWs8qzeInUZ2Pa5mvIWOus31dYATK8vtDCBc28GJjX/CPFV1l8yMY95RtSgTpNLWQsrTTmJJj3qctJ1GHa5EKAB6luTwlODbby3hV7U9VifbRqtagwXwG1I7fZ1piWA1Ou8nvpm2nvw823ornSwbxStx2oj/o74gqDeIM8pt65yMgRvffGmqJtV8h9r7xXwMK7cz+lca5rv47rJ9q0J5Xc3V/A6f7EM3o/bP6hyfF++yy2cm/9Q5at3Z4lR838/5kV0gzrqqLi5sEWQVVnoBeukzXHy9CyHhIz1Gx1/9XQVO4V5xZ1Ynm+g6Jm7WWHQ4zfe7U3dWtC3lKHwTWqj3hXpxc33rMox/CetdV4oifm6qWW/EG3G3c5f3ZsqNzftvOL3ZJ48/H/ozbgfPxLHFXyMVxOzyJ5YVAg7Wnd1Ud9b3YB+THbaHiFtF7+8/4Jsv1gjg8pSk32AeFcOnbp7270ep/Hfj3H/21rzfPy2zoH9RfMWNzfvY50BFiUTE5SfSgsVBq031Ksh3xJPNNmw6VxZqJ6JQG5rPFenCreze5OczQUnCZi3v9/U85OqA34nOfS0YIAKKITlTQ7/M/Vf9a7rHzycct0HnTefMsLL7+TTcz3UO9sgYEx3ekLME+VW++FY0VIqB/O/gWGNb9uqbtjNFdzOW9GO+oZqnBSm0LuN+fuPIppXLkmY7z9JlI+FOoEh8yxb+l1bIJAkNwfqQoPmCpy8ZJj7fGs0m6oO6p11lh8PNCd6zNRCKivc5YD4OjNrFzTzgGmM/ObpKsFDwvhg8PxWsUHahvmfp6erJOBFnHsgD/Qv817vsClvpjZY4hen88RjZZ4C+M2n6bK0b90rqod6dwPPLLiXQ4vMwFCW/Uo9GTA7BsN8YvNxx19zXAl17nUSe4VuY3LlWAILft8lbZjf37I84YlVJpQ7Hj95LqrWYdmr5Q+WPcrKzc2NlHgVV0z3jSkU9WS2vlHU3D1la4oHXWyirtsFSELdynJqecwPWKVSLArYZDvraqCeLFlaYPdEy+6S2jtVFZ6BkL+hsZVnAK6YB3n+i1rH7BpuM9+uPivzi0kvX32c4rfgM2D2Tt7xxE4Ct6WIIfX0lEMuX954mxEGe0YeqGR/xh+CO/Yv/t8DuTioTEAN1Fvp9APMdtXkZUvbUvMyGkn7u8lo0wqXtfk7BFxR3soev5I8N5SKS8d+MXeG//7799+yLyz9/bst56DTbQvq76xtHOZkE+vAQ90ezF56MUF9OJ61HRfbTjy6TYA0h9S4SiDs720vdVB/Z9KnWzKlyyKDY3hn3UPNabW99FKJOh3V9s6kA6rKwRZtxGCAh6bFNr30qGtRs96V9KlbmJ6+ae4oMA8Ipj2l+D/Ev839JQipg5U63CZ+pBwsruXzFn5a7saxK9N+d/XZKQWCwjrmAgzD7HHMrqw8XgHVR7kS6qAV6h2RPg3CAurjWjM8U0ELxxbiOIELl5HjkB+RkGdol0gUFw8yFsI/shS0u7ajPso4EHPKgGNXiyu+Lo5s6ZyXwOPXECju+kJxIPrpQHxiWXmRICr5hLNIn2jXLrlMR5yVV3plUXJpnnYFlux7FD/tHnVxZdbxPUnHI9V3edbRaWJVz7XO78ANFnM7WCQS2fP53CE/COZk9cO59EtZnLnjpouSPYg41tzmLnBcdpSFPQ/4itr2okKCOSfPxV8u/diZ23M7oicVKVEv+epIfMIv+2pnHrFHEdiO+hP4Gn3xnWVX6djiE65mHSJU9RnyMV/1ibl/DdTTpXTJdivmvFvnDkmn/Ucj1TYB8bli08hcrx1WVz7yPJeL58FlgCD5AWKo28nvsoJcJ1Gy0LGXqPg55AVzpm9i21MfBn+d0Hn2ArhaQZ4di3eEi6RTRh5+f5AfwIUadag6HAxS1B2oPD0PxQ59t2HUQ6S+ALSYLwTqtqs6DFpKqCNUcnH49Yn41bklS45Xy2Gow8xRoH0N1GHWBtw/zAz3BxjvJsfuSKcjqQvju/iII3g6j42j6v48xLdznoqDDRiH/G+CuvzbVOwFcmwoYHJDR/GRyGOvBgKBoz6KE3vckMAHnGsl4Kgj20EL+aTsAMOOf2C7JairLsH2Mqg7pRfpQIa6r14Hx10K+6HkKv0M6gv1xdlLl79lMOpRyQo4CeryUWx0DdQVA5P2l7OJ2X4Gmw5JZxW+xY290hnqhqY6shcFDtgyVqGOP+fxJfbsZaz+SIScQIs64dNn6gyfiRnqS9vL8xIwOEpRVx3OBHXMqUuNMIJ6GX8o4I98G9TnWOUw+8wI9UD+8TW0OizbtK56ovv2cTfpMDy0KtvYi0Qgd7pO1mwBL7YsStbV8apQx7Aw2yMoJ2W5pBhoUCfPlF8L9cgp++AVUJ+7UURRX5ahPl/E3JIrucqFGer4HAKOuvPuqEN1UMc9GxQTPj6OOiTdK9sqAM/bPedB38jO6mvOfrFROYFVqAt15QSlpofjzr0K1G2u+U1RB46/7Ab1QEK99CLD0KZfWo46XiHhkbh2c9Tn3iJi78j3R12p09HFxDXF6hd2SDrvyrAKBgzczYpm+j3e5essdizdlKEehEyWTg51FIZ8Yf3cRxYhu4eplR0t+UeEYYspY6h7cbjIHiUU9rZH9WaCOjsRDlbEvtCWUIcJdbY41KICdYg/Qw9hi3PH55lxS0EcRtxmFhfJz24ZzplWd8WPxEqJZZFQx1fJnRaf/xafopdB3RWXlqyDWKt4QV+SnrRWizBzhSnqrvgEOd3OUfeKCXXjbUTQY7fZePoeObo50P98KN8MD0CPutC7EtQXns9kiewM6lgpuSH7DOIfiflHCqhH0Ofhr9DLoj5f+LHLeQz5Ybwl/0gWdYyG74f8K3zynUtmXgitntgSXsyP5Pp61JOrWnj8o+Q7HCnYmBzDgUt+TFdodYZ6hE+DndPS5V+Lghzq+Cp9dq4OCtnfL/E5RhLqC3/p5c4+jhPUmQET4CXnF7Tky+lmUccXxD+ByGp2HGzcF6qk9hvT2PqlW53O81eHHOmlO4tZKHGhJ7AE9Xg5d6jY/OXIUY/xT7jTiT19m37CgZEadT+2nQgL+Ygjo+7iv/JdocTZN+GIoRL1OMSJGEeg7s6Tg+VRxz+22ZECT4e67zhzcexlwK4F61zHWSQpJPwJP3tQ2+Zgc9TpNXHU+VLZYZxFnVylzU48cB22Jvj77DTa75HL9oTi4IeJ+HE56p58Qc5cvkCOupcuHonF4A90mkLaW7mGTDQuj+itRw+ywfzQMem8AQnmUC9/w4xLM8c+vyNzEgchKeZYWJMcdRKkWSa3dIFLbwD2NPOoewnq9CBgkUMdn7K9SFAPiOEFAnG3uH8ooY793RR1zy9HfUGPFOlRJzZBuORg8OvFp+5lVtSRDkqO6WdRJy8HcU3LpUOWHhVQJ4cJmGuDDSYUsePlrIsgRd2m05ITn5ijThyD5IKiiCxnFGS0OnnyIoF64IBua2CQ5ead0bG+JBy5Ex5zH486Jp1OuD4WsqVrg2B6/kwSrY6jw/TRSRwnHoEhkEqok48oUBdaPWQHeSyiPnUk1OlnNKgjGXVURH2Z3HgacQqqUBdxJqKyhYGRTabjQ2VQfyyi7qeo26AEdfwzZuzhReQWkeQSFFCnvlbiEyeoTyMJdfYs51CfJouHUe+23AtZDwXzRYf68Sv9zPbrA85dXjrfdmiTbBWAY+h7YbKf9X3ayv1eZANmAT8d6nYITLS6oCnAR2UxeXwJUVeoz1PU8TMV8MPP+arh1yVsjzqMY9eNXXB11JGVzJMAp8SAMRq1MoS77jfYwvp7zHbf3eLqhBnfyW5Sq8grh7rj+bhqCBDUxaZaHx117MCSGhVKAjtjWIK6eN3j8xN85gjsCHWfm+oRzuhGzJTJm0qNULcDLvaVUcfD6k5iW1Fr9pW3RowrGjivV16MZzVS82W7O7NIJ6qu4j3+qUd97sRugOvrcMkSDwwEHx517GwusbuLcBkPE3W5F74CHol3g2DBKcoR2BHqQeRxp8UJ+QFs1w5bov64iBJZXhV1TNYDDy2O0y4eUBF9SVzB7jth9zSkPpykmSHKzq72tmLZFFKEYlwhiG+OEO9NUXcWiH6rCnVaQrtQpJBCnJWXTzkqMdVZVAkXi8Rc7zquHXeOevJMxUEA557DoyhBG9STSnWQPco1UN+uZ2NIc6KCLKawj2bdylfo+cZjM/bhg5y6OoNq1EkIqXAyoVxPYi9xqNv2Ybbg//qoM7PZwWYIvaV+DnUc8GDiisIAKTkbubhiBJeo6ZoUxNngg8ZojjiB9qJz1HG6lD9TuIzd4VmeeGFXoc7PSIG6lDd1ro46Jn22G2W2W2F1sNVTnjVlM61zpfnkP/EojcZC5sJw2FUL5Dw+DlVEbu71n0fdaYn6nL6K7Tzq4oGbZ1Enj584v5i9idxYSsAvcP3r3Nets8PPD78WPGjHi5wO7Q715JmC2F+O+AX77txToz4XOYhyre7GQqLro05CeJZKYVdnjtyr6HT1XqXYdvf0ZwOVZ+Pb2LuXwIk8XIcewBLUIw9L0FKr+7yxQCRhuQETLhOBGa3upr9A7IRw8Xgg17/iml6nfA5CcgHYNIIg8mNuTs+RGvWAX6QG9Rh/Ip4XUBfFQPiZcrGBDYWLGipRj/E6EFczFKnRIuoR+wQWL7g66uptjsLyUf+ZeoDrTKxRRRWt/eNeO2M9LDGmcGtEKNcgYSvGxz+CCtSR6B9rhXrIGwriMFsDk72TEurFuqMI2+2x9G6P4jiwA68sC2HHgXimACYQicBjqEZ9zi9Sg7rNvYos6slKkQTSY8g1As4lBSrUxTokpf4KrS5Vsl0d9aGnFmw57r1KudIYCu+Ulx0WiOIdl6+JXC4bLltYsj2xh1PTSC7Jczyc6Iu8AupzjzX9uCi2W6CuqGysiTptBg2B3J6xwN1Maedb/sMs7If1NM72+oJAGC2UqPMWIBjPy1BHSU9QFvX0mcLXD0iel/uockIzKCtBtnll43uh/m8QgKPNS7jMlMtiK2ZZQD2ilkcQiAr3blDH5U9hXdSnOKQSuXKpPbFi8EOqi6pjxnB5iy1yZO4iUqCeRLDFsZcF1B38W2pYiEdNoI6fKYe//vA32eRP+TIhA9R9mDjKPepXE2z5OkVwlnnUFX0X7VH3cSUVqI06Nu1xhRZa5r0MxYsLCuR8j/kIXkIgLKJerFf37aquPI+bQpEj8vfZekRvHlejvoCL5IlIUA9TM0KLuu8kEvWo6xV7jMPWKOOeJnVEpajjQEk0bYl6hO/hPJ42QB1PKSAuheyehp5qSkRS6hAIxzcoEliKOlbUQQXqy5hlIHBUnT1EjvCifeHjLKpQj1xsWSUvN7nSQYitQx23covpBE6PegkvQmtgLw93NEvuKb5tSI96KPKA9VBf4sgZ90gdD+IUrSJ2okVdnDKpp8q4p9j8DpQFMJH6SZUILEOdJLRiPeoB5K+lxDgvNkdJ762MW8qVC84LeAupAlJKISUGVbDQoe5AFpKEvg161NWFAUmikQS0Zfc0SstvBerZMT6uKxRN3WAjrlnhTQ1Y39rutB7qwJZOGbunUve8Gyhe30FU0k3nSe6ihHp2xhJK5hWlqGc+sQABv4QktVZQ+3IRQhpsXGInIhBrMpcdFjlbSkL4/NGm3rIadZH09nrUS1G3Yx7yCnBnHbPR59l69RR1NzPt3ReVAzVRJ/3wPLZNAtCLaW3UFyJcaZNGIOyeOmnDXdE2c7hZoeoa9YoRGC+5QJy8xRcZwXyvtS+vAowj4dQEPIxZ2v9dSCHZAf8L/Jdy9U6h3Et62faoN0Yd8uYxUq9OwBG3S4G6F6Xej03u07QZ6sHCFnTiVA2qjfqStaqFtF4du6ciB6NEHdciB9k+TdG4KhMoBRuD7EXCwliBZejIH3Hi5JmKpX5YqUE1M6hlIRUGLJKuancpeywF1CM81omK06PeHPVMawYI52IIiaMq4nVSy3GZIlgbdew+8v/Aai2qj7rPPWfamoFEuawa9TApeuFNo+QZKRAodyFJFxmijM2fpJDST/jCpJiiOY+qL0WbLu5GjaQBG8UaGDTnPReklCDSoB4wLRPBHvWuUH/0dKgjtbVhhDqQUcfxRQ6Bje+N2xB10YUUaFEXZgV+UG2uiJP6qpTATMNdWW9iiroqGZc8U3HAGkJxo6m7KPxFptzLT8Yb4RdAqtadul1IPep1UMerjl+QBa0OvTgxYBBOvntAj3pIC5SCHOrAc+0U9QhXcAkDOmKFNTAbFYqiFPU4l3TO9JaSl3pUjjr25UT7toPdAqKBIcaP1/Qu6TXTb3RF+S0+aOQpMlEeCjI1MDnYsX0RicfTIyMl8XkSX2IpTKUlu0b6sQR1N8TehlDrkc3WAbqxjDpxSpws6gCns1PUyTUEPermqIt6DqGakokBLGHI9SL5vQb1RRLAEVEP3rYX01+mbikOYojvYV8cZtTjfC6hToKIJahHwu0rsdURe4hF8JRWRsas558TSOjAsRPy+7QGZl7U2sDhvxJ/nRtH4Yhzpc8UPjT+ExbGSg5KvFeXLYlwS+k6REkBAvuMJ12RKOLNTgxw2Swpjrq4Wz3qhqjbiIce4mwEBpdgIyjmwJCwCyovksWBQ9GsB/3MOLwYF4pDEWxEuOp2kdRKRfhPso06S5uEejjqAH9nNpuazoFZijBIkJ2PJaEeIsTjFzGeXstQxxcUc3LwqVDUcdwF+snPFirUF/ii+HAMPPXXyaMeeAhwbxcfgaSdANbYCCYr5zHUXfIvdrK4aGm+tBcikot/4ZIUmCutlYh5wdwcGPxzMQcmaY/sUTdEfc4NWUea2cjnckViUq/jhLEW9eQgyWES1HEQWwz8cvDIT1x+DZOjLlAOdeKEJQfEA7lKUJ8nUZCSuDp+WpfiSNipQxR1HHNKLyhwGeowkC5y6UBVyDI9p9Q9TFF3pV/TWkaAFXXmyynquNEk/XK8OItErZO/Y6i70lplLjGd7uVH4shRZsF71A1QLwSDWT13nJnZ6CtRxykhu/IoTibOjGdnxX6ab8yjbmcqbUpRL+Q/owLqvvxrptXlYoJIoC6dHp77pUB9uSzMTsygHsvFBAR1OA+lP7EhR32RnQDrSrloXHq5bDKJV06L9ajXR91j2WwT1EmHXOnAUH4UN4c6cNIkZleoB/nxQirUXRPUQSeoxwaoT6PEa+lRfxPUA8/Jl9YybLKTeJdK1HHQApVUQvGjZLU6adLBzmdSMdIQ9XiZV+qLnNOcRd15Y9RtI9S9eXJkG3WB+rRHvWyQHUlNLKGLFlIuNCAFLlAMxkp/rrbVMbZ4jKj0MXEUvCOGzY/iSr/GgRqXDPz0xH/nbXUkH0thq2MDHIeasbMmZTYj3J0xzxU2Mls9+QTkqC/kC01s9USWS1uFeigfqYD6IpZOWRgwmT/hqEv1tsRWn9Icg/hMYqurJUh3zSjZFczznV6rlxYGYEF4w7jAk7YMxHV2nGmMuvRzECpRx1VjUVzceDAtk8Goy7+gs/fDefInBdTlD4MC6j7Z7ZCOaJI/iPe5ySd/0DxzVtxWzxxdoC6LUqv7mY/YBa2eOWWm1cPsn1DU5dWE1GfHParpOjDUy/dy5Kijst+D3oApr2xk+zY6ZDNEqbIDh8qnfJByRq/YatTp5ooFJSQdJftLm9xiKP1FJq6+nOcPk69sZOccRNlTLnZSo9yRmFbPnYpX+EZb5ZZmr6AQV89dINXqxT8pfDkJT0XSOizZlpClwne403yg1+olEuNqfn8ZumAKY1Ejgn8SJ/fay28nWDaFwltmP0cGh5cfhTwC4cJP/lsuDnBzB1pksQI++dEyxoh6YfqlS0V9AcofycufCr5axFYhIwqdsJDOlnQY5X7t0yumq0fPhuySuZD+Bv8izp2Qz9fB9TPrgLQbWrqq1cwctbfVe+mlR72XHvVeeulR76WXf4z8f3LOLtt7xWvMAAAAAElFTkSuQmCC" alt="Artcraft Sports Apparel, since 1953" width="217" height="62">
+    </a>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <div class="dd">
+        <button type="button" class="dd-btn" id="dd-btn" aria-expanded="false" aria-controls="dd-serve" data-nav="serve">Who We Serve
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <ul id="dd-serve" class="dd-menu">
+          <li><a href="#teams">Teams &amp; Leagues</a></li>
+          <li><a href="#schools">Schools &amp; Boosters</a></li>
+          <li><a href="#pro">Pro &amp; College</a></li>
+          <li><a href="#business">Business &amp; Events</a></li>
+        </ul>
+      </div>
+      <a href="#jackets" data-nav="jackets">Letterman Jackets</a>
+      <a href="#decorate" data-nav="decorate">How We Decorate</a>
+      <a href="#work" data-nav="work">Our Work</a>
+      <a href="#story" data-nav="story">Our Story</a>
+      <a href="#quote" class="btn btn-gold btn-sm to-quote">Get a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<section class="view" id="view-home" aria-label="Home">
+  <div class="hero band-navy">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badges">
+          <span class="vet-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>Veteran Owned</span>
+          <p class="eyebrow-display">We Do Apparel Right!</p>
+        </div>
+        <h1>Phoenix's team apparel shop since 1953.</h1>
+        <p class="lede">Uniforms, handcrafted letterman jackets and branded gear. Screen printing, embroidery, DTG and DTF, all done in-house for teams, schools, pro clubs and businesses across Arizona.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold to-quote" href="#quote">Start a Quote</a>
+          <a class="btn btn-line" href="#jackets">Design a Letterman Jacket</a>
+        </div>
+        <dl class="facts">
+          <div><dt>In business since</dt><dd>1953</dd></div>
+          <div><dt>Decoration</dt><dd>4 methods in-house</dd></div>
+          <div><dt>Letterman jackets</dt><dd>Handcrafted on site</dd></div>
+        </dl>
+        <aside class="note"><b>Pitch note</b>Your logo leads every page in the header. The site has one job: get a quote request. The gold button sits in the header on every page and pins to the bottom of the screen on phones.</aside>
+      </div>
+      <div class="hero-art">
+        <svg class="hero-jersey" viewBox="0 0 420 460" role="img" aria-label="Navy jersey with the number 53, for the founding year 1953">
+          <path d="M128 28 Q210 82 292 28 L392 70 L418 178 L338 196 L338 446 L82 446 L82 196 L2 178 L28 70 Z" fill="#0D3272" stroke="#2B4F94" stroke-width="2"></path>
+          <rect x="0" y="0" width="420" height="460" fill="url(#mesh)" clip-path="url(#jerseyClip)"></rect>
+          <path d="M128 28 Q210 82 292 28" fill="none" stroke="#BB1916" stroke-width="12" stroke-linecap="round"></path>
+          <path d="M7 158 L82 175" stroke="#BB1916" stroke-width="7"></path>
+          <path d="M11 142 L82 158" stroke="#FFFFFF" stroke-width="4"></path>
+          <path d="M413 158 L338 175" stroke="#BB1916" stroke-width="7"></path>
+          <path d="M409 142 L338 158" stroke="#FFFFFF" stroke-width="4"></path>
+          <text x="210" y="148" text-anchor="middle" class="j-name">ARTCRAFT</text>
+          <text x="210" y="368" text-anchor="middle" class="num num-border">53</text>
+          <text x="210" y="368" text-anchor="middle" class="num num-fill">53</text>
+          <text x="210" y="368" text-anchor="middle" class="num num-stitch">53</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">Who we serve</p>
+          <h2 class="h2">Who are you outfitting?</h2>
+        </div>
+      </div>
+      <div class="path-grid">
+        <a class="path-card" href="#teams">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="14" r="5"></circle><path d="M12.5 10.5 L21 6 V10 L14 13"></path><path d="M5 6 L3 4"></path><path d="M9 5 V3"></path></svg>
+          <h3>Teams &amp; Leagues</h3>
+          <p>Club, rec and travel teams. Jerseys, warmups, names and numbers.</p>
+          <span class="go">See how it works</span>
+        </a>
+        <a class="path-card" href="#schools">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V10l7-5 7 5v11"></path><path d="M10 21v-5h4v5"></path><path d="M12 5V2h3"></path></svg>
+          <h3>Schools &amp; Boosters</h3>
+          <p>Athletic departments, booster clubs and spirit wear. Letterman jackets too.</p>
+          <span class="go">See how it works</span>
+        </a>
+        <a class="path-card" href="#pro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 16v5"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 6H4a3 3 0 0 0 3.5 4"></path><path d="M17 6h3a3 3 0 0 1-3.5 4"></path></svg>
+          <h3>Pro &amp; College</h3>
+          <p>Game uniforms built to spec, plus staff and fan apparel.</p>
+          <span class="go">See how it works</span>
+        </a>
+        <a class="path-card" href="#business">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>
+          <h3>Business &amp; Events</h3>
+          <p>Polos, hats, event tees and promotional products.</p>
+          <span class="go">See how it works</span>
+        </a>
+      </div>
+      <aside class="note"><b>Pitch note</b>Four doors, one per customer type. Each opens a landing page built to rank for its own search, like "custom team uniforms Phoenix".</aside>
+    </div>
+  </div>
+
+  <div class="band band-paper">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">What we make</p>
+          <h2 class="h2">From game day to award night.</h2>
+        </div>
+        <a class="text-link" href="#work">See our work</a>
+      </div>
+      <div class="prod-grid">
+        <a class="prod prod-feature" href="#jackets">
+          <div class="patch-art" aria-hidden="true">
+            <svg viewBox="0 0 120 140"><rect x="6" y="6" width="108" height="128" rx="16" fill="#BB1916" stroke="#FFFFFF" stroke-width="8"></rect><text x="60" y="106" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="92" fill="#052554" stroke="#052554" stroke-width="10" stroke-linejoin="round">A</text><text x="60" y="106" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="92" fill="#FFFFFF" filter="url(#chenille)">A</text></svg>
+            <svg viewBox="0 0 120 140"><circle cx="60" cy="70" r="52" fill="#FFFFFF" stroke="#BB1916" stroke-width="8"></circle><text x="60" y="92" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="58" fill="#052554" filter="url(#chenille)">'27</text></svg>
+          </div>
+          <div>
+            <h3>Letterman Jackets</h3>
+            <p style="margin-top:10px">Wool bodies, leather sleeves and chenille letters, handcrafted in our shop. Pick your colors online, then come in for sizing.</p>
+          </div>
+          <span class="btn btn-gold" style="align-self:flex-start">Design yours</span>
+        </a>
+        <a class="prod" href="#teams">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 L4 5 L2 10 L5 11 L6 9 V21 H18 V9 L19 11 L22 10 L20 5 L16 3 Q12 6 8 3Z"></path></svg>
+          <h3>Uniforms &amp; Jerseys</h3>
+          <p>Game and practice uniforms with names and numbers.</p>
+        </a>
+        <a class="prod" href="#schools">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4h3l7 4V6L6 10H3z"></path><path d="M16 9a4 4 0 0 1 0 6"></path><path d="M19 6a8 8 0 0 1 0 12"></path></svg>
+          <h3>Spirit &amp; Fan Wear</h3>
+          <p>Tees, hoodies and gear for students, parents and fans.</p>
+        </a>
+        <a class="prod" href="#business">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16a9 9 0 0 1 18 0"></path><path d="M2 16h20"></path><path d="M12 7V5"></path><path d="M2 16c0 2 4 3 9 2"></path></svg>
+          <h3>Corporate Apparel</h3>
+          <p>Embroidered polos, hats and outerwear for staff and events.</p>
+        </a>
+        <a class="prod" href="#business">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="12" rx="1"></rect><path d="M3 13h18"></path><path d="M12 9v12"></path><path d="M12 9c-2-4-6-4-6-1.5S10 9 12 9c2 0 6 1 6-1.5S14 5 12 9"></path></svg>
+          <h3>Promo Products</h3>
+          <p>Giveaways and branded goods with our partner, ECI Promotions.</p>
+        </a>
+        <a class="prod" href="#schools">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v18"></path><path d="M4 4h15l-3 4.5 3 4.5H4"></path></svg>
+          <h3>Banners</h3>
+          <p>Team, gym, fence and event banners.</p>
+        </a>
+        <a class="prod to-quote" href="#quote">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"></path><path d="M12 17.5v.01"></path></svg>
+          <h3>Something else?</h3>
+          <p>Tell us what you have in mind and we'll tell you how we can make it.</p>
+        </a>
+      </div>
+      <aside class="note"><b>Pitch note</b>The letterman jacket is the signature product, so it gets the biggest tile and its own page with a color builder.</aside>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">How we decorate</p>
+          <h2 class="h2">Four methods, one roof.</h2>
+          <p>Not sure which one you need? Tell us about the job and we'll recommend the right method for your fabric, quantity and budget.</p>
+        </div>
+        <a class="text-link" href="#decorate">Compare methods</a>
+      </div>
+      <div class="method-strip">
+        <div><h3>Screen Printing</h3><p>Ink pressed through a screen, one color at a time. Bold and built to last.</p><p class="ex"><b>Example:</b> 150 team tees with a 2-color logo.</p></div>
+        <div><h3>Embroidery</h3><p>Your logo stitched in thread for a raised, premium look.</p><p class="ex"><b>Example:</b> a company logo on staff polos and hats.</p></div>
+        <div><h3>DTG <small>Direct-to-Garment</small></h3><p>Like an inkjet printer for shirts. Ink goes straight into the cotton, so any color and photo detail works.</p><p class="ex"><b>Example:</b> a full-color team photo on 12 cotton tees.</p></div>
+        <div><h3>DTF <small>Direct-to-Film</small></h3><p>Your art is printed on a film, then heat-pressed on, like a heavy-duty iron-on.</p><p class="ex"><b>Example:</b> full-color names and numbers on polyester jerseys.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band band-navy">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">How an order works</p>
+          <h2 class="h2">From roster to pickup.</h2>
+        </div>
+        <a class="btn btn-gold to-quote" href="#quote">Start a Quote</a>
+      </div>
+      <ol class="process">
+        <li><h3>Tell us what you need</h3><p>Send the quote form. It takes about two minutes.</p></li>
+        <li><h3>Approve your proof</h3><p>We send a digital proof and price. Nothing is printed until you sign off.</p></li>
+        <li><h3>We make it here</h3><p>Decorated in our Phoenix shop in <span class="ph">[X]</span> business days.</p></li>
+        <li><h3>Pick up or ship</h3><p>Grab it at the shop or we ship it to you. <span class="ph">[Shipping policy]</span></p></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="band band-paper">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="kicker">Trusted across Arizona</p>
+          <h2 class="h2">Worn on fields, courts and sidelines.</h2>
+        </div>
+      </div>
+      <div class="logo-grid" aria-label="Customer logo placeholders">
+        <div class="logo-ph">[Team logo]</div><div class="logo-ph">[School logo]</div><div class="logo-ph">[Pro team logo]</div><div class="logo-ph">[League logo]</div><div class="logo-ph">[College logo]</div><div class="logo-ph">[Business logo]</div>
+      </div>
+      <figure class="quote-ph" style="margin:0">
+        <span class="qmark" aria-hidden="true">"</span>
+        <div>
+          <blockquote><span class="ph">[Customer quote, pulled word for word from a real Google review, used with the reviewer's permission.]</span></blockquote>
+          <cite><span class="ph">[Name, Team or School]</span></cite>
+        </div>
+      </figure>
+      <aside class="note"><b>Pitch note</b>Real team logos (with permission) and real Google reviews go here. Nothing on this page is invented.</aside>
+    </div>
+  </div>
+
+  <div class="band band-navy">
+    <div class="wrap visit-grid">
+      <div>
+        <p class="kicker">Visit the shop</p>
+        <h2 class="h2">Come see the work in person.</h2>
+        <dl class="visit-list">
+          <div><dt>Address</dt><dd><span class="ph">[Confirm current address]</span><br>Phoenix, AZ</dd></div>
+          <div><dt>Phone</dt><dd><a class="tel" href="tel:+16029557301">(602) 955-7301</a></dd></div>
+          <div><dt>Hours</dt><dd>Monday to Friday, 11:00 am to 5:30 pm<br>Closed Saturday and Sunday</dd></div>
+        </dl>
+        <div class="cta-row">
+          <a class="btn btn-gold to-quote" href="#quote">Start a Quote</a>
+        </div>
+        <aside class="note"><b>Pitch note</b>One address, everywhere. Online listings currently show two (S 35th St and E Thomas Rd), which splits local search results.</aside>
+      </div>
+      <div class="map-ph">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Map placeholder">
+          <rect width="560" height="400" fill="#0D3272"></rect>
+          <g stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="10">
+            <path d="M0 80H560M0 200H560M0 320H560M90 0V400M230 0V400M370 0V400M500 0V400"></path>
+          </g>
+          <g stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="4">
+            <path d="M0 140H560M0 260H560M160 0V400M300 0V400M440 0V400"></path>
+          </g>
+          <path d="M0 380 L560 60" stroke="#BB1916" stroke-opacity="0.55" stroke-width="14"></path>
+          <g transform="translate(300 170)">
+            <path d="M0 52 C-18 26 -30 12 -30 -6 A30 30 0 0 1 30 -6 C30 12 18 26 0 52Z" fill="#BB1916" stroke="#FFFFFF" stroke-width="3"></path>
+            <circle cx="0" cy="-6" r="10" fill="#FFFFFF"></circle>
+          </g>
+          <rect x="110" y="300" width="340" height="44" rx="4" fill="#FFF1C7"></rect>
+          <text x="280" y="328" text-anchor="middle" font-family="Barlow, Arial, sans-serif" font-weight="600" font-size="17" fill="#5C4300">[Live map once address is confirmed]</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEGMENT (Who we serve) ============ -->
+<section class="view" id="view-serve" hidden aria-live="polite">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker" id="seg-kicker">Who we serve</p>
+      <h1 id="seg-headline">Uniforms that hold up all season.</h1>
+      <p class="lede" id="seg-intro"></p>
+      <a class="btn btn-gold to-quote" href="#quote" id="seg-cta">Start a Quote</a>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap seg-grid">
+      <div>
+        <p class="kicker">What we make for you</p>
+        <h2 class="h2" id="seg-title">Teams &amp; Leagues</h2>
+        <ul class="check-list" id="seg-makes"></ul>
+        <dl class="spec-row">
+          <div class="spec"><dt>Minimums</dt><dd><span class="ph">[X] pieces per design</span></dd></div>
+          <div class="spec"><dt>Turnaround</dt><dd><span class="ph">[X] business days after proof</span></dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="callout" style="margin-top:0">
+          <h3 id="seg-extra-title"></h3>
+          <p id="seg-extra"></p>
+          <a class="text-link" id="seg-extra-link" href="#jackets" hidden>Open the jacket builder</a>
+        </div>
+        <div class="light" style="margin-top:36px">
+          <p class="kicker">How ordering works</p>
+          <ol class="process" style="grid-template-columns:1fr 1fr;gap:24px">
+            <li><h3>Send the form</h3><p>Your roster, colors and dates.</p></li>
+            <li><h3>Approve a proof</h3><p>See it before we make it.</p></li>
+            <li><h3>We decorate</h3><p>In-house, in Phoenix.</p></li>
+            <li><h3>Pick up or ship</h3><p>Ready when you need it.</p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="band band-paper">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Recent work</p><h2 class="h2">Made for programs like yours.</h2></div>
+        <a class="text-link" href="#work">See all work</a>
+      </div>
+      <div class="work-grid" id="seg-work"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LETTERMAN JACKETS ============ -->
+<section class="view" id="view-jackets" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">Letterman jackets</p>
+      <h1>Earned it? Wear it.</h1>
+      <p class="lede">Wool bodies, leather sleeves and chenille letters, handcrafted in our Phoenix shop. Try colors below, then send it to the shop as a quote.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap builder">
+      <div class="jacket-stage">
+        <svg id="jacket" viewBox="0 0 400 420" role="img" aria-labelledby="combo-text" style="--jk-body:#1B2A4A;--jk-sleeve:#F3F1EA;--jk-letter:#F2B01E;--jk-trim:#FFFFFF">
+          <path class="jk-sleeve jk-out" d="M128 72 Q88 80 70 122 L32 338 L82 348 L112 176 Z"></path>
+          <path class="jk-sleeve jk-out" d="M272 72 Q312 80 330 122 L368 338 L318 348 L288 176 Z"></path>
+          <path class="jk-knit jk-out" d="M32 338 L82 348 L78 378 L27 368 Z"></path>
+          <path class="jk-knit jk-out" d="M368 338 L318 348 L322 378 L373 368 Z"></path>
+          <path class="jk-knit-line" d="M30.5 348 L80.5 358 M29 358 L79.3 368" stroke-width="3" fill="none"></path>
+          <path class="jk-knit-line" d="M369.5 348 L319.5 358 M371 358 L320.7 368" stroke-width="3" fill="none"></path>
+          <path class="jk-body jk-out" d="M128 72 L168 58 Q200 92 232 58 L272 72 L288 176 L290 372 L110 372 L112 176 Z"></path>
+          <rect class="jk-knit jk-out" x="110" y="372" width="180" height="30" rx="3"></rect>
+          <path class="jk-knit-line" d="M110 382 H290 M110 392 H290" stroke-width="3" fill="none"></path>
+          <path class="jk-collar" d="M168 58 Q200 92 232 58" stroke-width="15" fill="none" stroke-linecap="round"></path>
+          <path class="jk-knit-line" d="M168 58 Q200 92 232 58" stroke-width="3" fill="none"></path>
+          <path d="M200 86 V372" stroke="rgba(0,0,0,.28)" stroke-width="2"></path>
+          <g fill="#C9CDD3" stroke="#7D838D" stroke-width="1.5">
+            <circle cx="200" cy="112" r="4.5"></circle><circle cx="200" cy="160" r="4.5"></circle><circle cx="200" cy="208" r="4.5"></circle><circle cx="200" cy="256" r="4.5"></circle><circle cx="200" cy="304" r="4.5"></circle><circle cx="200" cy="352" r="4.5"></circle>
+          </g>
+          <path class="jk-sleeve jk-out" d="M128 262 L160 252 L163 262 L131 272 Z"></path>
+          <path class="jk-sleeve jk-out" d="M272 262 L240 252 L237 262 L269 272 Z"></path>
+          <text x="250" y="206" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="86" class="jk-letter-border" stroke-width="12" stroke-linejoin="round">A</text>
+          <text x="250" y="206" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="86" class="jk-letter" filter="url(#chenille)">A</text>
+        </svg>
+        <p class="combo" id="combo-text">Navy body · White sleeves · Gold letter</p>
+      </div>
+      <div>
+        <form id="jk-form" onsubmit="return false">
+          <fieldset class="swatch-group"><legend>Body (wool)</legend><div class="swatches" id="sw-body"></div></fieldset>
+          <fieldset class="swatch-group"><legend>Sleeves (leather)</legend><div class="swatches" id="sw-sleeve"></div></fieldset>
+          <fieldset class="swatch-group"><legend>Chenille letter</legend><div class="swatches" id="sw-letter"></div></fieldset>
+        </form>
+        <div class="cta-row" style="margin-top:8px">
+          <button type="button" class="btn btn-gold" id="jk-quote">Quote this jacket</button>
+          <a class="btn btn-ghost" href="#story">Visit for sizing</a>
+        </div>
+        <p style="color:var(--muted);margin-top:14px;font-size:15.5px">Colors on screen are close, not exact. You'll see real wool and leather samples at the shop. <span class="ph">[Full color list]</span></p>
+        <aside class="note"><b>Pitch note</b>A preview of the phase 3 jacket builder. Students try colors at home, then come in for sizing. It also gives the shop a reason to be found in searches like "letterman jackets Phoenix".</aside>
+      </div>
+    </div>
+  </div>
+  <div class="band band-paper">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="kicker">From sizing to pickup</p><h2 class="h2">How a jacket comes together.</h2></div></div>
+      <ol class="process light">
+        <li><h3>Pick your colors</h3><p>Here, or in the shop with real samples.</p></li>
+        <li><h3>Get sized</h3><p>Try on fit samples at the shop.</p></li>
+        <li><h3>Add your story</h3><p>Letters, patches, name and year. <span class="ph">[Patch options]</span></p></li>
+        <li><h3>Handcrafted here</h3><p>Ready in <span class="ph">[X] weeks</span>. Order by <span class="ph">[date]</span> for <span class="ph">[season or award night]</span>.</p></li>
+      </ol>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap" style="max-width:860px">
+      <p class="kicker">Questions</p>
+      <h2 class="h2" style="margin-bottom:24px">Jacket FAQ</h2>
+      <div class="faq">
+        <details><summary>How long does a jacket take?</summary><p><span class="ph">[Shop answer: typical weeks from sizing to pickup]</span></p></details>
+        <details><summary>Can I add patches after I get it?</summary><p><span class="ph">[Shop answer: add-on policy and pricing]</span></p></details>
+        <details><summary>Do you do group orders for a whole team or class?</summary><p><span class="ph">[Shop answer: group pricing, sizing nights at schools]</span></p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECORATE ============ -->
+<section class="view" id="view-decorate" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">How we decorate</p>
+      <h1>Pick the right method for the job.</h1>
+      <p class="lede">Every method happens in our shop. Here's how they compare, so you can show up knowing what you want, or let us recommend one.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap">
+      <div class="method-grid">
+        <article class="method">
+          <h3>Screen Printing</h3>
+          <p>The classic team-shirt look. Bright, bold and built to last a season of washes, and the best price per shirt once quantities climb.</p>
+          <dl><dt>How it works</dt><dd>Ink is pushed through a fine mesh screen onto the shirt, one screen per color.</dd><dt>Example job</dt><dd>150 Senior Night tees with a 2-color school logo.</dd><dt>Feels like</dt><dd>A smooth, slightly raised layer of ink.</dd><dt>Best for</dt><dd>Team tees, spirit wear, bigger runs</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+        </article>
+        <article class="method">
+          <h3>Embroidery</h3>
+          <p>Your logo stitched in thread. A premium, professional look that lasts as long as the garment does.</p>
+          <dl><dt>How it works</dt><dd>A machine stitches your logo with thousands of thread stitches.</dd><dt>Example job</dt><dd>A company logo on the chest of 40 staff polos and matching hats.</dd><dt>Feels like</dt><dd>Raised thread you can feel.</dd><dt>Best for</dt><dd>Polos, hats, jackets, staff wear</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+        </article>
+        <article class="method">
+          <h3>DTG <small>Direct-to-Garment</small></h3>
+          <p>Think of it as an inkjet printer for shirts. Unlimited colors and photo-level detail, with no screens to set up.</p>
+          <dl><dt>How it works</dt><dd>The printer sprays ink straight into the fabric, the same way a photo prints on paper.</dd><dt>Example job</dt><dd>A full-color team photo on 12 cotton tees for end-of-season gifts.</dd><dt>Feels like</dt><dd>Soft. The ink soaks into the cotton, so you barely feel it.</dd><dt>Best for</dt><dd>Small runs, photos and detailed art, 100% cotton</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+        </article>
+        <article class="method">
+          <h3>DTF <small>Direct-to-Film</small></h3>
+          <p>Your art is printed onto a clear film, then heat-pressed onto the garment, like a heavy-duty iron-on. Works on almost any fabric.</p>
+          <dl><dt>How it works</dt><dd>We print the design on film, add an adhesive powder, then press it onto the garment with heat.</dd><dt>Example job</dt><dd>Full-color player names and numbers on 15 polyester volleyball jerseys.</dd><dt>Feels like</dt><dd>A thin, smooth, flexible layer on top of the fabric.</dd><dt>Best for</dt><dd>Polyester and blends, dark garments, names and numbers</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+        </article>
+      </div>
+      <div class="table-box" role="region" aria-label="Method comparison" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">If you need</th><th scope="col">Screen print</th><th scope="col">Embroidery</th><th scope="col">DTG (direct-to-garment)</th><th scope="col">DTF (direct-to-film)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">100+ of the same design</th><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
+            <tr><th scope="row">A dozen or fewer</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Full-color or photo art</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Polyester performance wear</th><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Premium feel on polos and hats</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:var(--muted);margin-top:14px;font-size:15.5px">General guide. <span class="ph">[Shop to confirm each rating]</span></p>
+      <div class="cta-row" style="margin-top:28px"><a class="btn btn-gold to-quote" href="#quote">Get a recommendation</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="view" id="view-work" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">Our work</p>
+      <h1>Recent jobs from the shop.</h1>
+      <p class="lede">Filter by sport or type. Every tile below is a stand-in until the shop uploads real job photos.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap">
+      <div class="chips" id="chips" role="group" aria-label="Filter work"></div>
+      <div class="work-grid" id="work-grid" aria-live="polite"></div>
+      <aside class="note"><b>Pitch note</b>Shop staff upload and tag job photos from a simple editor. No developer needed for gallery or news updates.</aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="view" id="view-story" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">Our story</p>
+      <h1>Seven decades of doing apparel right.</h1>
+      <p class="lede">A veteran-owned Phoenix shop since 1953, still decorating every order in-house.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap story-grid">
+      <div>
+        <p class="big-year" aria-hidden="true">1953</p>
+        <p style="font-size:20px;margin-top:20px;max-width:52ch"><span class="ph">[Founder story: who opened the shop, where it started and what they made first. Two or three short paragraphs in the owner's words.]</span></p>
+      </div>
+      <ol class="timeline">
+        <li><span class="yr">1953</span><p>Artcraft opens in Phoenix.</p></li>
+        <li><span class="yr"><span class="ph">[Year]</span></span><p>Veteran-owned since <span class="ph">[year]</span>. <span class="ph">[Owner name, branch of service and years served, in his words]</span></p></li>
+        <li><span class="yr"><span class="ph">[Year]</span></span><p><span class="ph">[Milestone: first letterman jackets, first school or pro contract]</span></p></li>
+        <li><span class="yr"><span class="ph">[Year]</span></span><p><span class="ph">[Milestone: moved to the current shop]</span></p></li>
+        <li><span class="yr">Today</span><p>Screen printing, embroidery, DTG and DTF in-house, and letterman jackets handcrafted on site.</p></li>
+      </ol>
+    </div>
+  </div>
+  <div class="band band-navy">
+    <div class="wrap visit-grid">
+      <div>
+        <p class="kicker">Visit the shop</p>
+        <h2 class="h2">Sizing, samples and pickups.</h2>
+        <dl class="visit-list">
+          <div><dt>Address</dt><dd><span class="ph">[Confirm current address]</span><br>Phoenix, AZ</dd></div>
+          <div><dt>Phone</dt><dd><a class="tel" href="tel:+16029557301">(602) 955-7301</a></dd></div>
+          <div><dt>Hours</dt><dd>Monday to Friday, 11:00 am to 5:30 pm</dd></div>
+        </dl>
+      </div>
+      <div class="callout" style="background:var(--navy-2);color:var(--white)">
+        <h3>Meet the team</h3>
+        <p style="color:var(--on-navy)"><span class="ph">[Photos and short bios of the owner and shop staff]</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="view" id="view-quote" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">Get a quote</p>
+      <h1>Tell us about your order.</h1>
+      <p class="lede">About two minutes. The shop replies within <span class="ph">[X business hours]</span> with pricing or questions.</p>
+    </div>
+  </div>
+  <div class="wrap quote-grid">
+    <div class="quote-card">
+      <ol class="steps" id="q-steps" aria-label="Progress">
+        <li data-s="1">Who</li><li data-s="2">What</li><li data-s="3">How many</li><li data-s="4">Contact</li><li data-s="5">Review</li>
+      </ol>
+      <p class="step-label" id="step-label" aria-hidden="true">Step 1 of 5: Who</p>
+      <form id="q-form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="form-name" value="quote">
+        <p class="sr" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <fieldset class="q-step" data-step="1" tabindex="-1">
+          <legend>Who are you outfitting?</legend>
+          <p class="q-help">This routes your request to the right person at the shop.</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="segment" value="teams" id="seg-teams"><span><strong>Teams &amp; Leagues</strong><small>Club, rec and travel</small></span></label>
+            <label class="choice"><input type="radio" name="segment" value="schools" id="seg-schools"><span><strong>Schools &amp; Boosters</strong><small>Athletics, clubs and spirit</small></span></label>
+            <label class="choice"><input type="radio" name="segment" value="pro" id="seg-pro"><span><strong>Pro &amp; College</strong><small>Professional and collegiate</small></span></label>
+            <label class="choice"><input type="radio" name="segment" value="business" id="seg-business"><span><strong>Business &amp; Events</strong><small>Companies and nonprofits</small></span></label>
+          </div>
+          <p class="err" id="err-segment" role="alert"></p>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="2" tabindex="-1" hidden>
+          <legend>What do you need?</legend>
+          <p class="q-help">Pick everything that applies.</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="products" value="uniforms" id="p-uniforms"><span><strong>Uniforms &amp; jerseys</strong><small>Game or practice</small></span></label>
+            <label class="choice"><input type="checkbox" name="products" value="jackets" id="p-jackets"><span><strong>Letterman jackets</strong><small>Handcrafted in-house</small></span></label>
+            <label class="choice"><input type="checkbox" name="products" value="spirit" id="p-spirit"><span><strong>Spirit &amp; fan wear</strong><small>Tees, hoodies, gear</small></span></label>
+            <label class="choice"><input type="checkbox" name="products" value="polos" id="p-polos"><span><strong>Corporate apparel</strong><small>Polos, hats, outerwear</small></span></label>
+            <label class="choice"><input type="checkbox" name="products" value="promo" id="p-promo"><span><strong>Promotional products</strong><small>Giveaways and goods</small></span></label>
+            <label class="choice"><input type="checkbox" name="products" value="banners" id="p-banners"><span><strong>Banners</strong><small>Team, gym and event</small></span></label>
+          </div>
+          <p class="err" id="err-products" role="alert"></p>
+          <p class="sub-legend" id="method-label">Decoration</p>
+          <div class="choice-grid" role="radiogroup" aria-labelledby="method-label">
+            <label class="choice"><input type="radio" name="method" value="unsure" id="m-unsure" checked><span><strong>Not sure</strong><small>Recommend one for me</small></span></label>
+            <label class="choice"><input type="radio" name="method" value="screen" id="m-screen"><span><strong>Screen printing</strong></span></label>
+            <label class="choice"><input type="radio" name="method" value="embroidery" id="m-embroidery"><span><strong>Embroidery</strong></span></label>
+            <label class="choice"><input type="radio" name="method" value="dtg" id="m-dtg"><span><strong>DTG</strong><small>Inkjet-style print, best on cotton</small></span></label>
+            <label class="choice"><input type="radio" name="method" value="dtf" id="m-dtf"><span><strong>DTF</strong><small>Heat-pressed transfer, any fabric</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="3" tabindex="-1" hidden>
+          <legend>How many, and by when?</legend>
+          <p class="q-help">Rough numbers are fine. We'll confirm sizes later.</p>
+          <div class="two">
+            <div class="field">
+              <label for="q-qty">Quantity</label>
+              <select id="q-qty" name="qty" aria-describedby="err-qty">
+                <option value="">Choose a range</option>
+                <option>1–11</option><option>12–24</option><option>25–49</option><option>50–99</option><option>100–249</option><option>250+</option>
+              </select>
+              <p class="err" id="err-qty"></p>
+            </div>
+            <div class="field">
+              <label for="q-date">Date you need it in hand</label>
+              <input type="date" id="q-date" name="date" aria-describedby="err-date">
+              <p class="err" id="err-date"></p>
+            </div>
+          </div>
+          <p class="rush" id="rush-note" hidden>That's a tight window. The shop will confirm whether rush production fits. <span class="ph">[Rush policy and fee]</span></p>
+          <div class="field">
+            <label for="q-notes">Sizes, colors and details <span class="hint">(optional)</span></label>
+            <textarea id="q-notes" name="notes" placeholder="e.g. 14 jerseys, youth M to adult XL, maroon and gold, names and numbers on back"></textarea>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="4" tabindex="-1" hidden>
+          <legend>Artwork and contact</legend>
+          <p class="q-help">Logo files help us price it right. Any format works.</p>
+          <div class="drop">
+            <div class="file-row"><input type="file" id="q-art" name="art" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art">Upload logo or artwork</label></div>
+            <div class="file-row"><input type="file" id="q-art2" name="art2" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art2">Add a second file</label></div>
+            <p>PNG, JPG, PDF, AI, EPS or SVG. Up to 8 MB total.</p>
+            <ul class="art-list" id="art-list"></ul>
+            <p class="err" id="err-art" role="alert"></p>
+          </div>
+          <label class="inline-check"><input type="checkbox" id="q-design" name="design"> No artwork yet. I need design help.</label>
+          <div class="two">
+            <div class="field"><label for="q-name">Your name</label><input type="text" id="q-name" name="name" autocomplete="name" aria-describedby="err-name"><p class="err" id="err-name"></p></div>
+            <div class="field"><label for="q-org">Team, school or company <span class="hint">(optional)</span></label><input type="text" id="q-org" name="org" autocomplete="organization"></div>
+            <div class="field"><label for="q-email">Email</label><input type="email" id="q-email" name="email" autocomplete="email" aria-describedby="err-email"><p class="err" id="err-email"></p></div>
+            <div class="field"><label for="q-phone">Phone <span class="hint" id="phone-hint">(optional)</span></label><input type="tel" id="q-phone" name="phone" autocomplete="tel" aria-describedby="err-phone"><p class="err" id="err-phone"></p></div>
+          </div>
+          <p class="sub-legend" id="pref-label" style="margin-top:4px">Best way to reach you</p>
+          <div class="pref" role="radiogroup" aria-labelledby="pref-label">
+            <label class="choice"><input type="radio" name="pref" value="Email" id="pref-email" checked><span><strong>Email</strong></span></label>
+            <label class="choice"><input type="radio" name="pref" value="Phone call" id="pref-call"><span><strong>Phone call</strong></span></label>
+            <label class="choice"><input type="radio" name="pref" value="Text" id="pref-text"><span><strong>Text</strong></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="q-step" data-step="5" tabindex="-1" hidden>
+          <legend>Review your request</legend>
+          <p class="q-help">Check the details, then send it to the shop.</p>
+          <dl class="review" id="review"></dl>
+        </fieldset>
+
+        <p class="err send-err" id="err-send" role="alert"></p>
+        <div class="q-nav">
+          <button type="button" class="btn btn-ghost" id="q-back" hidden>Back</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-gold" id="q-next">Continue</button>
+          <button type="submit" class="btn btn-gold" id="q-submit" hidden>Send request</button>
+        </div>
+      </form>
+
+      <div class="done-panel" id="q-done" hidden tabindex="-1">
+        <span class="badge" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg></span>
+        <h2 id="done-title">Request sent.</h2>
+        <p id="done-msg">The shop will get back to you within <span class="ph">[X business hours]</span>.</p>
+        <p id="done-summary"></p>
+        <div class="cta-row" style="margin-top:20px">
+          <button type="button" class="btn btn-ghost" id="q-again">Start another request</button>
+          <a class="btn btn-dark" href="#home">Back to home</a>
+        </div>
+      </div>
+      <aside class="note"><b>Pitch note</b>Collects everything needed to price a job in one pass: who, what, how many, when and artwork. Each request is emailed straight to the shop with the files attached, and hitting Reply goes to the customer.</aside>
+    </div>
+    <aside class="quote-side">
+      <div class="side-box">
+        <h3>What happens next</h3>
+        <ol>
+          <li><strong>We review your request</strong> and reply within <span class="ph">[X business hours]</span>.</li>
+          <li><strong>You get a proof and price.</strong> Nothing is made until you approve.</li>
+          <li><strong>We decorate in-house</strong> and let you know when it's ready.</li>
+        </ol>
+      </div>
+      <div class="side-box">
+        <h3>Rather talk it through?</h3>
+        <p>Call the shop, Monday to Friday, 11:00 am to 5:30 pm.</p>
+        <a class="phone-big" href="tel:+16029557301">(602) 955-7301</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div>
+      <a href="#home" class="logo-patch" aria-label="Artcraft Sports Apparel, home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuoAAADWCAMAAACwnldrAAAAwFBMVEXWnZyuWVmcLS0nOFrf4ebJamm7w88PGTlbbYp6i6PBKylUWnGSjJs0QlyhQT2mrsCePkDpvsDnwL66gH7FQD07V4FjJTO7fIPHfoDBgH7///8FJVMDAwO4GRb7/PwYFxjo5OYnJyfV1tdZWVmoqarGx8q1trhnZ2dISEiGh4g2Nja4JyV3d3cVMlsvR2uXl5dnd5GUFxbz2dnX2+OLmKuvt8XtyMhSZ4YLHEWZpLZHWHa4IR3ntbV0g5saOGI6U3cd/RKgAAAAQHRSTlP//////////////////////////////////wD/////////////////////////////////////////////////XX4FXQAAOPZJREFUeNrtnQl7osjasE0wajrdM2fmvN+mdihKii0qdtR26Tb5///qqxUKKIpiMcsMz3td7+lJDEJx8/DsNZj20su/Qgb9EvTSo95LLz3qvfTSo/4PFRiD8l+iMAT9EvWo/xM4352tnYZ0ez4P+lXqUf/0clqvZrON5gOL+XzutP+eOAwR/yeI/cUi+S/ysLleIvwjrr8IgiXq70+PeicC3M16huWsM1CCeXutDsMIvxti9m/fmROxFwnI/jyRiD1eNvsvO/D6u9Sj3lq2O8r5bGZB3cdc27bddgo9YORSbJGTYG0L1tMfzUP6mfS/5z3rPeptDZfzioE+W1WADBFs91URJxtK/yGp8Kmb/oR9JpY+4/QucY96C0Eba5bI5tpuL7dGHGH5z30PusQu4iYN+eeCScjsF8ePPeSFUa/We9RbyW69SkGfWUBhwy/9ZczNC4iF/pD9L4z9nLfohb6fOpleuAy9XAgniAnhCx7OmYePWEDiA5BHYZE9ojgP8pllf8N61BvJ/rKeyWIVohyp30iNCWyqB8xVtG3PpWa3vUhMGo9/2IHyn0Zx5oBMcRONHZJfPlIh1NuA2y8lNtSyR71HvWHIZX9ezbISF0h3MqY0iY74wndciF/5gkVb/mzqcuYd2YhbIoFQ6ljIzyCzaewSb8BPjJxeetTrGM2b9Swv56kqjo7hEzwHnDZgz2UBiYHBhOhej37EdiSPUzxiNseZ/IHLUSf/Rvx3S6VF7tnlT0EvPeqllsthVpRinNEjtOI6Aegu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" alt="Artcraft Sports Apparel, since 1953" width="746" height="214"></a>
+      <p style="margin-top:16px;max-width:34ch">Veteran owned. We Do Apparel Right! Team uniforms, letterman jackets, banners and branded apparel from Phoenix.</p>
+    </div>
+    <div><h4>Who we serve</h4><ul><li><a href="#teams">Teams &amp; Leagues</a></li><li><a href="#schools">Schools &amp; Boosters</a></li><li><a href="#pro">Pro &amp; College</a></li><li><a href="#business">Business &amp; Events</a></li></ul></div>
+    <div><h4>The shop</h4><ul><li><a href="#jackets">Letterman Jackets</a></li><li><a href="#decorate">How We Decorate</a></li><li><a href="#work">Our Work</a></li><li><a href="#story">Our Story</a></li><li><a href="#quote" class="to-quote">Get a Quote</a></li></ul></div>
+    <div><h4>Visit</h4><ul><li><span class="ph">[Confirm current address]</span></li><li><a href="tel:+16029557301">(602) 955-7301</a></li><li>Mon–Fri 11:00–5:30</li></ul></div>
+  </div>
+  <div class="wrap foot-base">
+    <span>© 2026 Artcraft Sports Apparel · Veteran Owned</span>
+    <span>Promotional products in partnership with ECI Promotions</span>
+  </div>
+</footer>
+
+<div class="mobile-cta"><a class="btn btn-gold to-quote" href="#quote">Get a Quote</a></div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-10"></path></svg>';
+
+  /* ---------- Segment content ---------- */
+  var SEG = {
+    teams: {
+      label: "Teams & Leagues", cta: "Start a team quote", kicker: "Club, rec & travel teams",
+      headline: "Uniforms that hold up all season.",
+      intro: "Jerseys, shorts, warmups and fan gear for club, rec and travel teams, with names and numbers decorated in our Phoenix shop.",
+      makes: ["Game jerseys and shorts", "Practice gear and warmups", "Player names and numbers", "Coach polos and hats", "Parent and fan wear", "Team banners"],
+      extraTitle: "Coming next: online team stores",
+      extra: "Parents and players order and pay in their own sizes, and the shop gets one clean order. Planned for phase 2 of the new site.",
+      cats: ["football", "basketball", "soccer", "baseball"]
+    },
+    schools: {
+      label: "Schools & Boosters", cta: "Start a school quote", kicker: "Athletics, clubs & spirit",
+      headline: "Gear for every program on campus.",
+      intro: "Uniforms, spirit wear and handcrafted letterman jackets for athletic departments, booster clubs and school clubs.",
+      makes: ["Varsity and JV uniforms", "Letterman jackets and chenille letters", "Spirit wear for students and parents", "Club and band apparel", "Staff polos", "Gym, field and senior-night banners"],
+      extraTitle: "Letterman jackets",
+      extra: "Handcrafted in-house. Students can try colors in the jacket builder before they come in for sizing.",
+      link: { href: "#jackets", text: "Open the jacket builder" },
+      cats: ["letterman", "volleyball", "football", "basketball"]
+    },
+    pro: {
+      label: "Pro & College", cta: "Start a pro or college quote", kicker: "Professional & collegiate",
+      headline: "Uniforms built to spec, on deadline.",
+      intro: "Game uniforms and jerseys for professional and collegiate programs, plus staff, sideline and fan apparel.",
+      makes: ["Game uniforms and jerseys", "Staff and sideline apparel", "Fan and promotional apparel", "Embroidered outerwear"],
+      extraTitle: "Teams we've outfitted",
+      extra: "[Pro and college logos go here, shown only with written permission from each team.]",
+      cats: ["football", "basketball", "baseball", "soccer"]
+    },
+    business: {
+      label: "Business & Events", cta: "Start a business quote", kicker: "Companies, nonprofits & events",
+      headline: "Branded apparel people actually wear.",
+      intro: "Polos, hats, event tees and promotional products for companies, nonprofits and corporate events across Arizona.",
+      makes: ["Embroidered polos and outerwear", "Hats", "Event and run tees", "Promotional products", "Event banners"],
+      extraTitle: "Promotional products",
+      extra: "Bags, drinkware, giveaways and more through our partner, ECI Promotions.",
+      cats: ["business", "letterman"]
+    }
+  };
+
+  /* ---------- Gallery data (all placeholders) ---------- */
+  var WORK = [
+    { cat: "football",  title: "Varsity football game jerseys", method: "Screen print", kind: "jersey", c1: "#6B1E2E", c2: "#F2B01E", num: "7" },
+    { cat: "basketball",title: "Club basketball reversibles",   method: "Screen print", kind: "jersey", c1: "#1F4FA3", c2: "#FFFFFF", num: "23" },
+    { cat: "letterman", title: "Chenille varsity letters",       method: "Chenille, handcrafted", kind: "patch", c1: "#1F4D36", c2: "#F2B01E", letter: "P" },
+    { cat: "soccer",    title: "Travel soccer kits",             method: "DTF", kind: "jersey", c1: "#1F4D36", c2: "#FFFFFF", num: "10" },
+    { cat: "business",  title: "Embroidered company polos",      method: "Embroidery", kind: "polo", c1: "#2E3440", c2: "#F2B01E" },
+    { cat: "baseball",  title: "Little league baseball jerseys", method: "Screen print", kind: "jersey", c1: "#FFFFFF", c2: "#B0182B", num: "4" },
+    { cat: "volleyball",title: "High school volleyball jerseys", method: "DTF", kind: "jersey", c1: "#1A1A1A", c2: "#F2B01E", num: "15" },
+    { cat: "letterman", title: "Class-year chenille patches",    method: "Chenille, handcrafted", kind: "patch", c1: "#6B1E2E", c2: "#FFFFFF", letter: "W" },
+    { cat: "basketball",title: "Rec league basketball",          method: "Screen print", kind: "jersey", c1: "#B0182B", c2: "#FFFFFF", num: "0" },
+    { cat: "business",  title: "Golf tournament polos",          method: "Embroidery", kind: "polo", c1: "#F3F1EA", c2: "#1B2A4A" },
+    { cat: "football",  title: "Youth football practice jerseys",method: "Screen print", kind: "jersey", c1: "#FFFFFF", c2: "#0E1A33", num: "88" },
+    { cat: "business",  title: "Event staff tees",               method: "DTG", kind: "polo", c1: "#1F4FA3", c2: "#FFFFFF", tee: true }
+  ];
+  var CATS = [["all","All"],["football","Football"],["basketball","Basketball"],["baseball","Baseball"],["soccer","Soccer"],["volleyball","Volleyball"],["letterman","Letterman"],["business","Business"]];
+
+  function isLight(hex){ var n = parseInt(hex.slice(1),16); var r=(n>>16)&255,g=(n>>8)&255,b=n&255; return (0.299*r+0.587*g+0.114*b) > 200; }
+
+  function tileSVG(w){
+    var out = isLight(w.c1) ? ' stroke="#9AA3B5" stroke-width="2"' : ' stroke="rgba(0,0,0,.15)" stroke-width="1.5"';
+    var J = "M61 14 Q100 40 139 14 L187 34 L199 85 L161 94 L161 212 L39 212 L39 94 L1 85 L13 34 Z";
+    if (w.kind === "patch") {
+      return '<svg viewBox="0 0 200 220" aria-hidden="true"><rect x="36" y="22" width="128" height="160" rx="22" fill="' + w.c1 + '" stroke="' + w.c2 + '" stroke-width="10"></rect>' +
+        '<text x="100" y="146" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="110" fill="' + w.c2 + '" filter="url(#chenille)">' + w.letter + '</text></svg>';
+    }
+    if (w.kind === "polo") {
+      var collar = w.tee ? '<path d="M61 14 Q100 40 139 14" fill="none" stroke="' + w.c2 + '" stroke-width="5"></path>' :
+        '<path d="M70 12 L100 40 L84 54 Z M130 12 L100 40 L116 54 Z" fill="' + w.c1 + '" stroke="rgba(0,0,0,.25)" stroke-width="1.5"></path><path d="M100 40 V80" stroke="rgba(0,0,0,.25)" stroke-width="2"></path><circle cx="100" cy="56" r="2.5" fill="rgba(0,0,0,.35)"></circle><circle cx="100" cy="70" r="2.5" fill="rgba(0,0,0,.35)"></circle>';
+      var logo = w.tee ? '<rect x="70" y="70" width="60" height="34" rx="4" fill="' + w.c2 + '"></rect>' : '<rect x="118" y="66" width="26" height="16" rx="3" fill="' + w.c2 + '"></rect>';
+      return '<svg viewBox="0 0 200 220" aria-hidden="true"><path d="' + J + '" fill="' + w.c1 + '"' + out + '></path>' + collar + logo + '</svg>';
+    }
+    return '<svg viewBox="0 0 200 220" aria-hidden="true"><path d="' + J + '" fill="' + w.c1 + '"' + out + '></path>' +
+      '<path d="M61 14 Q100 40 139 14" fill="none" stroke="' + w.c2 + '" stroke-width="6"></path>' +
+      '<text x="100" y="168" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="' + (w.num.length > 1 ? 78 : 92) + '" fill="' + (isLight(w.c2) ? "#0E1A33" : "#FFFFFF") + '" stroke="' + (isLight(w.c2) ? "#0E1A33" : "#FFFFFF") + '" stroke-width="10" stroke-linejoin="round">' + w.num + '</text>' +
+      '<text x="100" y="168" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="' + (w.num.length > 1 ? 78 : 92) + '" fill="' + w.c2 + '">' + w.num + '</text></svg>';
+  }
+  function tileHTML(w){
+    if (w.photo) {
+      return '<figure class="tile"><div class="art photo"><img src="' + esc(w.photo) + '" alt="' + esc(w.title) + '" loading="lazy"></div>' +
+        '<figcaption><strong>' + esc(w.title) + '</strong><span>' + esc(w.method) + '</span></figcaption></figure>';
+    }
+    return '<figure class="tile"><div class="art">' + tileSVG(w) + '<span class="tag">Placeholder</span></div>' +
+      '<figcaption><strong>' + esc(w.title) + '</strong><span>' + esc(w.method) + ' · <span class="ph">[Job photo]</span></span></figcaption></figure>';
+  }
+
+  var currentCat = "all";
+  function renderChips(){
+    $("#chips").innerHTML = CATS.map(function(c){
+      return '<button type="button" class="chip" data-cat="' + c[0] + '" aria-pressed="' + (c[0] === currentCat) + '">' + c[1] + '</button>';
+    }).join("");
+  }
+  function renderGallery(){
+    var items = WORK.filter(function(w){ return currentCat === "all" || w.cat === currentCat; });
+    $("#work-grid").innerHTML = items.length ? items.map(tileHTML).join("") : '<p class="empty">No jobs tagged here yet.</p>';
+  }
+  document.addEventListener("click", function(e){
+    var chip = e.target.closest(".chip");
+    if (!chip) return;
+    currentCat = chip.getAttribute("data-cat");
+    $$(".chip").forEach(function(b){ b.setAttribute("aria-pressed", String(b === chip)); });
+    renderGallery();
+  });
+
+  function renderSegment(key){
+    var s = SEG[key];
+    $("#seg-kicker").textContent = s.kicker;
+    $("#seg-headline").textContent = s.headline;
+    $("#seg-intro").textContent = s.intro;
+    $("#seg-title").textContent = s.label;
+    $("#seg-makes").innerHTML = s.makes.map(function(m){ return "<li>" + CHECK + "<span>" + esc(m) + "</span></li>"; }).join("");
+    $("#seg-extra-title").textContent = s.extraTitle;
+    var ex = $("#seg-extra");
+    if (s.extra.charAt(0) === "[") ex.innerHTML = '<span class="ph">' + esc(s.extra) + "</span>"; else ex.textContent = s.extra;
+    var link = $("#seg-extra-link");
+    if (s.link) { link.hidden = false; link.href = s.link.href; link.textContent = s.link.text; } else { link.hidden = true; }
+    var cta = $("#seg-cta");
+    cta.setAttribute("data-segment", key);
+    cta.textContent = s.cta;
+    var picks = [];
+    s.cats.forEach(function(c){ WORK.forEach(function(w){ if (w.cat === c && picks.indexOf(w) < 0 && picks.length < 4) picks.push(w); }); });
+    $("#seg-work").innerHTML = picks.slice(0, 4).map(tileHTML).join("");
+  }
+
+  /* ---------- Router ---------- */
+  var VIEWS = ["home","teams","schools","pro","business","jackets","decorate","work","story","quote"];
+  function show(name){
+    if (VIEWS.indexOf(name) < 0) name = "home";
+    var viewId = SEG[name] ? "serve" : name;
+    if (SEG[name]) renderSegment(name);
+    if (name === "work") { renderChips(); renderGallery(); }
+    if (name === "quote") renderStep(false);
+    $$(".view").forEach(function(v){ v.hidden = (v.id !== "view-" + viewId); });
+    $$("[data-nav]").forEach(function(a){
+      var on = a.getAttribute("data-nav") === name || (SEG[name] && a.getAttribute("data-nav") === "serve");
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.body.setAttribute("data-view", name);
+    closeMenus();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", function(){ show(location.hash.slice(1)); });
+
+  /* ---------- Menus ---------- */
+  var ddBtn = $("#dd-btn"), ddMenu = $("#dd-serve"), menuBtn = $("#menu-btn"), nav = $("#site-nav");
+  function closeMenus(){
+    ddMenu.classList.remove("open"); ddBtn.setAttribute("aria-expanded", "false");
+    nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false");
+  }
+  ddBtn.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = !ddMenu.classList.contains("open");
+    ddMenu.classList.toggle("open", open); ddBtn.setAttribute("aria-expanded", String(open));
+  });
+  menuBtn.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = !nav.classList.contains("open");
+    nav.classList.toggle("open", open); menuBtn.setAttribute("aria-expanded", String(open));
+  });
+  document.addEventListener("click", function(e){
+    if (!e.target.closest(".dd")) { ddMenu.classList.remove("open"); ddBtn.setAttribute("aria-expanded", "false"); }
+    if (!e.target.closest(".site-nav") && !e.target.closest("#menu-btn")) { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+  });
+  nav.addEventListener("keydown", function(e){ if (e.key === "Escape") { closeMenus(); ddBtn.focus(); } });
+
+  /* ---------- Pitch notes ---------- */
+  var nt = $("#notes-toggle");
+  nt.addEventListener("click", function(){
+    var on = !document.body.classList.contains("notes-on");
+    document.body.classList.toggle("notes-on", on);
+    nt.setAttribute("aria-pressed", String(on));
+    nt.textContent = on ? "Hide pitch notes" : "Show pitch notes";
+  });
+
+  /* ---------- Jacket builder ---------- */
+  var JK = {
+    body:   [["Navy","#1B2A4A"],["Black","#1A1A1A"],["Maroon","#6B1E2E"],["Forest","#1F4D36"],["Royal","#1F4FA3"],["Scarlet","#B0182B"]],
+    sleeve: [["White","#F3F1EA"],["Black","#1A1A1A"],["Gold","#E3A82B"],["Gray","#9AA0A8"],["Match body","match"]],
+    letter: [["Gold","#F2B01E"],["White","#F7F5EE"],["Scarlet","#C8102E"],["Royal","#2A5DC1"],["Black","#1A1A1A"]]
+  };
+  var jk = { body: 0, sleeve: 0, letter: 0 };
+  function buildSwatches(group){
+    $("#sw-" + group).innerHTML = JK[group].map(function(o, i){
+      var id = "jk-" + group + "-" + i;
+      var dot = o[1] === "match" ? "background:conic-gradient(#1B2A4A 0 25%,#6B1E2E 0 50%,#1F4D36 0 75%,#1F4FA3 0)" : "background:" + o[1];
+      return '<div class="swatch"><input type="radio" name="jk-' + group + '" id="' + id + '" value="' + i + '"' + (i === jk[group] ? " checked" : "") + '>' +
+        '<label for="' + id + '"><span class="dot" style="' + dot + '"></span>' + o[0] + '</label></div>';
+    }).join("");
+  }
+  function jacketColors(){
+    var body = JK.body[jk.body][1];
+    var sleeve = JK.sleeve[jk.sleeve][1] === "match" ? body : JK.sleeve[jk.sleeve][1];
+    var letter = JK.letter[jk.letter][1];
+    var trim = (JK.letter[jk.letter][0] === "White") ? "#F2B01E" : "#FFFFFF";
+    return { body: body, sleeve: sleeve, letter: letter, trim: trim };
+  }
+  function comboText(){
+    var s = JK.sleeve[jk.sleeve][0] === "Match body" ? JK.body[jk.body][0] + " sleeves" : JK.sleeve[jk.sleeve][0] + " sleeves";
+    return JK.body[jk.body][0] + " body · " + s + " · " + JK.letter[jk.letter][0] + " letter";
+  }
+  function paintJacket(){
+    var c = jacketColors(), svg = $("#jacket");
+    svg.style.setProperty("--jk-body", c.body);
+    svg.style.setProperty("--jk-sleeve", c.sleeve);
+    svg.style.setProperty("--jk-letter", c.letter);
+    svg.style.setProperty("--jk-trim", c.trim);
+    $("#combo-text").textContent = comboText();
+  }
+  ["body","sleeve","letter"].forEach(buildSwatches);
+  $("#jk-form").addEventListener("change", function(e){
+    var m = e.target.name && e.target.name.match(/^jk-(\w+)$/);
+    if (!m) return;
+    jk[m[1]] = Number(e.target.value);
+    paintJacket();
+  });
+  paintJacket();
+
+  /* ---------- Quote form ---------- */
+  var form = $("#q-form"), step = 1, TOTAL = 5;
+  var LABELS = {
+    segment: { teams: "Teams & Leagues", schools: "Schools & Boosters", pro: "Pro & College", business: "Business & Events" },
+    products: { uniforms: "Uniforms & jerseys", jackets: "Letterman jackets", spirit: "Spirit & fan wear", polos: "Corporate apparel", promo: "Promotional products", banners: "Banners" },
+    method: { unsure: "Not sure, recommend one", screen: "Screen printing", embroidery: "Embroidery", dtg: "DTG", dtf: "DTF" }
+  };
+  function todayISO(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); }
+  $("#q-date").min = todayISO();
+
+  function val(name){ var el = form.elements[name]; return el ? el.value : ""; }
+  function checked(name){ return $$('input[name="' + name + '"]:checked', form).map(function(i){ return i.value; }); }
+  function daysUntil(iso){ if (!iso) return NaN; var t = new Date(todayISO() + "T00:00:00"), d = new Date(iso + "T00:00:00"); return Math.round((d - t) / 86400000); }
+
+  function setErr(id, msg, field){
+    $("#err-" + id).textContent = msg || "";
+    if (field) { if (msg) field.setAttribute("aria-invalid", "true"); else field.removeAttribute("aria-invalid"); }
+  }
+  function validate(s){
+    var first = null;
+    function fail(id, msg, field, focusEl){ setErr(id, msg, field); if (!first) first = focusEl || field; }
+    if (s === 1) {
+      setErr("segment", "");
+      if (!val("segment")) fail("segment", "Pick who you're outfitting so the shop can route your request.", null, $("#seg-teams"));
+    }
+    if (s === 2) {
+      setErr("products", "");
+      if (!checked("products").length) fail("products", "Pick at least one item.", null, $("#p-uniforms"));
+    }
+    if (s === 3) {
+      var qty = $("#q-qty"), date = $("#q-date");
+      setErr("qty", "", qty); setErr("date", "", date);
+      if (!qty.value) fail("qty", "Pick a rough quantity. A range is fine.", qty);
+      if (!date.value) fail("date", "Add the date you need it in hand.", date);
+      else if (daysUntil(date.value) < 0) fail("date", "That date has passed. Pick a future date.", date);
+    }
+    if (s === 4) {
+      var total = chosenFiles().reduce(function(t, f){ return t + f.size; }, 0);
+      setErr("art", "");
+      if (total > 8 * 1024 * 1024) fail("art", "Your files add up to " + (total / 1048576).toFixed(1) + " MB, and the limit is 8 MB. Attach a smaller version here and send the full file after the shop replies.", null, $("#q-art"));
+      var nm = $("#q-name"), em = $("#q-email"), ph = $("#q-phone");
+      setErr("name", "", nm); setErr("email", "", em); setErr("phone", "", ph);
+      if (!nm.value.trim()) fail("name", "Add your name.", nm);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) fail("email", "Add an email like coach@school.org.", em);
+      var pref = val("pref");
+      if ((pref === "Phone call" || pref === "Text") && ph.value.replace(/\D/g, "").length < 10) fail("phone", "Add a 10-digit phone number so the shop can " + (pref === "Text" ? "text" : "call") + " you.", ph);
+    }
+    return first;
+  }
+
+  function fmtDate(iso){
+    if (!iso) return "";
+    var d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric", year: "numeric" });
+  }
+  function chosenFiles(){
+    var out = [];
+    ["#q-art", "#q-art2"].forEach(function(id){ var f = $(id).files; if (f && f[0]) out.push(f[0]); });
+    return out;
+  }
+  function buildReview(){
+    var art = chosenFiles().map(function(f){ return f.name; });
+    if ($("#q-design").checked) art.push("Needs design help");
+    var rows = [
+      ["Outfitting", LABELS.segment[val("segment")] || "", 1],
+      ["Items", checked("products").map(function(p){ return LABELS.products[p]; }).join(", "), 2],
+      ["Decoration", LABELS.method[val("method")] || "", 2],
+      ["Quantity", $("#q-qty").value, 3],
+      ["Needed by", fmtDate($("#q-date").value), 3],
+      ["Details", $("#q-notes").value.trim() || "None added", 3],
+      ["Artwork", art.length ? art.join(", ") : "None attached", 4],
+      ["Contact", [$("#q-name").value.trim(), $("#q-org").value.trim(), $("#q-email").value.trim(), $("#q-phone").value.trim()].filter(Boolean).join(" · ") + " (prefers " + val("pref").toLowerCase() + ")", 4]
+    ];
+    $("#review").innerHTML = rows.map(function(r){
+      return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd><button type="button" class="edit" data-goto="' + r[2] + '" aria-label="Edit ' + r[0] + '">Edit</button></div>';
+    }).join("");
+  }
+  function renderStep(focus){
+    $$(".q-step", form).forEach(function(fs){ fs.hidden = Number(fs.getAttribute("data-step")) !== step; });
+    $$("#q-steps li").forEach(function(li){
+      var n = Number(li.getAttribute("data-s"));
+      li.className = n < step ? "done" : (n === step ? "current" : "");
+      if (n === step) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
+    });
+    var names = ["Who", "What", "How many", "Contact", "Review"];
+    $("#step-label").textContent = "Step " + step + " of " + TOTAL + ": " + names[step - 1];
+    $("#q-back").hidden = step === 1;
+    $("#q-next").hidden = step === TOTAL;
+    $("#q-submit").hidden = step !== TOTAL;
+    if (step === TOTAL) buildReview();
+    if (focus) {
+      var fs = $('.q-step[data-step="' + step + '"]', form);
+      fs.focus({ preventScroll: true });
+      $(".quote-card").scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  }
+  $("#q-next").addEventListener("click", function(){
+    var bad = validate(step);
+    if (bad) { bad.focus(); return; }
+    step = Math.min(TOTAL, step + 1); renderStep(true);
+  });
+  $("#q-back").addEventListener("click", function(){ step = Math.max(1, step - 1); renderStep(true); });
+  $("#review").addEventListener("click", function(e){
+    var b = e.target.closest(".edit"); if (!b) return;
+    step = Number(b.getAttribute("data-goto")); renderStep(true);
+  });
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    for (var s = 1; s < TOTAL; s++) { var bad = validate(s); if (bad) { step = s; renderStep(true); bad.focus(); return; } }
+    var btn = $("#q-submit"), sendErr = $("#err-send");
+    sendErr.textContent = "";
+    btn.disabled = true; btn.textContent = "Sending...";
+    var items = checked("products").map(function(p){ return LABELS.products[p]; }).join(", ");
+    var fd = new FormData(form);
+    fd.set("form-name", "quote");
+    fd.set("segment", LABELS.segment[val("segment")] || "");
+    fd.set("products", items);
+    fd.set("method", LABELS.method[val("method")] || "");
+    fd.set("date", fmtDate($("#q-date").value));
+    fd.set("design", $("#q-design").checked ? "Yes" : "No");
+    ["art", "art2"].forEach(function(n){ var f = fd.get(n); if (!f || !f.size) fd.delete(n); });
+    fetch("/", { method: "POST", body: fd })
+      .then(function(r){
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        var name = $("#q-name").value.trim().split(" ")[0];
+        $("#done-title").textContent = "Thanks, " + name + ". Your request is in.";
+        $("#done-msg").innerHTML = "The shop will reach out by " + esc(val("pref").toLowerCase()) + " within <span class=\"ph\">[X business hours]</span>.";
+        $("#done-summary").textContent = "You asked about: " + items + ", " + $("#q-qty").value + " pieces, needed by " + fmtDate($("#q-date").value) + ".";
+        form.hidden = true; $("#q-steps").hidden = true; $("#step-label").hidden = true; $("#q-done").hidden = false; $("#q-done").focus();
+      })
+      .catch(function(){
+        sendErr.textContent = "Your request didn't go through. Check your connection and try again, or call the shop at (602) 955-7301.";
+      })
+      .then(function(){ btn.disabled = false; btn.textContent = "Send request"; });
+  });
+  function resetQuote(){
+    form.reset(); $("#art-list").innerHTML = ""; $("#rush-note").hidden = true; $("#err-send").textContent = "";
+    $$(".err", form).forEach(function(p){ p.textContent = ""; });
+    $$("[aria-invalid]", form).forEach(function(f){ f.removeAttribute("aria-invalid"); });
+    form.hidden = false; $("#q-steps").hidden = false; $("#step-label").hidden = false; $("#q-done").hidden = true;
+    $("#phone-hint").textContent = "(optional)";
+    step = 1;
+  }
+  $("#q-again").addEventListener("click", function(){ resetQuote(); renderStep(true); });
+
+  $("#q-date").addEventListener("change", function(){
+    var d = daysUntil(this.value);
+    $("#rush-note").hidden = !(d >= 0 && d < 21);
+    if (this.value && d >= 0) setErr("date", "", this);
+  });
+  function listFiles(){
+    $("#art-list").innerHTML = chosenFiles().map(function(f){ return "<li>" + esc(f.name) + " (" + (f.size / 1048576).toFixed(1) + " MB)</li>"; }).join("");
+    setErr("art", "");
+  }
+  $("#q-art").addEventListener("change", listFiles);
+  $("#q-art2").addEventListener("change", listFiles);
+  form.addEventListener("change", function(e){
+    if (e.target.name === "pref") $("#phone-hint").textContent = (e.target.value === "Email") ? "(optional)" : "(required for " + e.target.value.toLowerCase() + ")";
+    if (e.target.name === "segment") setErr("segment", "");
+    if (e.target.name === "products") setErr("products", "");
+  });
+
+  /* Prefill from CTAs anywhere on the site */
+  function prefill(opts){
+    if (!$("#q-done").hidden) resetQuote();
+    if (opts.segment) { var r = $("#seg-" + opts.segment); if (r) r.checked = true; }
+    if (opts.product) { var p = $("#p-" + opts.product); if (p) p.checked = true; }
+    if (opts.notes) { var n = $("#q-notes"); if (n.value.indexOf(opts.notes) < 0) n.value = (n.value ? n.value + "\n" : "") + opts.notes; }
+    step = opts.segment ? 2 : 1;
+  }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest(".to-quote");
+    if (!a) return;
+    var seg = a.getAttribute("data-segment");
+    if (seg) prefill({ segment: seg });
+    else if (!$("#q-done").hidden) resetQuote();
+  });
+  $("#jk-quote").addEventListener("click", function(){
+    prefill({ segment: val("segment") ? null : "schools", product: "jackets", notes: "Jacket colors: " + comboText() });
+    if (val("segment")) step = 2;
+    if (location.hash === "#quote") show("quote"); else location.hash = "quote";
+  });
+
+  show(location.hash.slice(1) || "home");
+})();
+</script>
+</body>
+</html>

@@ -106,7 +106,7 @@ body.notes-on .note{display:block}
 .band-navy .text-link{color:var(--white)}
 
 /* Hero */
-.hero{padding:72px 0 80px;overflow:hidden;position:relative}
+.hero{padding:56px 0 64px;overflow:hidden;position:relative}
 .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:10px;background:repeating-linear-gradient(90deg,var(--accent) 0 60px,var(--white) 60px 72px)}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
 .eyebrow-display{font-family:var(--f-display);color:var(--white);font-size:20px;letter-spacing:.02em}
@@ -116,13 +116,13 @@ body.notes-on .note{display:block}
 .logo-patch{display:block;background:var(--white);border-radius:10px;padding:18px 22px;margin:0 0 26px;max-width:440px;position:relative;box-shadow:0 18px 40px rgba(0,0,0,.28)}
 .logo-patch::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(187,25,22,.55);border-radius:6px;pointer-events:none}
 .logo-patch img{display:block;width:100%;height:auto}
-.hero h1{font-weight:800;text-transform:uppercase;font-size:clamp(44px,5.8vw,78px);line-height:.92;letter-spacing:-.005em;margin-bottom:22px}
+.hero h1{font-weight:800;text-transform:uppercase;font-size:clamp(40px,5vw,66px);line-height:.92;letter-spacing:-.005em;margin-bottom:22px}
 .lede{font-size:20px;line-height:1.5;color:var(--on-navy);max-width:56ch;margin-bottom:30px}
 .facts{display:grid;grid-template-columns:repeat(4,auto);gap:20px 32px;margin:40px 0 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);justify-content:start}
 .facts dt{font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.12em;color:var(--on-navy);margin-bottom:6px}
 .facts dd{margin:0;font:800 23px/1.05 var(--f-head);text-transform:uppercase;color:var(--white);max-width:12ch}
 .hero-art{position:relative;display:flex;justify-content:center}
-.hero-jersey{width:100%;max-width:460px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.hero-jersey{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
 .num{font-family:var(--f-display);font-size:186px}
 .num-border{fill:var(--white);stroke:var(--white);stroke-width:26px;stroke-linejoin:round}
 .num-fill{fill:var(--accent)}
@@ -167,6 +167,9 @@ body.notes-on .note{display:block}
 .method-strip > div:last-child{border-right:0}
 .method-strip h3{font-weight:800;text-transform:uppercase;font-size:22px;margin-bottom:6px}
 .method-strip p{color:var(--muted);font-size:15.5px}
+.method-strip h3 small{display:block;font:700 14px/1.2 var(--f-head);letter-spacing:.06em;color:var(--accent);margin-top:3px}
+.method-strip .ex{margin-top:10px;color:var(--ink)}
+.method h3 small{display:block;font-size:17px;letter-spacing:.06em;color:var(--accent);margin-top:6px}
 
 /* Process */
 .process{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;list-style:none;margin:0;padding:0;counter-reset:step}
@@ -233,6 +236,7 @@ body.notes-on .note{display:block}
 .tile{margin:0;display:flex;flex-direction:column;gap:10px}
 .tile .art{aspect-ratio:1/1;background:linear-gradient(180deg,#E7EAF0,#DCE0E8);border-radius:6px;display:grid;place-items:center;position:relative;overflow:hidden}
 .tile .art svg{width:72%;height:auto}
+.tile .art.photo img{width:100%;height:100%;object-fit:cover;display:block}
 .tile .tag{position:absolute;top:10px;left:10px;font:700 12px/1 var(--f-head);text-transform:uppercase;letter-spacing:.1em;background:#FFF1C7;color:#5C4300;padding:6px 8px;border-radius:3px}
 .tile figcaption strong{display:block;font:700 19px/1.15 var(--f-head);text-transform:uppercase}
 .tile figcaption span{color:var(--muted);font-size:15px}
@@ -332,6 +336,10 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 .drop input:focus-visible + label{outline:3px solid var(--focus);outline-offset:3px}
 .drop p{color:var(--muted);font-size:15px;margin-top:6px}
 .art-list{margin:10px 0 0;padding:0;list-style:none;font-weight:600}
+.drop .file-row{position:relative}
+.drop .file-row + .file-row{margin-top:12px}
+.drop .file-row + .file-row label{font-weight:600}
+.send-err{margin-top:18px}
 .inline-check{display:flex;gap:10px;align-items:center;margin:14px 0 22px;font-weight:500}
 .inline-check input{width:20px;height:20px;accent-color:var(--navy)}
 .pref{display:flex;flex-wrap:wrap;gap:10px}
@@ -494,7 +502,6 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   <div class="hero band-navy">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="logo-patch"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuoAAADWCAMAAACwnldrAAAAwFBMVEXWnZyuWVmcLS0nOFrf4ebJamm7w88PGTlbbYp6i6PBKylUWnGSjJs0QlyhQT2mrsCePkDpvsDnwL66gH7FQD07V4FjJTO7fIPHfoDBgH7///8FJVMDAwO4GRb7/PwYFxjo5OYnJyfV1tdZWVmoqarGx8q1trhnZ2dISEiGh4g2Nja4JyV3d3cVMlsvR2uXl5dnd5GUFxbz2dnX2+OLmKuvt8XtyMhSZ4YLHEWZpLZHWHa4IR3ntbV0g5saOGI6U3cd/RKgAAAAQHRSTlP//////////////////////////////////wD/////////////////////////////////////////////////XX4FXQAAOPZJREFUeNrtnQl7osjasE0wajrdM2fmvN+mdihKii0qdtR26Tb5///qqxUKKIpiMcsMz3td7+lJDEJx8/DsNZj20su/Qgb9EvTSo95LLz3qvfTSo/4PFRiD8l+iMAT9EvWo/xM4352tnYZ0ez4P+lXqUf/0clqvZrON5gOL+XzutP+eOAwR/yeI/cUi+S/ysLleIvwjrr8IgiXq70+PeicC3M16huWsM1CCeXutDsMIvxti9m/fmROxFwnI/jyRiD1eNvsvO/D6u9Sj3lq2O8r5bGZB3cdc27bddgo9YORSbJGTYG0L1tMfzUP6mfS/5z3rPeptDZfzioE+W1WADBFs91URJxtK/yGp8Kmb/oR9JpY+4/QucY96C0Eba5bI5tpuL7dGHGH5z30PusQu4iYN+eeCScjsF8ePPeSFUa/We9RbyW69SkGfWUBhwy/9ZczNC4iF/pD9L4z9nLfohb6fOpleuAy9XAgniAnhCx7OmYePWEDiA5BHYZE9ojgP8pllf8N61BvJ/rKeyWIVohyp30iNCWyqB8xVtG3PpWa3vUhMGo9/2IHyn0Zx5oBMcRONHZJfPlIh1NuA2y8lNtSyR71HvWHIZX9ezbISF0h3MqY0iY74wndciF/5gkVb/mzqcuYd2YhbIoFQ6ljIzyCzaewSb8BPjJxeetTrGM2b9Swv56kqjo7hEzwHnDZgz2UBiYHBhOhej37EdiSPUzxiNseZ/IHLUSf/Rvx3S6VF7tnlT0EvPeqllsthVpRinNEjtOI6Aegu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" alt="Artcraft Sports Apparel, since 1953" width="746" height="214"></span>
         <div class="hero-badges">
           <span class="vet-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"></path></svg>Veteran Owned</span>
           <p class="eyebrow-display">We Do Apparel Right!</p>
@@ -507,11 +514,10 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         </div>
         <dl class="facts">
           <div><dt>In business since</dt><dd>1953</dd></div>
-          <div><dt>Ownership</dt><dd>Veteran owned</dd></div>
           <div><dt>Decoration</dt><dd>4 methods in-house</dd></div>
           <div><dt>Letterman jackets</dt><dd>Handcrafted on site</dd></div>
         </dl>
-        <aside class="note"><b>Pitch note</b>Your logo now leads the page, on a white stitched patch so the flag colors read on the navy background. The site has one job: get a quote request. The gold button sits in the header on every page and pins to the bottom of the screen on phones.</aside>
+        <aside class="note"><b>Pitch note</b>Your logo leads every page in the header. The site has one job: get a quote request. The gold button sits in the header on every page and pins to the bottom of the screen on phones.</aside>
       </div>
       <div class="hero-art">
         <svg class="hero-jersey" viewBox="0 0 420 460" role="img" aria-label="Navy jersey with the number 53, for the founding year 1953">
@@ -636,10 +642,10 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <a class="text-link" href="#decorate">Compare methods</a>
       </div>
       <div class="method-strip">
-        <div><h3>Screen Printing</h3><p>Bold colors that last. Best for bigger runs.</p></div>
-        <div><h3>Embroidery</h3><p>Stitched logos for polos, hats and jackets.</p></div>
-        <div><h3>DTG</h3><p>Full-color detail printed right onto cotton.</p></div>
-        <div><h3>DTF</h3><p>Full-color transfers that work on poly and blends.</p></div>
+        <div><h3>Screen Printing</h3><p>Ink pressed through a screen, one color at a time. Bold and built to last.</p><p class="ex"><b>Example:</b> 150 team tees with a 2-color logo.</p></div>
+        <div><h3>Embroidery</h3><p>Your logo stitched in thread for a raised, premium look.</p><p class="ex"><b>Example:</b> a company logo on staff polos and hats.</p></div>
+        <div><h3>DTG <small>Direct-to-Garment</small></h3><p>Like an inkjet printer for shirts. Ink goes straight into the cotton, so any color and photo detail works.</p><p class="ex"><b>Example:</b> a full-color team photo on 12 cotton tees.</p></div>
+        <div><h3>DTF <small>Direct-to-Film</small></h3><p>Your art is printed on a film, then heat-pressed on, like a heavy-duty iron-on.</p><p class="ex"><b>Example:</b> full-color names and numbers on polyester jerseys.</p></div>
       </div>
     </div>
   </div>
@@ -859,28 +865,28 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       <div class="method-grid">
         <article class="method">
           <h3>Screen Printing</h3>
-          <p>Ink pushed through a screen, one color at a time. Bright, durable and cost-effective once quantities climb.</p>
-          <dl><dt>Best for</dt><dd>Team tees, spirit wear, bigger runs</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+          <p>The classic team-shirt look. Bright, bold and built to last a season of washes, and the best price per shirt once quantities climb.</p>
+          <dl><dt>How it works</dt><dd>Ink is pushed through a fine mesh screen onto the shirt, one screen per color.</dd><dt>Example job</dt><dd>150 Senior Night tees with a 2-color school logo.</dd><dt>Feels like</dt><dd>A smooth, slightly raised layer of ink.</dd><dt>Best for</dt><dd>Team tees, spirit wear, bigger runs</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
         </article>
         <article class="method">
           <h3>Embroidery</h3>
-          <p>Your logo stitched in thread. Raised texture and a premium feel that outlasts the garment.</p>
-          <dl><dt>Best for</dt><dd>Polos, hats, jackets, staff wear</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+          <p>Your logo stitched in thread. A premium, professional look that lasts as long as the garment does.</p>
+          <dl><dt>How it works</dt><dd>A machine stitches your logo with thousands of thread stitches.</dd><dt>Example job</dt><dd>A company logo on the chest of 40 staff polos and matching hats.</dd><dt>Feels like</dt><dd>Raised thread you can feel.</dd><dt>Best for</dt><dd>Polos, hats, jackets, staff wear</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
         </article>
         <article class="method">
-          <h3>DTG (Direct-to-Garment)</h3>
-          <p>Full-color printing straight onto the fabric, like a photo printer for shirts. No screens to set up.</p>
-          <dl><dt>Best for</dt><dd>Small runs, detailed art, cotton</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+          <h3>DTG <small>Direct-to-Garment</small></h3>
+          <p>Think of it as an inkjet printer for shirts. Unlimited colors and photo-level detail, with no screens to set up.</p>
+          <dl><dt>How it works</dt><dd>The printer sprays ink straight into the fabric, the same way a photo prints on paper.</dd><dt>Example job</dt><dd>A full-color team photo on 12 cotton tees for end-of-season gifts.</dd><dt>Feels like</dt><dd>Soft. The ink soaks into the cotton, so you barely feel it.</dd><dt>Best for</dt><dd>Small runs, photos and detailed art, 100% cotton</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
         </article>
         <article class="method">
-          <h3>DTF (Direct-to-Film)</h3>
-          <p>Full-color art printed on film and heat-pressed on. Works on cotton, polyester and blends.</p>
-          <dl><dt>Best for</dt><dd>Performance fabrics, names and numbers, mixed orders</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
+          <h3>DTF <small>Direct-to-Film</small></h3>
+          <p>Your art is printed onto a clear film, then heat-pressed onto the garment, like a heavy-duty iron-on. Works on almost any fabric.</p>
+          <dl><dt>How it works</dt><dd>We print the design on film, add an adhesive powder, then press it onto the garment with heat.</dd><dt>Example job</dt><dd>Full-color player names and numbers on 15 polyester volleyball jerseys.</dd><dt>Feels like</dt><dd>A thin, smooth, flexible layer on top of the fabric.</dd><dt>Best for</dt><dd>Polyester and blends, dark garments, names and numbers</dd><dt>Minimum</dt><dd><span class="ph">[X] pieces</span></dd><dt>Turnaround</dt><dd><span class="ph">[X] days</span></dd></dl>
         </article>
       </div>
       <div class="table-box" role="region" aria-label="Method comparison" tabindex="0">
         <table>
-          <thead><tr><th scope="col">If you need</th><th scope="col">Screen print</th><th scope="col">Embroidery</th><th scope="col">DTG</th><th scope="col">DTF</th></tr></thead>
+          <thead><tr><th scope="col">If you need</th><th scope="col">Screen print</th><th scope="col">Embroidery</th><th scope="col">DTG (direct-to-garment)</th><th scope="col">DTF (direct-to-film)</th></tr></thead>
           <tbody>
             <tr><th scope="row">100+ of the same design</th><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
             <tr><th scope="row">A dozen or fewer</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
@@ -972,7 +978,9 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <li data-s="1">Who</li><li data-s="2">What</li><li data-s="3">How many</li><li data-s="4">Contact</li><li data-s="5">Review</li>
       </ol>
       <p class="step-label" id="step-label" aria-hidden="true">Step 1 of 5: Who</p>
-      <form id="q-form" novalidate>
+      <form id="q-form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="form-name" value="quote">
+        <p class="sr" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <fieldset class="q-step" data-step="1" tabindex="-1">
           <legend>Who are you outfitting?</legend>
           <p class="q-help">This routes your request to the right person at the shop.</p>
@@ -1002,8 +1010,8 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
             <label class="choice"><input type="radio" name="method" value="unsure" id="m-unsure" checked><span><strong>Not sure</strong><small>Recommend one for me</small></span></label>
             <label class="choice"><input type="radio" name="method" value="screen" id="m-screen"><span><strong>Screen printing</strong></span></label>
             <label class="choice"><input type="radio" name="method" value="embroidery" id="m-embroidery"><span><strong>Embroidery</strong></span></label>
-            <label class="choice"><input type="radio" name="method" value="dtg" id="m-dtg"><span><strong>DTG</strong><small>Direct-to-garment</small></span></label>
-            <label class="choice"><input type="radio" name="method" value="dtf" id="m-dtf"><span><strong>DTF</strong><small>Direct-to-film</small></span></label>
+            <label class="choice"><input type="radio" name="method" value="dtg" id="m-dtg"><span><strong>DTG</strong><small>Inkjet-style print, best on cotton</small></span></label>
+            <label class="choice"><input type="radio" name="method" value="dtf" id="m-dtf"><span><strong>DTF</strong><small>Heat-pressed transfer, any fabric</small></span></label>
           </div>
         </fieldset>
 
@@ -1036,10 +1044,11 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <legend>Artwork and contact</legend>
           <p class="q-help">Logo files help us price it right. Any format works.</p>
           <div class="drop">
-            <input type="file" id="q-art" name="art" multiple accept="image/*,.pdf,.ai,.eps,.svg">
-            <label for="q-art">Upload logo or artwork</label>
-            <p>PNG, JPG, PDF, AI, EPS or SVG</p>
+            <div class="file-row"><input type="file" id="q-art" name="art" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art">Upload logo or artwork</label></div>
+            <div class="file-row"><input type="file" id="q-art2" name="art2" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art2">Add a second file</label></div>
+            <p>PNG, JPG, PDF, AI, EPS or SVG. Up to 8 MB total.</p>
             <ul class="art-list" id="art-list"></ul>
+            <p class="err" id="err-art" role="alert"></p>
           </div>
           <label class="inline-check"><input type="checkbox" id="q-design" name="design"> No artwork yet. I need design help.</label>
           <div class="two">
@@ -1062,6 +1071,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <dl class="review" id="review"></dl>
         </fieldset>
 
+        <p class="err send-err" id="err-send" role="alert"></p>
         <div class="q-nav">
           <button type="button" class="btn btn-ghost" id="q-back" hidden>Back</button>
           <span class="spacer"></span>
@@ -1072,15 +1082,15 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 
       <div class="done-panel" id="q-done" hidden tabindex="-1">
         <span class="badge" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg></span>
-        <h2 id="done-title">Demo complete.</h2>
-        <p>This is a concept, so nothing was sent. On the live site, this request lands in the shop's inbox with the artwork attached, and the customer gets an automatic reply with next steps and expected response time.</p>
+        <h2 id="done-title">Request sent.</h2>
+        <p id="done-msg">The shop will get back to you within <span class="ph">[X business hours]</span>.</p>
         <p id="done-summary"></p>
         <div class="cta-row" style="margin-top:20px">
           <button type="button" class="btn btn-ghost" id="q-again">Start another request</button>
           <a class="btn btn-dark" href="#home">Back to home</a>
         </div>
       </div>
-      <aside class="note"><b>Pitch note</b>Collects everything needed to price a job in one pass: who, what, how many, when and artwork. No more back-and-forth emails to get the basics.</aside>
+      <aside class="note"><b>Pitch note</b>Collects everything needed to price a job in one pass: who, what, how many, when and artwork. Each request is emailed straight to the shop with the files attached, and hitting Reply goes to the customer.</aside>
     </div>
     <aside class="quote-side">
       <div class="side-box">
@@ -1208,6 +1218,10 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       '<text x="100" y="168" text-anchor="middle" font-family="Graduate, Georgia, serif" font-size="' + (w.num.length > 1 ? 78 : 92) + '" fill="' + w.c2 + '">' + w.num + '</text></svg>';
   }
   function tileHTML(w){
+    if (w.photo) {
+      return '<figure class="tile"><div class="art photo"><img src="' + esc(w.photo) + '" alt="' + esc(w.title) + '" loading="lazy"></div>' +
+        '<figcaption><strong>' + esc(w.title) + '</strong><span>' + esc(w.method) + '</span></figcaption></figure>';
+    }
     return '<figure class="tile"><div class="art">' + tileSVG(w) + '<span class="tag">Placeholder</span></div>' +
       '<figcaption><strong>' + esc(w.title) + '</strong><span>' + esc(w.method) + ' · <span class="ph">[Job photo]</span></span></figcaption></figure>';
   }
@@ -1380,6 +1394,9 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       else if (daysUntil(date.value) < 0) fail("date", "That date has passed. Pick a future date.", date);
     }
     if (s === 4) {
+      var total = chosenFiles().reduce(function(t, f){ return t + f.size; }, 0);
+      setErr("art", "");
+      if (total > 8 * 1024 * 1024) fail("art", "Your files add up to " + (total / 1048576).toFixed(1) + " MB, and the limit is 8 MB. Attach a smaller version here and send the full file after the shop replies.", null, $("#q-art"));
       var nm = $("#q-name"), em = $("#q-email"), ph = $("#q-phone");
       setErr("name", "", nm); setErr("email", "", em); setErr("phone", "", ph);
       if (!nm.value.trim()) fail("name", "Add your name.", nm);
@@ -1395,9 +1412,13 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     var d = new Date(iso + "T00:00:00");
     return d.toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric", year: "numeric" });
   }
+  function chosenFiles(){
+    var out = [];
+    ["#q-art", "#q-art2"].forEach(function(id){ var f = $(id).files; if (f && f[0]) out.push(f[0]); });
+    return out;
+  }
   function buildReview(){
-    var files = $("#q-art").files, art = [];
-    for (var i = 0; i < files.length; i++) art.push(files[i].name);
+    var art = chosenFiles().map(function(f){ return f.name; });
     if ($("#q-design").checked) art.push("Needs design help");
     var rows = [
       ["Outfitting", LABELS.segment[val("segment")] || "", 1],
@@ -1445,13 +1466,34 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   form.addEventListener("submit", function(e){
     e.preventDefault();
     for (var s = 1; s < TOTAL; s++) { var bad = validate(s); if (bad) { step = s; renderStep(true); bad.focus(); return; } }
-    var name = $("#q-name").value.trim().split(" ")[0];
-    $("#done-title").textContent = "Thanks, " + name + ". Demo complete.";
-    $("#done-summary").textContent = "Request: " + checked("products").map(function(p){ return LABELS.products[p]; }).join(", ") + ", " + $("#q-qty").value + " pieces, needed by " + fmtDate($("#q-date").value) + ".";
-    form.hidden = true; $("#q-steps").hidden = true; $("#step-label").hidden = true; $("#q-done").hidden = false; $("#q-done").focus();
+    var btn = $("#q-submit"), sendErr = $("#err-send");
+    sendErr.textContent = "";
+    btn.disabled = true; btn.textContent = "Sending...";
+    var items = checked("products").map(function(p){ return LABELS.products[p]; }).join(", ");
+    var fd = new FormData(form);
+    fd.set("form-name", "quote");
+    fd.set("segment", LABELS.segment[val("segment")] || "");
+    fd.set("products", items);
+    fd.set("method", LABELS.method[val("method")] || "");
+    fd.set("date", fmtDate($("#q-date").value));
+    fd.set("design", $("#q-design").checked ? "Yes" : "No");
+    ["art", "art2"].forEach(function(n){ var f = fd.get(n); if (!f || !f.size) fd.delete(n); });
+    fetch("/", { method: "POST", body: fd })
+      .then(function(r){
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        var name = $("#q-name").value.trim().split(" ")[0];
+        $("#done-title").textContent = "Thanks, " + name + ". Your request is in.";
+        $("#done-msg").innerHTML = "The shop will reach out by " + esc(val("pref").toLowerCase()) + " within <span class=\"ph\">[X business hours]</span>.";
+        $("#done-summary").textContent = "You asked about: " + items + ", " + $("#q-qty").value + " pieces, needed by " + fmtDate($("#q-date").value) + ".";
+        form.hidden = true; $("#q-steps").hidden = true; $("#step-label").hidden = true; $("#q-done").hidden = false; $("#q-done").focus();
+      })
+      .catch(function(){
+        sendErr.textContent = "Your request didn't go through. Check your connection and try again, or call the shop at (602) 955-7301.";
+      })
+      .then(function(){ btn.disabled = false; btn.textContent = "Send request"; });
   });
   function resetQuote(){
-    form.reset(); $("#art-list").innerHTML = ""; $("#rush-note").hidden = true;
+    form.reset(); $("#art-list").innerHTML = ""; $("#rush-note").hidden = true; $("#err-send").textContent = "";
     $$(".err", form).forEach(function(p){ p.textContent = ""; });
     $$("[aria-invalid]", form).forEach(function(f){ f.removeAttribute("aria-invalid"); });
     form.hidden = false; $("#q-steps").hidden = false; $("#step-label").hidden = false; $("#q-done").hidden = true;
@@ -1465,10 +1507,12 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     $("#rush-note").hidden = !(d >= 0 && d < 21);
     if (this.value && d >= 0) setErr("date", "", this);
   });
-  $("#q-art").addEventListener("change", function(){
-    var names = []; for (var i = 0; i < this.files.length; i++) names.push("<li>" + esc(this.files[i].name) + "</li>");
-    $("#art-list").innerHTML = names.join("");
-  });
+  function listFiles(){
+    $("#art-list").innerHTML = chosenFiles().map(function(f){ return "<li>" + esc(f.name) + " (" + (f.size / 1048576).toFixed(1) + " MB)</li>"; }).join("");
+    setErr("art", "");
+  }
+  $("#q-art").addEventListener("change", listFiles);
+  $("#q-art2").addEventListener("change", listFiles);
   form.addEventListener("change", function(e){
     if (e.target.name === "pref") $("#phone-hint").textContent = (e.target.value === "Email") ? "(optional)" : "(required for " + e.target.value.toLowerCase() + ")";
     if (e.target.name === "segment") setErr("segment", "");
