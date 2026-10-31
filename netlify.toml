@@ -1,0 +1,11 @@
+# Netlify settings for the Artcraft Sports Apparel site.
+# No build step: Netlify publishes the files in this folder as-is.
+[build]
+  publish = "."
+
+# CONCEPT STAGE ONLY: keeps search engines from listing the preview.
+# DELETE this block at launch (and the robots meta tag in index.html).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
