@@ -322,7 +322,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
 .field label{font-weight:600}
 .field .hint{color:var(--muted);font-size:15px;font-weight:400}
-.field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field select,.field textarea{font:inherit;font-size:17px;padding:12px 14px;border:2px solid var(--line);border-radius:4px;background:var(--white);color:var(--ink);min-height:50px;width:100%}
+.field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field input[type=number],.field select,.field textarea{font:inherit;font-size:17px;padding:12px 14px;border:2px solid var(--line);border-radius:4px;background:var(--white);color:var(--ink);min-height:50px;width:100%}
 .field textarea{min-height:110px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy);outline:3px solid var(--focus);outline-offset:1px}
 .field [aria-invalid="true"]{border-color:var(--error)}
@@ -367,10 +367,37 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 .tel{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 .step-label{display:none;font:800 18px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.04em;margin:-14px 0 20px;color:var(--navy)}
 
+/* Estimator */
+.est-form .q-step + .q-step{margin-top:34px}
+.est-form .q-step legend{font-size:26px;margin-bottom:14px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.est-panel{margin-top:18px}
+.est-panel[hidden]{display:none}
+.est-note{color:var(--muted);font-size:15px;margin-top:4px}
+.est-summary{position:sticky;top:104px;background:var(--white);border:2px solid var(--navy);padding:26px}
+.est-summary h3{font-size:24px;margin-bottom:6px}
+.est-summary .for{color:var(--muted);font-size:15px;margin-bottom:14px}
+.est-lines{margin:0;display:grid}
+.est-lines > div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:16px}
+.est-lines dt{color:var(--ink)}
+.est-lines dd{margin:0;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.est-lines .each{border-bottom:0;padding-top:12px}
+.est-lines .each dt,.est-lines .each dd{font:800 22px/1 var(--f-head);text-transform:uppercase}
+.est-sub{font:800 15px/1 var(--f-head);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:18px 0 4px}
+.est-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:18px;padding:16px;background:var(--navy);color:var(--white);border-radius:6px}
+.est-total span{font:700 15px/1 var(--f-head);text-transform:uppercase;letter-spacing:.1em}
+.est-total strong{font:800 34px/1 var(--f-head);font-variant-numeric:tabular-nums}
+.est-allin{color:var(--muted);font-size:15px;margin:10px 0 18px}
+.est-summary .btn{width:100%}
+.est-fine{color:var(--muted);font-size:13.5px;margin-top:14px;line-height:1.45}
+.est-call{background:var(--paper);border-radius:6px;padding:16px;margin-top:10px}
+@media (max-width:960px){.est-summary{position:static}}
+@media (max-width:560px){.three{grid-template-columns:1fr}}
+
 /* Mobile CTA */
 .mobile-cta{display:none}
 
-@media (max-width:1360px){
+@media (max-width:1480px){
   .brand-logo{height:52px}
   .site-nav{gap:2px}
   .site-nav > a:not(.btn), .dd-btn{font-size:16px;padding:12px 8px}
@@ -395,7 +422,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   .combo{margin-top:6px;font-size:15px}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:1180px){
+@media (max-width:1280px){
   .menu-btn{display:inline-flex}
   .site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 16px 20px;gap:2px;box-shadow:0 16px 30px rgba(14,26,51,.12)}
   .site-nav.open{display:flex}
@@ -487,7 +514,8 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         </ul>
       </div>
       <a href="#jackets" data-nav="jackets">Letterman Jackets</a>
-      <a href="#decorate" data-nav="decorate">How We Decorate</a>
+      <a href="#decorate" data-nav="decorate">Decorating</a>
+      <a href="#estimate" data-nav="estimate">Pricing</a>
       <a href="#work" data-nav="work">Our Work</a>
       <a href="#story" data-nav="story">Our Story</a>
       <a href="#quote" class="btn btn-gold btn-sm to-quote">Get a Quote</a>
@@ -639,7 +667,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <h2 class="h2">Four methods, one roof.</h2>
           <p>Not sure which one you need? Tell us about the job and we'll recommend the right method for your fabric, quantity and budget.</p>
         </div>
-        <a class="text-link" href="#decorate">Compare methods</a>
+        <div class="cta-row" style="align-items:center;gap:20px"><a class="text-link" href="#decorate">Compare methods</a><a class="btn btn-gold" href="#estimate">Get an instant estimate</a></div>
       </div>
       <div class="method-strip">
         <div><h3>Screen Printing</h3><p>Ink pressed through a screen, one color at a time. Bold and built to last.</p><p class="ex"><b>Example:</b> 150 team tees with a 2-color logo.</p></div>
@@ -897,7 +925,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         </table>
       </div>
       <p style="color:var(--muted);margin-top:14px;font-size:15.5px">General guide. <span class="ph">[Shop to confirm each rating]</span></p>
-      <div class="cta-row" style="margin-top:28px"><a class="btn btn-gold to-quote" href="#quote">Get a recommendation</a></div>
+      <div class="cta-row" style="margin-top:28px"><a class="btn btn-gold" href="#estimate">Get an instant estimate</a><a class="btn btn-ghost to-quote" href="#quote">Get a recommendation</a></div>
     </div>
   </div>
 </section>
@@ -960,6 +988,79 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <p style="color:var(--on-navy)"><span class="ph">[Photos and short bios of the owner and shop staff]</span></p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ============ ESTIMATE ============ -->
+<section class="view" id="view-estimate" hidden>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="kicker">Instant estimate</p>
+      <h1>Price your order in a minute.</h1>
+      <p class="lede">Pick a garment, how many and how you want it decorated. You'll see an estimate right away, and the shop confirms the final price on your proof.</p>
+    </div>
+  </div>
+  <div class="wrap quote-grid">
+    <div class="quote-card">
+      <p class="rush" id="est-sample" hidden><b>Sample prices.</b> Garment prices are placeholders until real SanMar costs are loaded.</p>
+      <form id="est-form" class="est-form" onsubmit="return false">
+        <fieldset class="q-step">
+          <legend>1. Garment</legend>
+          <div class="field"><label for="e-garment">Style</label><select id="e-garment"></select></div>
+          <p class="sub-legend" id="e-shade-label" style="margin-top:6px">Garment color</p>
+          <div class="pref" role="radiogroup" aria-labelledby="e-shade-label">
+            <label class="choice"><input type="radio" name="e-shade" value="light" id="e-light" checked><span><strong>White or light</strong></span></label>
+            <label class="choice"><input type="radio" name="e-shade" value="dark" id="e-dark"><span><strong>Dark or bright</strong></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q-step">
+          <legend>2. Quantity</legend>
+          <div class="two">
+            <div class="field"><label for="e-qty">Total pieces</label><input type="number" id="e-qty" min="1" step="1" value="24" inputmode="numeric"></div>
+            <div class="field"><label for="e-big">How many are 2XL or bigger? <span class="hint">(optional)</span></label><input type="number" id="e-big" min="0" step="1" value="0" inputmode="numeric"></div>
+          </div>
+        </fieldset>
+        <fieldset class="q-step">
+          <legend>3. Decoration</legend>
+          <div class="choice-grid" role="radiogroup" aria-label="Decoration method">
+            <label class="choice"><input type="radio" name="e-method" value="screen" id="e-m-screen" checked><span><strong>Screen printing</strong><small>Bold colors, best for 12+</small></span></label>
+            <label class="choice"><input type="radio" name="e-method" value="embroidery" id="e-m-emb"><span><strong>Embroidery</strong><small>Stitched logo, polos and caps</small></span></label>
+            <label class="choice"><input type="radio" name="e-method" value="digital" id="e-m-digital"><span><strong>DTG or DTF</strong><small>Full-color prints</small></span></label>
+          </div>
+          <div class="est-panel" id="e-screen">
+            <p class="est-note" style="margin-bottom:10px">How many ink colors in each spot? Pick None for spots you don't need.</p>
+            <div class="three"><div class="field"><label for="e-front">Front</label><select id="e-front"><option value="0">None</option><option value="1" selected>1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-back">Back</label><select id="e-back"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-sleeve">Sleeve</label><select id="e-sleeve"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div></div>
+            <label class="inline-check"><input type="checkbox" id="e-special"> Metallic, puff or other special ink</label>
+            <label class="inline-check" style="margin-top:-8px"><input type="checkbox" id="e-art"> I need artwork created (about 1 hour)</label>
+          </div>
+          <div class="est-panel" id="e-emb" hidden>
+            <div class="two">
+              <div class="field"><label for="e-stitch">Logo size</label><select id="e-stitch">
+                <option value="4">Simple text or small logo (up to 4,000 stitches)</option>
+                <option value="6">Typical left-chest logo (about 6,000)</option>
+                <option value="8">Detailed logo or cap front (about 8,000)</option>
+                <option value="10">Large or very detailed (about 10,000)</option>
+                <option value="7" selected>Not sure (we'll assume about 7,000)</option>
+              </select></div>
+              <div class="field"><label for="e-logos">Logos per piece</label><select id="e-logos">
+                <option value="1" selected>1 logo</option>
+                <option value="2">2 logos (for example chest and sleeve)</option>
+              </select></div>
+            </div>
+            <label class="inline-check"><input type="checkbox" id="e-names"> Add individual names</label>
+            <label class="inline-check" style="margin-top:-8px"><input type="checkbox" id="e-metallic"> Metallic thread</label>
+          </div>
+          <div class="est-panel" id="e-digital" hidden>
+            <p class="est-note">DTG and DTF are priced by design size and color count, so the shop prices them on your quote. Send the request and attach your artwork.</p>
+          </div>
+        </fieldset>
+      </form>
+      <aside class="note"><b>Pitch note</b>Prices come from the shop's own screen print and embroidery sheets plus SanMar garment costs, with the target margin built in. Only selling prices are published; the costs stay private.</aside>
+    </div>
+    <aside class="quote-side">
+      <div class="side-box est-summary" id="est-summary" aria-live="polite"></div>
+    </aside>
   </div>
 </section>
 
@@ -1119,7 +1220,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       <p style="margin-top:16px;max-width:34ch">Veteran owned. We Do Apparel Right! Team uniforms, letterman jackets, banners and branded apparel from Phoenix.</p>
     </div>
     <div><h4>Who we serve</h4><ul><li><a href="#teams">Teams &amp; Leagues</a></li><li><a href="#schools">Schools &amp; Boosters</a></li><li><a href="#pro">Pro &amp; College</a></li><li><a href="#business">Business &amp; Events</a></li></ul></div>
-    <div><h4>The shop</h4><ul><li><a href="#jackets">Letterman Jackets</a></li><li><a href="#decorate">How We Decorate</a></li><li><a href="#work">Our Work</a></li><li><a href="#story">Our Story</a></li><li><a href="#quote" class="to-quote">Get a Quote</a></li></ul></div>
+    <div><h4>The shop</h4><ul><li><a href="#jackets">Letterman Jackets</a></li><li><a href="#decorate">How We Decorate</a></li><li><a href="#estimate">Instant Estimate</a></li><li><a href="#work">Our Work</a></li><li><a href="#story">Our Story</a></li><li><a href="#quote" class="to-quote">Get a Quote</a></li></ul></div>
     <div><h4>Visit</h4><ul><li><span class="ph">[Confirm current address]</span></li><li><a href="tel:+16029557301">(602) 955-7301</a></li><li>Mon–Fri 11:00–5:30</li></ul></div>
   </div>
   <div class="wrap foot-base">
@@ -1128,6 +1229,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   </div>
 </footer>
 
+<script src="pricing.js"></script>
 <div class="mobile-cta"><a class="btn btn-gold to-quote" href="#quote">Get a Quote</a></div>
 
 <script>
@@ -1265,13 +1367,14 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   }
 
   /* ---------- Router ---------- */
-  var VIEWS = ["home","teams","schools","pro","business","jackets","decorate","work","story","quote"];
+  var VIEWS = ["home","teams","schools","pro","business","jackets","decorate","work","story","quote","estimate"];
   function show(name){
     if (VIEWS.indexOf(name) < 0) name = "home";
     var viewId = SEG[name] ? "serve" : name;
     if (SEG[name]) renderSegment(name);
     if (name === "work") { renderChips(); renderGallery(); }
     if (name === "quote") renderStep(false);
+    if (name === "estimate") renderEstimate();
     $$(".view").forEach(function(v){ v.hidden = (v.id !== "view-" + viewId); });
     $$("[data-nav]").forEach(function(a){
       var on = a.getAttribute("data-nav") === name || (SEG[name] && a.getAttribute("data-nav") === "serve");
@@ -1525,6 +1628,8 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     if (opts.segment) { var r = $("#seg-" + opts.segment); if (r) r.checked = true; }
     if (opts.product) { var p = $("#p-" + opts.product); if (p) p.checked = true; }
     if (opts.notes) { var n = $("#q-notes"); if (n.value.indexOf(opts.notes) < 0) n.value = (n.value ? n.value + "\n" : "") + opts.notes; }
+    if (opts.method) { var m = $("#m-" + opts.method); if (m) m.checked = true; }
+    if (opts.qtyRange) $("#q-qty").value = opts.qtyRange;
     step = opts.segment ? 2 : 1;
   }
   document.addEventListener("click", function(e){
@@ -1538,6 +1643,114 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     prefill({ segment: val("segment") ? null : "schools", product: "jackets", notes: "Jacket colors: " + comboText() });
     if (val("segment")) step = 2;
     if (location.hash === "#quote") show("quote"); else location.hash = "quote";
+  });
+
+
+  /* ---------- Instant estimate ---------- */
+  var P = window.ARTCRAFT_PRICING || null;
+  var CAT_LABEL = { tee: "T-shirts", longsleeve: "Long sleeve", hoodie: "Hoodies", polo: "Polos", cap: "Caps", own: "Your own garments" };
+  var CAT_PRODUCT = { tee: "spirit", longsleeve: "spirit", hoodie: "spirit", polo: "polos", cap: "polos" };
+  function money(n){ return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function tierIndex(tiers, q){ for (var i = 0; i < tiers.length; i++) if (q >= tiers[i][0] && q <= tiers[i][1]) return i; return -1; }
+  function intVal(id, min){ var v = parseInt($(id).value, 10); return isNaN(v) ? min : Math.max(min, v); }
+  function qtyRange(q){ return q < 12 ? "1–11" : q < 25 ? "12–24" : q < 50 ? "25–49" : q < 100 ? "50–99" : q < 250 ? "100–249" : "250+"; }
+  var estBuilt = false, lastEst = null;
+
+  function buildEstimateForm(){
+    if (estBuilt || !P) return;
+    var groups = {};
+    P.garments.forEach(function(g){ (groups[g.category] = groups[g.category] || []).push(g); });
+    $("#e-garment").innerHTML = Object.keys(groups).map(function(cat){
+      return '<optgroup label="' + esc(CAT_LABEL[cat] || cat) + '">' + groups[cat].map(function(g){
+        return '<option value="' + esc(g.id) + '">' + esc((g.style ? g.style + " · " : "") + g.name) + '</option>';
+      }).join("") + '</optgroup>';
+    }).join("");
+    $("#est-sample").hidden = !P.sample;
+    $("#est-form").addEventListener("input", renderEstimate);
+    $("#est-form").addEventListener("change", renderEstimate);
+    estBuilt = true;
+  }
+
+  function computeEstimate(){
+    var g = P.garments.filter(function(x){ return x.id === $("#e-garment").value; })[0] || P.garments[0];
+    var qty = intVal("#e-qty", 1), big = Math.min(intVal("#e-big", 0), qty);
+    var dark = $("#e-dark").checked;
+    var method = (($$('input[name="e-method"]:checked')[0]) || {}).value || "screen";
+    var r = { garment: g, qty: qty, big: big, dark: dark, method: method, lines: [], setup: [], call: null, note: null };
+    r.lines.push([g.category === "own" ? "Your garments" : "Garment (" + g.style + ")", g.price]);
+    var deco = 0, label = "", details = [];
+    if (method === "screen") {
+      var S = P.screen, ti = tierIndex(S.tiers, qty);
+      if (ti < 0) { r.call = "Screen printing " + (S.tiers[S.tiers.length - 1][1] + 1).toLocaleString() + "+ pieces is priced by the shop."; return r; }
+      var spots = [["Front", intVal("#e-front", 0)], ["Back", intVal("#e-back", 0)], ["Sleeve", intVal("#e-sleeve", 0)]].filter(function(s){ return s[1] > 0; });
+      if (!spots.length) { r.note = "Pick at least one print spot (front, back or sleeve)."; return r; }
+      var totalColors = 0;
+      spots.forEach(function(s){
+        var each = S.firstColor[ti] + (s[1] - 1) * S.addColor[ti] + (dark ? S.darkFlash[ti] : 0);
+        if ($("#e-special").checked) each = Math.ceil(each * (1 + S.specialInkPct / 100) * 20) / 20;
+        r.lines.push([s[0] + " print, " + s[1] + " color" + (s[1] > 1 ? "s" : "") + (dark ? " on dark" : ""), each]);
+        totalColors += s[1]; details.push(s[0].toLowerCase() + " " + s[1] + "c");
+      });
+      r.setup.push(["Screens (" + totalColors + " × " + money(S.screenPerColor) + ")", totalColors * S.screenPerColor]);
+      if ($("#e-art").checked) r.setup.push(["Artwork (about 1 hour)", S.artPerHour]);
+      label = "Screen printing: " + details.join(", ") + ($("#e-special").checked ? ", special ink" : "");
+    } else if (method === "embroidery") {
+      var E = P.embroidery, ei = tierIndex(E.tiers, qty);
+      if (ei < 0) { r.call = "Embroidery over " + E.tiers[E.tiers.length - 1][1].toLocaleString() + " pieces is priced by the shop."; return r; }
+      var k = $("#e-stitch").value, logos = intVal("#e-logos", 1);
+      var per = E.rows[k][ei];
+      if (g.category === "cap") per += E.capsBagsBulky;
+      if ($("#e-metallic").checked) per = Math.ceil(per * (1 + E.metallicPct / 100) * 20) / 20;
+      for (var i = 1; i <= logos; i++) r.lines.push(["Embroidered logo" + (logos > 1 ? " " + i : "") + " (~" + k + ",000 stitches)", per]);
+      if ($("#e-names").checked) r.lines.push(["Individual name", qty >= 12 ? E.names12Plus : E.namesUnder12]);
+      var setupEach = Number(k) > 10 ? E.logoSetupOver10k : E.logoSetup;
+      r.setup.push(["Logo setup" + (logos > 1 ? " (" + logos + " × " + money(setupEach) + ")" : ""), logos * setupEach]);
+      label = "Embroidery: " + logos + " logo" + (logos > 1 ? "s" : "") + " ~" + k + "K stitches" + ($("#e-names").checked ? ", names" : "") + ($("#e-metallic").checked ? ", metallic" : "");
+    } else {
+      r.note = "DTG and DTF are priced on your quote."; label = "DTG or DTF";
+    }
+    r.each = r.lines.reduce(function(t, l){ return t + l[1]; }, 0);
+    r.setupTotal = r.setup.reduce(function(t, l){ return t + l[1]; }, 0);
+    r.bigTotal = big * g.add2xl;
+    r.total = r.each * qty + r.bigTotal + r.setupTotal;
+    r.label = label;
+    return r;
+  }
+
+  function renderEstimate(){
+    var box = $("#est-summary");
+    if (!P) { box.innerHTML = '<h3>Your estimate</h3><p class="est-note">Pricing isn\'t available right now. Send a quote request and the shop will price it.</p><a class="btn btn-gold to-quote" href="#quote" style="margin-top:14px">Request a quote</a>'; return; }
+    buildEstimateForm();
+    $("#e-screen").hidden = !$("#e-m-screen").checked;
+    $("#e-emb").hidden = !$("#e-m-emb").checked;
+    $("#e-digital").hidden = !$("#e-m-digital").checked;
+    var r = computeEstimate(); lastEst = r;
+    var head = '<h3>Your estimate</h3><p class="for">' + r.qty.toLocaleString() + ' × ' + esc(r.garment.style || "your garments") + (r.garment.style ? ", " + esc(r.garment.name) : "") + '</p>';
+    if (r.call || (r.note && r.method !== "digital")) {
+      box.innerHTML = head + '<div class="est-call"><p>' + esc(r.call || r.note) + '</p>' + (r.call ? '<p style="margin-top:8px">Call <a class="tel" href="tel:+16029557301">(602) 955-7301</a> or send a quote request.</p>' : '') + '</div>' +
+        (r.call ? '<button type="button" class="btn btn-gold" id="est-quote" style="margin-top:16px">Request a quote</button>' : '');
+    } else if (r.method === "digital") {
+      box.innerHTML = head + '<dl class="est-lines"><div><dt>' + esc(r.lines[0][0]) + '</dt><dd>' + money(r.lines[0][1]) + ' each</dd></div></dl><div class="est-call"><p>DTG and DTF printing is priced on your quote, based on design size and colors.</p></div><button type="button" class="btn btn-gold" id="est-quote" style="margin-top:16px">Request this quote</button>';
+    } else {
+      var lines = r.lines.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("");
+      lines += '<div class="each"><dt>Each</dt><dd>' + money(r.each) + '</dd></div>';
+      var bigLine = r.big ? '<dl class="est-lines"><div><dt>2XL and up (' + r.big + ' × ' + money(r.garment.add2xl) + ')</dt><dd>' + money(r.bigTotal) + '</dd></div></dl>' : '';
+      var setup = r.setup.length ? '<p class="est-sub">One-time setup</p><dl class="est-lines">' + r.setup.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("") + '</dl>' : '';
+      box.innerHTML = head + '<dl class="est-lines">' + lines + '</dl>' + bigLine + setup +
+        '<div class="est-total"><span>Estimated total</span><strong>' + money(r.total) + '</strong></div>' +
+        '<p class="est-allin">About ' + money(r.total / r.qty) + ' each, setup included.</p>' +
+        '<button type="button" class="btn btn-gold" id="est-quote">Request this quote</button>';
+    }
+    box.innerHTML += '<p class="est-fine">Estimate only. Tax and shipping not included. The shop confirms your final price on the proof.' + (P.sample ? ' <span class="ph">[Sample garment prices]</span>' : '') + '</p>';
+  }
+
+  document.addEventListener("click", function(e){
+    if (!e.target.closest("#est-quote") || !lastEst) return;
+    var r = lastEst, g = r.garment;
+    var note = "Instant estimate: " + r.qty + " × " + (g.style ? g.style + " " + g.name : "customer-supplied garments") + " (" + (r.dark ? "dark" : "light") + " color)" +
+      (r.big ? ", " + r.big + " in 2XL+" : "") + ". " + (r.label || "") + (r.total ? ". Estimated total " + money(r.total) + " (" + money(r.total / r.qty) + " each incl. setup)." : ".");
+    prefill({ product: CAT_PRODUCT[g.category], method: r.method === "screen" ? "screen" : r.method === "embroidery" ? "embroidery" : "unsure", qtyRange: qtyRange(r.qty), notes: note });
+    location.hash = "quote";
   });
 
   show(location.hash.slice(1) || "home");
