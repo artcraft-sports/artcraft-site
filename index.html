@@ -394,6 +394,19 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 @media (max-width:960px){.est-summary{position:static}}
 @media (max-width:560px){.three{grid-template-columns:1fr}}
 
+.quote-done{padding-top:48px;padding-bottom:88px;max-width:860px}
+.quote-done:focus{outline:none}
+.done-when{font-size:19px;color:var(--ink) !important;font-weight:600}
+.done-h{font-weight:800;text-transform:uppercase;font-size:22px;margin:26px 0 8px}
+.done-list{margin:0;display:grid}
+.done-list > div{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.done-list dt{font:700 14px/1.4 var(--f-head);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.done-list dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
+.est-summary #q-submit{margin-top:18px}
+#q-grid{align-items:stretch}
+#q-grid .quote-side{align-content:start}
+@media (max-width:560px){.done-list > div{grid-template-columns:1fr;gap:2px}}
+
 /* Mobile CTA */
 .mobile-cta{display:none}
 
@@ -422,7 +435,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   .combo{margin-top:6px;font-size:15px}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:1280px){
+@media (max-width:1140px){
   .menu-btn{display:inline-flex}
   .site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 16px 20px;gap:2px;box-shadow:0 16px 30px rgba(14,26,51,.12)}
   .site-nav.open{display:flex}
@@ -515,7 +528,6 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       </div>
       <a href="#jackets" data-nav="jackets">Letterman Jackets</a>
       <a href="#decorate" data-nav="decorate">Decorating</a>
-      <a href="#estimate" data-nav="estimate">Pricing</a>
       <a href="#work" data-nav="work">Our Work</a>
       <a href="#story" data-nav="story">Our Story</a>
       <a href="#quote" class="btn btn-gold btn-sm to-quote">Get a Quote</a>
@@ -667,7 +679,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <h2 class="h2">Four methods, one roof.</h2>
           <p>Not sure which one you need? Tell us about the job and we'll recommend the right method for your fabric, quantity and budget.</p>
         </div>
-        <div class="cta-row" style="align-items:center;gap:20px"><a class="text-link" href="#decorate">Compare methods</a><a class="btn btn-gold" href="#estimate">Get an instant estimate</a></div>
+        <div class="cta-row" style="align-items:center;gap:20px"><a class="text-link" href="#decorate">Compare methods</a><a class="btn btn-gold to-quote" href="#quote">Get an instant price</a></div>
       </div>
       <div class="method-strip">
         <div><h3>Screen Printing</h3><p>Ink pressed through a screen, one color at a time. Bold and built to last.</p><p class="ex"><b>Example:</b> 150 team tees with a 2-color logo.</p></div>
@@ -688,7 +700,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <a class="btn btn-gold to-quote" href="#quote">Start a Quote</a>
       </div>
       <ol class="process">
-        <li><h3>Tell us what you need</h3><p>Send the quote form. It takes about two minutes.</p></li>
+        <li><h3>Tell us what you need</h3><p>Describe it on the quote page and see a price as you go. It takes about a minute.</p></li>
         <li><h3>Approve your proof</h3><p>We send a digital proof and price. Nothing is printed until you sign off.</p></li>
         <li><h3>We make it here</h3><p>Decorated in our Phoenix shop in <span class="ph">[X]</span> business days.</p></li>
         <li><h3>Pick up or ship</h3><p>Grab it at the shop or we ship it to you. <span class="ph">[Shipping policy]</span></p></li>
@@ -925,7 +937,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         </table>
       </div>
       <p style="color:var(--muted);margin-top:14px;font-size:15.5px">General guide. <span class="ph">[Shop to confirm each rating]</span></p>
-      <div class="cta-row" style="margin-top:28px"><a class="btn btn-gold" href="#estimate">Get an instant estimate</a><a class="btn btn-ghost to-quote" href="#quote">Get a recommendation</a></div>
+      <div class="cta-row" style="margin-top:28px"><a class="btn btn-gold to-quote" href="#quote">Get an instant price</a></div>
     </div>
   </div>
 </section>
@@ -992,215 +1004,98 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
 </section>
 
 
-<!-- ============ ESTIMATE ============ -->
-<section class="view" id="view-estimate" hidden>
-  <div class="page-head">
-    <div class="wrap">
-      <p class="kicker">Instant estimate</p>
-      <h1>Price your order in a minute.</h1>
-      <p class="lede">Pick a garment, how many and how you want it decorated. You'll see an estimate right away, and the shop confirms the final price on your proof.</p>
-    </div>
-  </div>
-  <div class="wrap quote-grid">
-    <div class="quote-card">
-      <p class="rush" id="est-sample" hidden><b>Sample prices.</b> Garment prices are placeholders until real SanMar costs are loaded.</p>
-      <form id="est-form" class="est-form" onsubmit="return false">
-        <fieldset class="q-step">
-          <legend>1. Garment</legend>
-          <div class="field"><label for="e-garment">Style</label><select id="e-garment"></select></div>
-          <p class="sub-legend" id="e-shade-label" style="margin-top:6px">Garment color</p>
-          <div class="pref" role="radiogroup" aria-labelledby="e-shade-label">
-            <label class="choice"><input type="radio" name="e-shade" value="light" id="e-light" checked><span><strong>White or light</strong></span></label>
-            <label class="choice"><input type="radio" name="e-shade" value="dark" id="e-dark"><span><strong>Dark or bright</strong></span></label>
-          </div>
-        </fieldset>
-        <fieldset class="q-step">
-          <legend>2. Quantity</legend>
-          <div class="two">
-            <div class="field"><label for="e-qty">Total pieces</label><input type="number" id="e-qty" min="1" step="1" value="24" inputmode="numeric"></div>
-            <div class="field"><label for="e-big">How many are 2XL or bigger? <span class="hint">(optional)</span></label><input type="number" id="e-big" min="0" step="1" value="0" inputmode="numeric"></div>
-          </div>
-        </fieldset>
-        <fieldset class="q-step">
-          <legend>3. Decoration</legend>
-          <div class="choice-grid" role="radiogroup" aria-label="Decoration method">
-            <label class="choice"><input type="radio" name="e-method" value="screen" id="e-m-screen" checked><span><strong>Screen printing</strong><small>Bold colors, best for 12+</small></span></label>
-            <label class="choice"><input type="radio" name="e-method" value="embroidery" id="e-m-emb"><span><strong>Embroidery</strong><small>Stitched logo, polos and caps</small></span></label>
-            <label class="choice"><input type="radio" name="e-method" value="digital" id="e-m-digital"><span><strong>DTG or DTF</strong><small>Full-color prints</small></span></label>
-          </div>
-          <div class="est-panel" id="e-screen">
-            <p class="est-note" style="margin-bottom:10px">How many ink colors in each spot? Pick None for spots you don't need.</p>
-            <div class="three"><div class="field"><label for="e-front">Front</label><select id="e-front"><option value="0">None</option><option value="1" selected>1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-back">Back</label><select id="e-back"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-sleeve">Sleeve</label><select id="e-sleeve"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div></div>
-            <label class="inline-check"><input type="checkbox" id="e-special"> Metallic, puff or other special ink</label>
-            <label class="inline-check" style="margin-top:-8px"><input type="checkbox" id="e-art"> I need artwork created (about 1 hour)</label>
-          </div>
-          <div class="est-panel" id="e-emb" hidden>
-            <div class="two">
-              <div class="field"><label for="e-stitch">Logo size</label><select id="e-stitch">
-                <option value="4">Simple text or small logo (up to 4,000 stitches)</option>
-                <option value="6">Typical left-chest logo (about 6,000)</option>
-                <option value="8">Detailed logo or cap front (about 8,000)</option>
-                <option value="10">Large or very detailed (about 10,000)</option>
-                <option value="7" selected>Not sure (we'll assume about 7,000)</option>
-              </select></div>
-              <div class="field"><label for="e-logos">Logos per piece</label><select id="e-logos">
-                <option value="1" selected>1 logo</option>
-                <option value="2">2 logos (for example chest and sleeve)</option>
-              </select></div>
-            </div>
-            <label class="inline-check"><input type="checkbox" id="e-names"> Add individual names</label>
-            <label class="inline-check" style="margin-top:-8px"><input type="checkbox" id="e-metallic"> Metallic thread</label>
-          </div>
-          <div class="est-panel" id="e-digital" hidden>
-            <p class="est-note">DTG and DTF are priced by design size and color count, so the shop prices them on your quote. Send the request and attach your artwork.</p>
-          </div>
-        </fieldset>
-      </form>
-      <aside class="note"><b>Pitch note</b>Prices come from the shop's own screen print and embroidery sheets plus SanMar garment costs, with the target margin built in. Only selling prices are published; the costs stay private.</aside>
-    </div>
-    <aside class="quote-side">
-      <div class="side-box est-summary" id="est-summary" aria-live="polite"></div>
-    </aside>
-  </div>
-</section>
-
-<!-- ============ QUOTE ============ -->
+<!-- ============ QUOTE + INSTANT ESTIMATE ============ -->
 <section class="view" id="view-quote" hidden>
   <div class="page-head">
     <div class="wrap">
       <p class="kicker">Get a quote</p>
-      <h1>Tell us about your order.</h1>
-      <p class="lede">About two minutes. The shop replies within <span class="ph">[X business hours]</span> with pricing or questions.</p>
+      <h1>Get a price in a minute.</h1>
+      <p class="lede">Tell us who it's for and describe the shirts. You'll see an estimate as you go, and we respond within 1 business day.</p>
     </div>
   </div>
-  <div class="wrap quote-grid">
+  <div class="wrap quote-grid" id="q-grid">
     <div class="quote-card">
-      <ol class="steps" id="q-steps" aria-label="Progress">
-        <li data-s="1">Who</li><li data-s="2">What</li><li data-s="3">How many</li><li data-s="4">Contact</li><li data-s="5">Review</li>
-      </ol>
-      <p class="step-label" id="step-label" aria-hidden="true">Step 1 of 5: Who</p>
-      <form id="q-form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+      <p class="rush" id="est-sample" hidden><b>Sample prices.</b> Garment prices are placeholders until real SanMar costs are loaded.</p>
+      <form id="q-form" class="est-form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
         <input type="hidden" name="form-name" value="quote">
+        <input type="hidden" name="segment" id="q-segment" value="">
+        <input type="hidden" name="estimate" id="q-estimate" value="">
         <p class="sr" aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <fieldset class="q-step" data-step="1" tabindex="-1">
-          <legend>Who are you outfitting?</legend>
-          <p class="q-help">This routes your request to the right person at the shop.</p>
-          <div class="choice-grid">
-            <label class="choice"><input type="radio" name="segment" value="teams" id="seg-teams"><span><strong>Teams &amp; Leagues</strong><small>Club, rec and travel</small></span></label>
-            <label class="choice"><input type="radio" name="segment" value="schools" id="seg-schools"><span><strong>Schools &amp; Boosters</strong><small>Athletics, clubs and spirit</small></span></label>
-            <label class="choice"><input type="radio" name="segment" value="pro" id="seg-pro"><span><strong>Pro &amp; College</strong><small>Professional and collegiate</small></span></label>
-            <label class="choice"><input type="radio" name="segment" value="business" id="seg-business"><span><strong>Business &amp; Events</strong><small>Companies and nonprofits</small></span></label>
-          </div>
-          <p class="err" id="err-segment" role="alert"></p>
-        </fieldset>
 
-        <fieldset class="q-step" data-step="2" tabindex="-1" hidden>
-          <legend>What do you need?</legend>
-          <p class="q-help">Pick everything that applies.</p>
-          <div class="choice-grid">
-            <label class="choice"><input type="checkbox" name="products" value="uniforms" id="p-uniforms"><span><strong>Uniforms &amp; jerseys</strong><small>Game or practice</small></span></label>
-            <label class="choice"><input type="checkbox" name="products" value="jackets" id="p-jackets"><span><strong>Letterman jackets</strong><small>Handcrafted in-house</small></span></label>
-            <label class="choice"><input type="checkbox" name="products" value="spirit" id="p-spirit"><span><strong>Spirit &amp; fan wear</strong><small>Tees, hoodies, gear</small></span></label>
-            <label class="choice"><input type="checkbox" name="products" value="polos" id="p-polos"><span><strong>Corporate apparel</strong><small>Polos, hats, outerwear</small></span></label>
-            <label class="choice"><input type="checkbox" name="products" value="promo" id="p-promo"><span><strong>Promotional products</strong><small>Giveaways and goods</small></span></label>
-            <label class="choice"><input type="checkbox" name="products" value="banners" id="p-banners"><span><strong>Banners</strong><small>Team, gym and event</small></span></label>
-          </div>
-          <p class="err" id="err-products" role="alert"></p>
-          <p class="sub-legend" id="method-label">Decoration</p>
-          <div class="choice-grid" role="radiogroup" aria-labelledby="method-label">
-            <label class="choice"><input type="radio" name="method" value="unsure" id="m-unsure" checked><span><strong>Not sure</strong><small>Recommend one for me</small></span></label>
-            <label class="choice"><input type="radio" name="method" value="screen" id="m-screen"><span><strong>Screen printing</strong></span></label>
-            <label class="choice"><input type="radio" name="method" value="embroidery" id="m-embroidery"><span><strong>Embroidery</strong></span></label>
-            <label class="choice"><input type="radio" name="method" value="dtg" id="m-dtg"><span><strong>DTG</strong><small>Inkjet-style print, best on cotton</small></span></label>
-            <label class="choice"><input type="radio" name="method" value="dtf" id="m-dtf"><span><strong>DTF</strong><small>Heat-pressed transfer, any fabric</small></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="q-step" data-step="3" tabindex="-1" hidden>
-          <legend>How many, and by when?</legend>
-          <p class="q-help">Rough numbers are fine. We'll confirm sizes later.</p>
+        <fieldset class="q-step">
+          <legend>1. Your company</legend>
+          <div class="field"><label for="q-org">Company, team or school</label><input type="text" id="q-org" name="org" autocomplete="organization" aria-describedby="err-org"><p class="err" id="err-org"></p></div>
           <div class="two">
-            <div class="field">
-              <label for="q-qty">Quantity</label>
-              <select id="q-qty" name="qty" aria-describedby="err-qty">
-                <option value="">Choose a range</option>
-                <option>1–11</option><option>12–24</option><option>25–49</option><option>50–99</option><option>100–249</option><option>250+</option>
-              </select>
-              <p class="err" id="err-qty"></p>
-            </div>
-            <div class="field">
-              <label for="q-date">Date you need it in hand</label>
-              <input type="date" id="q-date" name="date" aria-describedby="err-date">
-              <p class="err" id="err-date"></p>
-            </div>
+            <div class="field"><label for="q-name">Your name</label><input type="text" id="q-name" name="name" autocomplete="name" aria-describedby="err-name"><p class="err" id="err-name"></p></div>
+            <div class="field"><label for="q-email">Email</label><input type="email" id="q-email" name="email" autocomplete="email" aria-describedby="err-email"><p class="err" id="err-email"></p></div>
           </div>
-          <p class="rush" id="rush-note" hidden>That's a tight window. The shop will confirm whether rush production fits. <span class="ph">[Rush policy and fee]</span></p>
-          <div class="field">
-            <label for="q-notes">Sizes, colors and details <span class="hint">(optional)</span></label>
-            <textarea id="q-notes" name="notes" placeholder="e.g. 14 jerseys, youth M to adult XL, maroon and gold, names and numbers on back"></textarea>
-          </div>
+          <div class="field" style="max-width:340px"><label for="q-phone">Phone <span class="hint">(optional)</span></label><input type="tel" id="q-phone" name="phone" autocomplete="tel"></div>
         </fieldset>
 
-        <fieldset class="q-step" data-step="4" tabindex="-1" hidden>
-          <legend>Artwork and contact</legend>
-          <p class="q-help">Logo files help us price it right. Any format works.</p>
+        <fieldset class="q-step">
+          <legend>2. Describe your shirts</legend>
+          <div class="two">
+            <div class="field"><label for="e-garment">Garment</label><select id="e-garment" name="garment"></select></div>
+            <div class="field"><label for="e-qty">How many</label><input type="number" id="e-qty" name="qty" min="1" step="1" value="24" inputmode="numeric" aria-describedby="err-qty"><p class="err" id="err-qty"></p></div>
+          </div>
+          <div id="e-deco">
+            <div class="pref" role="radiogroup" aria-label="Garment color" style="margin-bottom:14px">
+              <label class="choice"><input type="radio" name="shade" value="light" id="e-light" checked><span><strong>White or light shirts</strong></span></label>
+              <label class="choice"><input type="radio" name="shade" value="dark" id="e-dark"><span><strong>Dark or bright shirts</strong></span></label>
+            </div>
+            <div class="pref" role="radiogroup" aria-label="Decoration">
+              <label class="choice"><input type="radio" name="method" value="screen" id="e-m-screen" checked><span><strong>Screen print</strong></span></label>
+              <label class="choice"><input type="radio" name="method" value="embroidery" id="e-m-embroidery"><span><strong>Embroidery</strong></span></label>
+              <label class="choice"><input type="radio" name="method" value="digital" id="e-m-digital"><span><strong>DTG / DTF</strong></span></label>
+              <label class="choice"><input type="radio" name="method" value="unsure" id="e-m-unsure"><span><strong>Not sure</strong></span></label>
+            </div>
+            <div class="est-panel" id="e-screen">
+              <div class="three"><div class="field"><label for="e-front">Front</label><select id="e-front" name="front"><option value="0">None</option><option value="1" selected>1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-back">Back</label><select id="e-back" name="back"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div><div class="field"><label for="e-sleeve">Sleeve</label><select id="e-sleeve" name="sleeve"><option value="0" selected>None</option><option value="1">1 color</option><option value="2">2 colors</option><option value="3">3 colors</option><option value="4">4 colors</option><option value="5">5 colors</option><option value="6">6 colors</option></select></div></div>
+              <label class="inline-check" style="margin:4px 0 0"><input type="checkbox" id="e-special" name="special" value="Yes"> Metallic, puff or other special ink</label>
+            </div>
+            <div class="est-panel" id="e-emb" hidden>
+              <div class="two">
+                <div class="field"><label for="e-stitch">Logo size</label><select id="e-stitch" name="stitch">
+                  <option value="4">Simple text or small logo</option>
+                  <option value="6">Typical left-chest logo</option>
+                  <option value="8">Detailed logo or cap front</option>
+                  <option value="10">Large or very detailed</option>
+                  <option value="7" selected>Not sure</option>
+                </select></div>
+                <div class="field"><label for="e-logos">Logos per piece</label><select id="e-logos" name="logos">
+                  <option value="1" selected>1 logo</option>
+                  <option value="2">2 logos (chest and sleeve)</option>
+                </select></div>
+              </div>
+              <label class="inline-check" style="margin:4px 0 0"><input type="checkbox" id="e-names" name="names" value="Yes"> Add individual names</label>
+            </div>
+            <p class="est-note est-panel" id="e-digital" hidden>DTG and DTF are priced by design size and colors. Attach your artwork and we'll price it.</p>
+            <p class="est-note est-panel" id="e-unsure" hidden>No problem. We'll recommend the best method. The estimate assumes a 1-color screen print.</p>
+          </div>
+          <p class="est-note" id="e-custom" hidden>We'll price this one on your quote. Describe it below.</p>
+          <div class="field" style="margin-top:18px"><label for="q-notes">Describe it <span class="hint">(colors, sizes, logo, anything else)</span></label><textarea id="q-notes" name="notes" placeholder="e.g. Navy tees, white logo on the front, names on the back, youth M to adult XL"></textarea></div>
+          <div class="two">
+            <div class="field"><label for="q-date">Need it by <span class="hint">(optional)</span></label><input type="date" id="q-date" name="date"></div>
+            <div class="field"><label for="e-big">2XL or bigger <span class="hint">(how many, optional)</span></label><input type="number" id="e-big" name="big" min="0" step="1" value="0" inputmode="numeric"></div>
+          </div>
+          <p class="rush" id="rush-note" hidden>That's a tight window. We'll confirm whether rush production fits.</p>
           <div class="drop">
-            <div class="file-row"><input type="file" id="q-art" name="art" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art">Upload logo or artwork</label></div>
+            <div class="file-row"><input type="file" id="q-art" name="art" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art">Attach your logo or artwork</label></div>
             <div class="file-row"><input type="file" id="q-art2" name="art2" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art2">Add a second file</label></div>
-            <p>PNG, JPG, PDF, AI, EPS or SVG. Up to 8 MB total.</p>
+            <p>Optional. PNG, JPG, PDF, AI, EPS or SVG, up to 8 MB total.</p>
             <ul class="art-list" id="art-list"></ul>
             <p class="err" id="err-art" role="alert"></p>
           </div>
-          <label class="inline-check"><input type="checkbox" id="q-design" name="design"> No artwork yet. I need design help.</label>
-          <div class="two">
-            <div class="field"><label for="q-name">Your name</label><input type="text" id="q-name" name="name" autocomplete="name" aria-describedby="err-name"><p class="err" id="err-name"></p></div>
-            <div class="field"><label for="q-org">Team, school or company <span class="hint">(optional)</span></label><input type="text" id="q-org" name="org" autocomplete="organization"></div>
-            <div class="field"><label for="q-email">Email</label><input type="email" id="q-email" name="email" autocomplete="email" aria-describedby="err-email"><p class="err" id="err-email"></p></div>
-            <div class="field"><label for="q-phone">Phone <span class="hint" id="phone-hint">(optional)</span></label><input type="tel" id="q-phone" name="phone" autocomplete="tel" aria-describedby="err-phone"><p class="err" id="err-phone"></p></div>
-          </div>
-          <p class="sub-legend" id="pref-label" style="margin-top:4px">Best way to reach you</p>
-          <div class="pref" role="radiogroup" aria-labelledby="pref-label">
-            <label class="choice"><input type="radio" name="pref" value="Email" id="pref-email" checked><span><strong>Email</strong></span></label>
-            <label class="choice"><input type="radio" name="pref" value="Phone call" id="pref-call"><span><strong>Phone call</strong></span></label>
-            <label class="choice"><input type="radio" name="pref" value="Text" id="pref-text"><span><strong>Text</strong></span></label>
-          </div>
         </fieldset>
-
-        <fieldset class="q-step" data-step="5" tabindex="-1" hidden>
-          <legend>Review your request</legend>
-          <p class="q-help">Check the details, then send it to the shop.</p>
-          <dl class="review" id="review"></dl>
-        </fieldset>
-
-        <p class="err send-err" id="err-send" role="alert"></p>
-        <div class="q-nav">
-          <button type="button" class="btn btn-ghost" id="q-back" hidden>Back</button>
-          <span class="spacer"></span>
-          <button type="button" class="btn btn-gold" id="q-next">Continue</button>
-          <button type="submit" class="btn btn-gold" id="q-submit" hidden>Send request</button>
-        </div>
       </form>
-
-      <div class="done-panel" id="q-done" hidden tabindex="-1">
-        <span class="badge" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg></span>
-        <h2 id="done-title">Request sent.</h2>
-        <p id="done-msg">The shop will get back to you within <span class="ph">[X business hours]</span>.</p>
-        <p id="done-summary"></p>
-        <div class="cta-row" style="margin-top:20px">
-          <button type="button" class="btn btn-ghost" id="q-again">Start another request</button>
-          <a class="btn btn-dark" href="#home">Back to home</a>
-        </div>
-      </div>
-      <aside class="note"><b>Pitch note</b>Collects everything needed to price a job in one pass: who, what, how many, when and artwork. Each request is emailed straight to the shop with the files attached, and hitting Reply goes to the customer.</aside>
+      <aside class="note"><b>Pitch note</b>One page: who it's for, what they want, a live price, and Send. Every request reaches the shop by email with the estimate and artwork attached, and Reply goes straight to the customer.</aside>
     </div>
     <aside class="quote-side">
-      <div class="side-box">
-        <h3>What happens next</h3>
-        <ol>
-          <li><strong>We review your request</strong> and reply within <span class="ph">[X business hours]</span>.</li>
-          <li><strong>You get a proof and price.</strong> Nothing is made until you approve.</li>
-          <li><strong>We decorate in-house</strong> and let you know when it's ready.</li>
-        </ol>
+      <div class="side-box est-summary" aria-live="polite">
+        <div id="est-body"></div>
+        <button type="submit" form="q-form" class="btn btn-gold" id="q-submit">Send my request</button>
+        <p class="err send-err" id="err-send" role="alert"></p>
+        <p class="est-fine">Estimate only. Tax and shipping not included. We confirm your final price on the proof and respond within 1 business day.<span id="est-sample-tag"></span></p>
       </div>
       <div class="side-box">
         <h3>Rather talk it through?</h3>
@@ -1208,6 +1103,19 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <a class="phone-big" href="tel:+16029557301">(602) 955-7301</a>
       </div>
     </aside>
+  </div>
+  <div class="wrap quote-done" id="q-done" hidden tabindex="-1">
+    <div class="quote-card done-panel">
+      <span class="badge" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"></path></svg></span>
+      <h2 id="done-title">Your request is in.</h2>
+      <p class="done-when" id="done-when">We respond within 1 business day.</p>
+      <h3 class="done-h">Here's your message</h3>
+      <dl class="done-list" id="done-summary"></dl>
+      <div class="cta-row" style="margin-top:24px">
+        <button type="button" class="btn btn-ghost" id="q-again">Start another request</button>
+        <a class="btn btn-dark" href="#home">Back to home</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1220,7 +1128,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       <p style="margin-top:16px;max-width:34ch">Veteran owned. We Do Apparel Right! Team uniforms, letterman jackets, banners and branded apparel from Phoenix.</p>
     </div>
     <div><h4>Who we serve</h4><ul><li><a href="#teams">Teams &amp; Leagues</a></li><li><a href="#schools">Schools &amp; Boosters</a></li><li><a href="#pro">Pro &amp; College</a></li><li><a href="#business">Business &amp; Events</a></li></ul></div>
-    <div><h4>The shop</h4><ul><li><a href="#jackets">Letterman Jackets</a></li><li><a href="#decorate">How We Decorate</a></li><li><a href="#estimate">Instant Estimate</a></li><li><a href="#work">Our Work</a></li><li><a href="#story">Our Story</a></li><li><a href="#quote" class="to-quote">Get a Quote</a></li></ul></div>
+    <div><h4>The shop</h4><ul><li><a href="#jackets">Letterman Jackets</a></li><li><a href="#decorate">How We Decorate</a></li><li><a href="#work">Our Work</a></li><li><a href="#story">Our Story</a></li><li><a href="#quote" class="to-quote">Get a Quote</a></li></ul></div>
     <div><h4>Visit</h4><ul><li><span class="ph">[Confirm current address]</span></li><li><a href="tel:+16029557301">(602) 955-7301</a></li><li>Mon–Fri 11:00–5:30</li></ul></div>
   </div>
   <div class="wrap foot-base">
@@ -1370,11 +1278,11 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   var VIEWS = ["home","teams","schools","pro","business","jackets","decorate","work","story","quote","estimate"];
   function show(name){
     if (VIEWS.indexOf(name) < 0) name = "home";
+    if (name === "estimate") name = "quote";
     var viewId = SEG[name] ? "serve" : name;
     if (SEG[name]) renderSegment(name);
     if (name === "work") { renderChips(); renderGallery(); }
-    if (name === "quote") renderStep(false);
-    if (name === "estimate") renderEstimate();
+    if (name === "quote") renderEstimate();
     $$(".view").forEach(function(v){ v.hidden = (v.id !== "view-" + viewId); });
     $$("[data-nav]").forEach(function(a){
       var on = a.getAttribute("data-nav") === name || (SEG[name] && a.getAttribute("data-nav") === "serve");
@@ -1460,177 +1368,183 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   });
   paintJacket();
 
-  /* ---------- Quote form ---------- */
-  var form = $("#q-form"), step = 1, TOTAL = 5;
-  var LABELS = {
-    segment: { teams: "Teams & Leagues", schools: "Schools & Boosters", pro: "Pro & College", business: "Business & Events" },
-    products: { uniforms: "Uniforms & jerseys", jackets: "Letterman jackets", spirit: "Spirit & fan wear", polos: "Corporate apparel", promo: "Promotional products", banners: "Banners" },
-    method: { unsure: "Not sure, recommend one", screen: "Screen printing", embroidery: "Embroidery", dtg: "DTG", dtf: "DTF" }
-  };
+  /* ---------- Quote + instant estimate (one page) ---------- */
+  var P = window.ARTCRAFT_PRICING || null;
+  var form = $("#q-form");
+  var CAT_LABEL = { tee: "T-shirts", longsleeve: "Long sleeve", hoodie: "Hoodies", polo: "Polos", cap: "Caps", own: "Your own garments", jacket: "Other", other: "Other" };
+  var EXTRA = [{ id: "jacket", style: "", name: "Letterman jacket", category: "jacket" }, { id: "other", style: "", name: "Something else (describe it below)", category: "other" }];
+  var METHOD_LABEL = { screen: "Screen print", embroidery: "Embroidery", digital: "DTG / DTF", unsure: "Not sure, recommend one" };
+  var lastEst = null;
+  function money(n){ return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function tierIndex(tiers, q){ for (var i = 0; i < tiers.length; i++) if (q >= tiers[i][0] && q <= tiers[i][1]) return i; return -1; }
+  function intVal(id, min){ var v = parseInt($(id).value, 10); return isNaN(v) ? min : Math.max(min, v); }
   function todayISO(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); }
-  $("#q-date").min = todayISO();
+  function daysUntil(iso){ if (!iso) return NaN; return Math.round((new Date(iso + "T00:00:00") - new Date(todayISO() + "T00:00:00")) / 86400000); }
+  function fmtDate(iso){ return iso ? new Date(iso + "T00:00:00").toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric", year: "numeric" }) : ""; }
+  function garments(){ return (P ? P.garments : []).concat(EXTRA); }
+  function currentGarment(){ var id = $("#e-garment").value; return garments().filter(function(g){ return g.id === id; })[0] || garments()[0]; }
+  function garmentLabel(g){ return g.style ? g.style + " " + g.name : g.name; }
+  function methodVal(){ var m = $$('input[name="method"]:checked')[0]; return m ? m.value : "screen"; }
 
-  function val(name){ var el = form.elements[name]; return el ? el.value : ""; }
-  function checked(name){ return $$('input[name="' + name + '"]:checked', form).map(function(i){ return i.value; }); }
-  function daysUntil(iso){ if (!iso) return NaN; var t = new Date(todayISO() + "T00:00:00"), d = new Date(iso + "T00:00:00"); return Math.round((d - t) / 86400000); }
+  (function buildGarmentSelect(){
+    var groups = {}, order = [];
+    garments().forEach(function(g){ var c = CAT_LABEL[g.category] || "Other"; if (!groups[c]) { groups[c] = []; order.push(c); } groups[c].push(g); });
+    $("#e-garment").innerHTML = order.map(function(c){
+      return '<optgroup label="' + esc(c) + '">' + groups[c].map(function(g){ return '<option value="' + esc(g.id) + '">' + esc((g.style ? g.style + " · " : "") + g.name) + '</option>'; }).join("") + '</optgroup>';
+    }).join("");
+    $("#q-date").min = todayISO();
+    if (P && P.sample) { $("#est-sample").hidden = false; $("#est-sample-tag").innerHTML = ' <span class="ph">[Sample garment prices]</span>'; }
+  })();
+
+  function computeEstimate(){
+    var g = currentGarment(), qty = intVal("#e-qty", 1), big = Math.min(intVal("#e-big", 0), qty);
+    var dark = $("#e-dark").checked, method = methodVal();
+    var r = { garment: g, qty: qty, big: big, dark: dark, method: method, lines: [], setup: [], custom: false, call: null, note: null, deco: "" };
+    if (!P || g.category === "jacket" || g.category === "other") { r.custom = true; return r; }
+    r.lines.push([g.category === "own" ? "Your garments" : "Garment (" + g.style + ")", g.price]);
+    if (method === "digital") { r.note = "DTG / DTF printing is priced on your quote."; r.deco = "DTG / DTF"; return r; }
+    if (method === "screen" || method === "unsure") {
+      var S = P.screen, ti = tierIndex(S.tiers, qty);
+      if (ti < 0) { r.call = "Screen printing " + (S.tiers[S.tiers.length - 1][1] + 1).toLocaleString() + "+ pieces is priced by the shop."; return r; }
+      var spots = method === "unsure" ? [["Front", 1]] : [["Front", intVal("#e-front", 0)], ["Back", intVal("#e-back", 0)], ["Sleeve", intVal("#e-sleeve", 0)]].filter(function(s){ return s[1] > 0; });
+      if (!spots.length) { r.note = "Pick at least one print spot: front, back or sleeve."; return r; }
+      var colors = 0, parts = [], special = method === "screen" && $("#e-special").checked;
+      spots.forEach(function(s){
+        var each = S.firstColor[ti] + (s[1] - 1) * S.addColor[ti] + (dark ? S.darkFlash[ti] : 0);
+        if (special) each = Math.ceil(each * (1 + S.specialInkPct / 100) * 20) / 20;
+        r.lines.push([s[0] + ", " + s[1] + " color" + (s[1] > 1 ? "s" : ""), each]);
+        colors += s[1]; parts.push(s[0].toLowerCase() + " " + s[1] + " color" + (s[1] > 1 ? "s" : ""));
+      });
+      r.setup.push(["Screens (" + colors + " × " + money(S.screenPerColor) + ")", colors * S.screenPerColor]);
+      r.deco = (method === "unsure" ? "Not sure (estimated as screen print, " : "Screen print (") + parts.join(", ") + (special ? ", special ink" : "") + (dark ? ", dark shirts" : "") + ")";
+    } else {
+      var E = P.embroidery, ei = tierIndex(E.tiers, qty);
+      if (ei < 0) { r.call = "Embroidery over " + E.tiers[E.tiers.length - 1][1].toLocaleString() + " pieces is priced by the shop."; return r; }
+      var k = $("#e-stitch").value, logos = intVal("#e-logos", 1), per = E.rows[k][ei];
+      if (g.category === "cap") per += E.capsBagsBulky;
+      for (var i = 1; i <= logos; i++) r.lines.push(["Embroidered logo" + (logos > 1 ? " " + i : ""), per]);
+      if ($("#e-names").checked) r.lines.push(["Individual name", qty >= 12 ? E.names12Plus : E.namesUnder12]);
+      r.setup.push(["Logo setup" + (logos > 1 ? " (" + logos + " logos)" : ""), logos * (Number(k) > 10 ? E.logoSetupOver10k : E.logoSetup)]);
+      r.deco = "Embroidery (" + logos + " logo" + (logos > 1 ? "s" : "") + ", " + $("#e-stitch").selectedOptions[0].text.toLowerCase() + ($("#e-names").checked ? ", names" : "") + ")";
+    }
+    r.each = r.lines.reduce(function(t, l){ return t + l[1]; }, 0);
+    r.setupTotal = r.setup.reduce(function(t, l){ return t + l[1]; }, 0);
+    r.bigTotal = big * g.add2xl;
+    r.total = r.each * qty + r.bigTotal + r.setupTotal;
+    return r;
+  }
+  function estimateText(r){
+    var head = r.qty + " × " + garmentLabel(r.garment);
+    if (r.custom) return head + ". Priced by the shop.";
+    if (r.call) return head + ". " + r.call;
+    if (!r.total) return head + ". " + (r.deco || METHOD_LABEL[r.method]) + ". " + (r.note || "Priced by the shop.");
+    return head + (r.big ? " (" + r.big + " in 2XL+)" : "") + ". " + r.deco + ". Estimate " + money(r.each) + " each + " + money(r.setupTotal) + " setup = " + money(r.total) + " total.";
+  }
+  function renderEstimate(){
+    var r = computeEstimate(), m = r.method; lastEst = r;
+    $("#e-deco").hidden = r.custom; $("#e-custom").hidden = !r.custom || !P;
+    $("#e-screen").hidden = m !== "screen"; $("#e-emb").hidden = m !== "embroidery";
+    $("#e-digital").hidden = m !== "digital"; $("#e-unsure").hidden = m !== "unsure";
+    var head = '<h3>Your estimate</h3><p class="for">' + r.qty.toLocaleString() + ' × ' + esc(garmentLabel(r.garment)) + '</p>';
+    var html;
+    if (r.custom) html = head + '<div class="est-call"><p>We\'ll price ' + (r.garment.category === "jacket" ? "letterman jackets" : "this") + ' on your quote.</p></div>';
+    else if (r.call || (r.note && !r.total && m !== "digital")) html = head + '<div class="est-call"><p>' + esc(r.call || r.note) + '</p></div>';
+    else if (m === "digital") html = head + '<dl class="est-lines"><div><dt>' + esc(r.lines[0][0]) + '</dt><dd>' + money(r.lines[0][1]) + ' each</dd></div></dl><div class="est-call"><p>' + esc(r.note) + '</p></div>';
+    else {
+      html = head + '<dl class="est-lines">' + r.lines.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("") +
+        '<div class="each"><dt>Each</dt><dd>' + money(r.each) + '</dd></div></dl>' +
+        (r.big ? '<dl class="est-lines"><div><dt>2XL and up (' + r.big + ')</dt><dd>' + money(r.bigTotal) + '</dd></div></dl>' : '') +
+        '<dl class="est-lines">' + r.setup.map(function(l){ return '<div><dt>' + esc(l[0]) + ', one time</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("") + '</dl>' +
+        '<div class="est-total"><span>Estimated total</span><strong>' + money(r.total) + '</strong></div>' +
+        '<p class="est-allin">About ' + money(r.total / r.qty) + ' each, setup included.</p>';
+    }
+    $("#est-body").innerHTML = html;
+    $("#q-estimate").value = estimateText(r);
+  }
+  form.addEventListener("input", renderEstimate);
+  form.addEventListener("change", renderEstimate);
 
   function setErr(id, msg, field){
     $("#err-" + id).textContent = msg || "";
     if (field) { if (msg) field.setAttribute("aria-invalid", "true"); else field.removeAttribute("aria-invalid"); }
   }
-  function validate(s){
+  function chosenFiles(){ var out = []; ["#q-art", "#q-art2"].forEach(function(id){ var f = $(id).files; if (f && f[0]) out.push(f[0]); }); return out; }
+  function validate(){
     var first = null;
-    function fail(id, msg, field, focusEl){ setErr(id, msg, field); if (!first) first = focusEl || field; }
-    if (s === 1) {
-      setErr("segment", "");
-      if (!val("segment")) fail("segment", "Pick who you're outfitting so the shop can route your request.", null, $("#seg-teams"));
-    }
-    if (s === 2) {
-      setErr("products", "");
-      if (!checked("products").length) fail("products", "Pick at least one item.", null, $("#p-uniforms"));
-    }
-    if (s === 3) {
-      var qty = $("#q-qty"), date = $("#q-date");
-      setErr("qty", "", qty); setErr("date", "", date);
-      if (!qty.value) fail("qty", "Pick a rough quantity. A range is fine.", qty);
-      if (!date.value) fail("date", "Add the date you need it in hand.", date);
-      else if (daysUntil(date.value) < 0) fail("date", "That date has passed. Pick a future date.", date);
-    }
-    if (s === 4) {
-      var total = chosenFiles().reduce(function(t, f){ return t + f.size; }, 0);
-      setErr("art", "");
-      if (total > 8 * 1024 * 1024) fail("art", "Your files add up to " + (total / 1048576).toFixed(1) + " MB, and the limit is 8 MB. Attach a smaller version here and send the full file after the shop replies.", null, $("#q-art"));
-      var nm = $("#q-name"), em = $("#q-email"), ph = $("#q-phone");
-      setErr("name", "", nm); setErr("email", "", em); setErr("phone", "", ph);
-      if (!nm.value.trim()) fail("name", "Add your name.", nm);
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) fail("email", "Add an email like coach@school.org.", em);
-      var pref = val("pref");
-      if ((pref === "Phone call" || pref === "Text") && ph.value.replace(/\D/g, "").length < 10) fail("phone", "Add a 10-digit phone number so the shop can " + (pref === "Text" ? "text" : "call") + " you.", ph);
-    }
+    function check(id, field, ok, msg){ setErr(id, ok ? "" : msg, field); if (!ok && !first) first = field; }
+    check("org", $("#q-org"), $("#q-org").value.trim(), "Add your company, team or school name.");
+    check("name", $("#q-name"), $("#q-name").value.trim(), "Add your name.");
+    check("email", $("#q-email"), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#q-email").value.trim()), "Add an email like coach@school.org.");
+    check("qty", $("#e-qty"), parseInt($("#e-qty").value, 10) >= 1, "Add how many pieces you need.");
+    var total = chosenFiles().reduce(function(t, f){ return t + f.size; }, 0);
+    check("art", $("#q-art"), total <= 8 * 1024 * 1024, "Your files add up to " + (total / 1048576).toFixed(1) + " MB, and the limit is 8 MB. Attach a smaller version and send the full file after we reply.");
     return first;
   }
-
-  function fmtDate(iso){
-    if (!iso) return "";
-    var d = new Date(iso + "T00:00:00");
-    return d.toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric", year: "numeric" });
-  }
-  function chosenFiles(){
-    var out = [];
-    ["#q-art", "#q-art2"].forEach(function(id){ var f = $(id).files; if (f && f[0]) out.push(f[0]); });
-    return out;
-  }
-  function buildReview(){
-    var art = chosenFiles().map(function(f){ return f.name; });
-    if ($("#q-design").checked) art.push("Needs design help");
-    var rows = [
-      ["Outfitting", LABELS.segment[val("segment")] || "", 1],
-      ["Items", checked("products").map(function(p){ return LABELS.products[p]; }).join(", "), 2],
-      ["Decoration", LABELS.method[val("method")] || "", 2],
-      ["Quantity", $("#q-qty").value, 3],
-      ["Needed by", fmtDate($("#q-date").value), 3],
-      ["Details", $("#q-notes").value.trim() || "None added", 3],
-      ["Artwork", art.length ? art.join(", ") : "None attached", 4],
-      ["Contact", [$("#q-name").value.trim(), $("#q-org").value.trim(), $("#q-email").value.trim(), $("#q-phone").value.trim()].filter(Boolean).join(" · ") + " (prefers " + val("pref").toLowerCase() + ")", 4]
-    ];
-    $("#review").innerHTML = rows.map(function(r){
-      return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd><button type="button" class="edit" data-goto="' + r[2] + '" aria-label="Edit ' + r[0] + '">Edit</button></div>';
-    }).join("");
-  }
-  function renderStep(focus){
-    $$(".q-step", form).forEach(function(fs){ fs.hidden = Number(fs.getAttribute("data-step")) !== step; });
-    $$("#q-steps li").forEach(function(li){
-      var n = Number(li.getAttribute("data-s"));
-      li.className = n < step ? "done" : (n === step ? "current" : "");
-      if (n === step) li.setAttribute("aria-current", "step"); else li.removeAttribute("aria-current");
-    });
-    var names = ["Who", "What", "How many", "Contact", "Review"];
-    $("#step-label").textContent = "Step " + step + " of " + TOTAL + ": " + names[step - 1];
-    $("#q-back").hidden = step === 1;
-    $("#q-next").hidden = step === TOTAL;
-    $("#q-submit").hidden = step !== TOTAL;
-    if (step === TOTAL) buildReview();
-    if (focus) {
-      var fs = $('.q-step[data-step="' + step + '"]', form);
-      fs.focus({ preventScroll: true });
-      $(".quote-card").scrollIntoView({ block: "start", behavior: "smooth" });
-    }
-  }
-  $("#q-next").addEventListener("click", function(){
-    var bad = validate(step);
-    if (bad) { bad.focus(); return; }
-    step = Math.min(TOTAL, step + 1); renderStep(true);
-  });
-  $("#q-back").addEventListener("click", function(){ step = Math.max(1, step - 1); renderStep(true); });
-  $("#review").addEventListener("click", function(e){
-    var b = e.target.closest(".edit"); if (!b) return;
-    step = Number(b.getAttribute("data-goto")); renderStep(true);
-  });
   form.addEventListener("submit", function(e){
     e.preventDefault();
-    for (var s = 1; s < TOTAL; s++) { var bad = validate(s); if (bad) { step = s; renderStep(true); bad.focus(); return; } }
-    var btn = $("#q-submit"), sendErr = $("#err-send");
-    sendErr.textContent = "";
-    btn.disabled = true; btn.textContent = "Sending...";
-    var items = checked("products").map(function(p){ return LABELS.products[p]; }).join(", ");
+    renderEstimate();
+    var bad = validate(); if (bad) { bad.focus(); return; }
+    var r = lastEst, g = r.garment, btn = $("#q-submit"), sendErr = $("#err-send");
+    sendErr.textContent = ""; btn.disabled = true; btn.textContent = "Sending...";
     var fd = new FormData(form);
     fd.set("form-name", "quote");
-    fd.set("segment", LABELS.segment[val("segment")] || "");
-    fd.set("products", items);
-    fd.set("method", LABELS.method[val("method")] || "");
+    fd.set("garment", garmentLabel(g));
+    fd.set("estimate", estimateText(r));
     fd.set("date", fmtDate($("#q-date").value));
-    fd.set("design", $("#q-design").checked ? "Yes" : "No");
+    if (r.custom) ["shade", "method", "front", "back", "sleeve", "special", "stitch", "logos", "names"].forEach(function(n){ fd.delete(n); });
+    else {
+      fd.set("shade", r.dark ? "Dark or bright" : "White or light");
+      fd.set("method", METHOD_LABEL[r.method]);
+      if (r.method !== "screen") ["front", "back", "sleeve", "special"].forEach(function(n){ fd.delete(n); });
+      if (r.method !== "embroidery") ["stitch", "logos", "names"].forEach(function(n){ fd.delete(n); });
+      else fd.set("stitch", $("#e-stitch").selectedOptions[0].text);
+    }
     ["art", "art2"].forEach(function(n){ var f = fd.get(n); if (!f || !f.size) fd.delete(n); });
     fetch("/", { method: "POST", body: fd })
-      .then(function(r){
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        var name = $("#q-name").value.trim().split(" ")[0];
-        $("#done-title").textContent = "Thanks, " + name + ". Your request is in.";
-        $("#done-msg").innerHTML = "The shop will reach out by " + esc(val("pref").toLowerCase()) + " within <span class=\"ph\">[X business hours]</span>.";
-        $("#done-summary").textContent = "You asked about: " + items + ", " + $("#q-qty").value + " pieces, needed by " + fmtDate($("#q-date").value) + ".";
-        form.hidden = true; $("#q-steps").hidden = true; $("#step-label").hidden = true; $("#q-done").hidden = false; $("#q-done").focus();
-      })
-      .catch(function(){
-        sendErr.textContent = "Your request didn't go through. Check your connection and try again, or call the shop at (602) 955-7301.";
-      })
-      .then(function(){ btn.disabled = false; btn.textContent = "Send request"; });
+      .then(function(res){ if (!res.ok) throw new Error("HTTP " + res.status); showDone(r); })
+      .catch(function(){ sendErr.textContent = "Your request didn't go through. Check your connection and try again, or call (602) 955-7301."; })
+      .then(function(){ btn.disabled = false; btn.textContent = "Send my request"; });
   });
+  function showDone(r){
+    var name = $("#q-name").value.trim(), email = $("#q-email").value.trim();
+    var rows = [
+      ["Company", $("#q-org").value.trim()],
+      ["Contact", [name, email, $("#q-phone").value.trim()].filter(Boolean).join(" · ")],
+      ["Shirts", r.qty + " × " + garmentLabel(r.garment) + (r.custom ? "" : (r.dark ? ", dark or bright" : ", white or light"))],
+      ["Decoration", r.custom ? "" : (r.deco || METHOD_LABEL[r.method])],
+      ["Description", $("#q-notes").value.trim()],
+      ["Need it by", fmtDate($("#q-date").value)],
+      ["Artwork", chosenFiles().map(function(f){ return f.name; }).join(", ")],
+      ["Estimate", r.total ? money(r.total) + " (" + money(r.total / r.qty) + " each, setup included)" : "Priced by the shop"]
+    ].filter(function(x){ return x[1]; });
+    $("#done-title").textContent = "Thanks, " + name.split(" ")[0] + ". Your request is in.";
+    $("#done-when").textContent = "We respond within 1 business day, by email to " + email + ".";
+    $("#done-summary").innerHTML = rows.map(function(x){ return "<div><dt>" + esc(x[0]) + "</dt><dd>" + esc(x[1]) + "</dd></div>"; }).join("");
+    $("#q-grid").hidden = true; $("#q-done").hidden = false;
+    window.scrollTo(0, 0); $("#q-done").focus({ preventScroll: true });
+  }
   function resetQuote(){
-    form.reset(); $("#art-list").innerHTML = ""; $("#rush-note").hidden = true; $("#err-send").textContent = "";
+    form.reset(); $("#art-list").innerHTML = ""; $("#rush-note").hidden = true; $("#err-send").textContent = ""; $("#q-segment").value = "";
     $$(".err", form).forEach(function(p){ p.textContent = ""; });
     $$("[aria-invalid]", form).forEach(function(f){ f.removeAttribute("aria-invalid"); });
-    form.hidden = false; $("#q-steps").hidden = false; $("#step-label").hidden = false; $("#q-done").hidden = true;
-    $("#phone-hint").textContent = "(optional)";
-    step = 1;
+    $("#q-grid").hidden = false; $("#q-done").hidden = true;
+    renderEstimate();
   }
-  $("#q-again").addEventListener("click", function(){ resetQuote(); renderStep(true); });
-
-  $("#q-date").addEventListener("change", function(){
-    var d = daysUntil(this.value);
-    $("#rush-note").hidden = !(d >= 0 && d < 21);
-    if (this.value && d >= 0) setErr("date", "", this);
-  });
-  function listFiles(){
-    $("#art-list").innerHTML = chosenFiles().map(function(f){ return "<li>" + esc(f.name) + " (" + (f.size / 1048576).toFixed(1) + " MB)</li>"; }).join("");
-    setErr("art", "");
-  }
+  $("#q-again").addEventListener("click", function(){ resetQuote(); window.scrollTo(0, 0); });
+  $("#q-date").addEventListener("change", function(){ var d = daysUntil(this.value); $("#rush-note").hidden = !(d >= 0 && d < 21); });
+  function listFiles(){ $("#art-list").innerHTML = chosenFiles().map(function(f){ return "<li>" + esc(f.name) + " (" + (f.size / 1048576).toFixed(1) + " MB)</li>"; }).join(""); setErr("art", ""); }
   $("#q-art").addEventListener("change", listFiles);
   $("#q-art2").addEventListener("change", listFiles);
-  form.addEventListener("change", function(e){
-    if (e.target.name === "pref") $("#phone-hint").textContent = (e.target.value === "Email") ? "(optional)" : "(required for " + e.target.value.toLowerCase() + ")";
-    if (e.target.name === "segment") setErr("segment", "");
-    if (e.target.name === "products") setErr("products", "");
-  });
+  form.addEventListener("input", function(e){ if (e.target.id && $("#err-" + e.target.id.replace(/^[qe]-/, ""))) setErr(e.target.id.replace(/^[qe]-/, ""), "", e.target); });
 
   /* Prefill from CTAs anywhere on the site */
   function prefill(opts){
     if (!$("#q-done").hidden) resetQuote();
-    if (opts.segment) { var r = $("#seg-" + opts.segment); if (r) r.checked = true; }
-    if (opts.product) { var p = $("#p-" + opts.product); if (p) p.checked = true; }
+    if (opts.segment) $("#q-segment").value = SEG[opts.segment] ? SEG[opts.segment].label : opts.segment;
+    if (opts.garment) $("#e-garment").value = opts.garment;
+    if (opts.method) { var m = $("#e-m-" + opts.method); if (m) m.checked = true; }
     if (opts.notes) { var n = $("#q-notes"); if (n.value.indexOf(opts.notes) < 0) n.value = (n.value ? n.value + "\n" : "") + opts.notes; }
-    if (opts.method) { var m = $("#m-" + opts.method); if (m) m.checked = true; }
-    if (opts.qtyRange) $("#q-qty").value = opts.qtyRange;
-    step = opts.segment ? 2 : 1;
+    renderEstimate();
   }
   document.addEventListener("click", function(e){
     var a = e.target.closest(".to-quote");
@@ -1640,118 +1554,10 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     else if (!$("#q-done").hidden) resetQuote();
   });
   $("#jk-quote").addEventListener("click", function(){
-    prefill({ segment: val("segment") ? null : "schools", product: "jackets", notes: "Jacket colors: " + comboText() });
-    if (val("segment")) step = 2;
+    prefill({ segment: "schools", garment: "jacket", notes: "Letterman jacket colors: " + comboText() });
     if (location.hash === "#quote") show("quote"); else location.hash = "quote";
   });
-
-
-  /* ---------- Instant estimate ---------- */
-  var P = window.ARTCRAFT_PRICING || null;
-  var CAT_LABEL = { tee: "T-shirts", longsleeve: "Long sleeve", hoodie: "Hoodies", polo: "Polos", cap: "Caps", own: "Your own garments" };
-  var CAT_PRODUCT = { tee: "spirit", longsleeve: "spirit", hoodie: "spirit", polo: "polos", cap: "polos" };
-  function money(n){ return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-  function tierIndex(tiers, q){ for (var i = 0; i < tiers.length; i++) if (q >= tiers[i][0] && q <= tiers[i][1]) return i; return -1; }
-  function intVal(id, min){ var v = parseInt($(id).value, 10); return isNaN(v) ? min : Math.max(min, v); }
-  function qtyRange(q){ return q < 12 ? "1–11" : q < 25 ? "12–24" : q < 50 ? "25–49" : q < 100 ? "50–99" : q < 250 ? "100–249" : "250+"; }
-  var estBuilt = false, lastEst = null;
-
-  function buildEstimateForm(){
-    if (estBuilt || !P) return;
-    var groups = {};
-    P.garments.forEach(function(g){ (groups[g.category] = groups[g.category] || []).push(g); });
-    $("#e-garment").innerHTML = Object.keys(groups).map(function(cat){
-      return '<optgroup label="' + esc(CAT_LABEL[cat] || cat) + '">' + groups[cat].map(function(g){
-        return '<option value="' + esc(g.id) + '">' + esc((g.style ? g.style + " · " : "") + g.name) + '</option>';
-      }).join("") + '</optgroup>';
-    }).join("");
-    $("#est-sample").hidden = !P.sample;
-    $("#est-form").addEventListener("input", renderEstimate);
-    $("#est-form").addEventListener("change", renderEstimate);
-    estBuilt = true;
-  }
-
-  function computeEstimate(){
-    var g = P.garments.filter(function(x){ return x.id === $("#e-garment").value; })[0] || P.garments[0];
-    var qty = intVal("#e-qty", 1), big = Math.min(intVal("#e-big", 0), qty);
-    var dark = $("#e-dark").checked;
-    var method = (($$('input[name="e-method"]:checked')[0]) || {}).value || "screen";
-    var r = { garment: g, qty: qty, big: big, dark: dark, method: method, lines: [], setup: [], call: null, note: null };
-    r.lines.push([g.category === "own" ? "Your garments" : "Garment (" + g.style + ")", g.price]);
-    var deco = 0, label = "", details = [];
-    if (method === "screen") {
-      var S = P.screen, ti = tierIndex(S.tiers, qty);
-      if (ti < 0) { r.call = "Screen printing " + (S.tiers[S.tiers.length - 1][1] + 1).toLocaleString() + "+ pieces is priced by the shop."; return r; }
-      var spots = [["Front", intVal("#e-front", 0)], ["Back", intVal("#e-back", 0)], ["Sleeve", intVal("#e-sleeve", 0)]].filter(function(s){ return s[1] > 0; });
-      if (!spots.length) { r.note = "Pick at least one print spot (front, back or sleeve)."; return r; }
-      var totalColors = 0;
-      spots.forEach(function(s){
-        var each = S.firstColor[ti] + (s[1] - 1) * S.addColor[ti] + (dark ? S.darkFlash[ti] : 0);
-        if ($("#e-special").checked) each = Math.ceil(each * (1 + S.specialInkPct / 100) * 20) / 20;
-        r.lines.push([s[0] + " print, " + s[1] + " color" + (s[1] > 1 ? "s" : "") + (dark ? " on dark" : ""), each]);
-        totalColors += s[1]; details.push(s[0].toLowerCase() + " " + s[1] + "c");
-      });
-      r.setup.push(["Screens (" + totalColors + " × " + money(S.screenPerColor) + ")", totalColors * S.screenPerColor]);
-      if ($("#e-art").checked) r.setup.push(["Artwork (about 1 hour)", S.artPerHour]);
-      label = "Screen printing: " + details.join(", ") + ($("#e-special").checked ? ", special ink" : "");
-    } else if (method === "embroidery") {
-      var E = P.embroidery, ei = tierIndex(E.tiers, qty);
-      if (ei < 0) { r.call = "Embroidery over " + E.tiers[E.tiers.length - 1][1].toLocaleString() + " pieces is priced by the shop."; return r; }
-      var k = $("#e-stitch").value, logos = intVal("#e-logos", 1);
-      var per = E.rows[k][ei];
-      if (g.category === "cap") per += E.capsBagsBulky;
-      if ($("#e-metallic").checked) per = Math.ceil(per * (1 + E.metallicPct / 100) * 20) / 20;
-      for (var i = 1; i <= logos; i++) r.lines.push(["Embroidered logo" + (logos > 1 ? " " + i : "") + " (~" + k + ",000 stitches)", per]);
-      if ($("#e-names").checked) r.lines.push(["Individual name", qty >= 12 ? E.names12Plus : E.namesUnder12]);
-      var setupEach = Number(k) > 10 ? E.logoSetupOver10k : E.logoSetup;
-      r.setup.push(["Logo setup" + (logos > 1 ? " (" + logos + " × " + money(setupEach) + ")" : ""), logos * setupEach]);
-      label = "Embroidery: " + logos + " logo" + (logos > 1 ? "s" : "") + " ~" + k + "K stitches" + ($("#e-names").checked ? ", names" : "") + ($("#e-metallic").checked ? ", metallic" : "");
-    } else {
-      r.note = "DTG and DTF are priced on your quote."; label = "DTG or DTF";
-    }
-    r.each = r.lines.reduce(function(t, l){ return t + l[1]; }, 0);
-    r.setupTotal = r.setup.reduce(function(t, l){ return t + l[1]; }, 0);
-    r.bigTotal = big * g.add2xl;
-    r.total = r.each * qty + r.bigTotal + r.setupTotal;
-    r.label = label;
-    return r;
-  }
-
-  function renderEstimate(){
-    var box = $("#est-summary");
-    if (!P) { box.innerHTML = '<h3>Your estimate</h3><p class="est-note">Pricing isn\'t available right now. Send a quote request and the shop will price it.</p><a class="btn btn-gold to-quote" href="#quote" style="margin-top:14px">Request a quote</a>'; return; }
-    buildEstimateForm();
-    $("#e-screen").hidden = !$("#e-m-screen").checked;
-    $("#e-emb").hidden = !$("#e-m-emb").checked;
-    $("#e-digital").hidden = !$("#e-m-digital").checked;
-    var r = computeEstimate(); lastEst = r;
-    var head = '<h3>Your estimate</h3><p class="for">' + r.qty.toLocaleString() + ' × ' + esc(r.garment.style || "your garments") + (r.garment.style ? ", " + esc(r.garment.name) : "") + '</p>';
-    if (r.call || (r.note && r.method !== "digital")) {
-      box.innerHTML = head + '<div class="est-call"><p>' + esc(r.call || r.note) + '</p>' + (r.call ? '<p style="margin-top:8px">Call <a class="tel" href="tel:+16029557301">(602) 955-7301</a> or send a quote request.</p>' : '') + '</div>' +
-        (r.call ? '<button type="button" class="btn btn-gold" id="est-quote" style="margin-top:16px">Request a quote</button>' : '');
-    } else if (r.method === "digital") {
-      box.innerHTML = head + '<dl class="est-lines"><div><dt>' + esc(r.lines[0][0]) + '</dt><dd>' + money(r.lines[0][1]) + ' each</dd></div></dl><div class="est-call"><p>DTG and DTF printing is priced on your quote, based on design size and colors.</p></div><button type="button" class="btn btn-gold" id="est-quote" style="margin-top:16px">Request this quote</button>';
-    } else {
-      var lines = r.lines.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("");
-      lines += '<div class="each"><dt>Each</dt><dd>' + money(r.each) + '</dd></div>';
-      var bigLine = r.big ? '<dl class="est-lines"><div><dt>2XL and up (' + r.big + ' × ' + money(r.garment.add2xl) + ')</dt><dd>' + money(r.bigTotal) + '</dd></div></dl>' : '';
-      var setup = r.setup.length ? '<p class="est-sub">One-time setup</p><dl class="est-lines">' + r.setup.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("") + '</dl>' : '';
-      box.innerHTML = head + '<dl class="est-lines">' + lines + '</dl>' + bigLine + setup +
-        '<div class="est-total"><span>Estimated total</span><strong>' + money(r.total) + '</strong></div>' +
-        '<p class="est-allin">About ' + money(r.total / r.qty) + ' each, setup included.</p>' +
-        '<button type="button" class="btn btn-gold" id="est-quote">Request this quote</button>';
-    }
-    box.innerHTML += '<p class="est-fine">Estimate only. Tax and shipping not included. The shop confirms your final price on the proof.' + (P.sample ? ' <span class="ph">[Sample garment prices]</span>' : '') + '</p>';
-  }
-
-  document.addEventListener("click", function(e){
-    if (!e.target.closest("#est-quote") || !lastEst) return;
-    var r = lastEst, g = r.garment;
-    var note = "Instant estimate: " + r.qty + " × " + (g.style ? g.style + " " + g.name : "customer-supplied garments") + " (" + (r.dark ? "dark" : "light") + " color)" +
-      (r.big ? ", " + r.big + " in 2XL+" : "") + ". " + (r.label || "") + (r.total ? ". Estimated total " + money(r.total) + " (" + money(r.total / r.qty) + " each incl. setup)." : ".");
-    prefill({ product: CAT_PRODUCT[g.category], method: r.method === "screen" ? "screen" : r.method === "embroidery" ? "embroidery" : "unsure", qtyRange: qtyRange(r.qty), notes: note });
-    location.hash = "quote";
-  });
+  renderEstimate();
 
   show(location.hash.slice(1) || "home");
 })();
