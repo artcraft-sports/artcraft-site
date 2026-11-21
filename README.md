@@ -19,11 +19,11 @@ git push
 
 ## Launch checklist
 
-- [ ] Remove the concept bar at the top of `index.html`
-- [ ] Remove `<meta name="robots" content="noindex, nofollow">` from `index.html`
-- [ ] Delete the `[[headers]]` noindex block in `netlify.toml`
-- [ ] Wire the quote form to Netlify Forms and send test requests
-- [ ] Replace every `[bracketed]` placeholder
+- [x] Remove the concept bar at the top of `index.html`
+- [x] Remove `<meta name="robots" content="noindex, nofollow">` from `index.html`
+- [x] Delete the `[[headers]]` noindex block in `netlify.toml`
+- [ ] Send test quote requests through the live form (markup is wired for Netlify Forms; confirm both inboxes get the email)
+- [ ] Replace every `[bracketed]` placeholder (all remaining ones are inside hidden sections, so visitors cannot see them)
 - [ ] Add artcraftsports.com in Netlify (external DNS), then update the A and www CNAME records at GoDaddy (DNS is on GoDaddy nameservers; Wix only hosts the old site). Leave MX/TXT records alone: email runs on Microsoft 365
 - [ ] Confirm HTTPS is active in Netlify
 - [ ] Update the Google Business Profile address
