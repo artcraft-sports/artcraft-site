@@ -6,3 +6,4 @@ node_modules/
 .vscode/
 Claude outputs/
 private/
+.claude/

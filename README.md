@@ -34,9 +34,9 @@ git push
 Set without owner confirmation. Change the site if any turn out wrong.
 
 - Shop address: 2525 E Thomas Rd, Phoenix, AZ 85016
-- Turnaround: about 3 weeks after proof approval
-- Minimum order: $100
-- Pickup only; shipping on the customer's carrier account
+- Turnaround: 7 to 10 business days after proof approval (asked client for order-to-delivery total)
+- Minimum order: 12 pieces (client prefers; replaced $100 minimum)
+- Pickup, or UPS shipping for a charge
 - Quote requests go to wil@artcraftsports.com and getharbingerconsulting@gmail.com (set in Netlify form notifications)
 - Department price sheets are costs; website prices use a 50% margin (cost x 2)
 - Garment costs are still samples, so the estimate shows decoration only and garments are "priced on your quote". Load real SanMar costs in private/costs.json, set "sample" to false and re-run the build script to switch garment prices on
