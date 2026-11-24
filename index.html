@@ -1050,10 +1050,12 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           </div>
           <p class="est-note" id="e-custom" hidden>We'll price this one on your quote. Describe it below.</p>
           <div class="field" style="margin-top:18px"><label for="q-notes">Describe it <span class="hint">(colors, sizes, logo, anything else)</span></label><textarea id="q-notes" name="notes" placeholder="e.g. Navy tees, white logo on the front, names on the back, youth M to adult XL"></textarea></div>
-          <div class="two">
-            <div class="field"><label for="q-date">Need it by <span class="hint">(optional)</span></label><input type="date" id="q-date" name="date"></div>
-            <div class="field"><label for="e-big">2XL or bigger <span class="hint">(how many, optional)</span></label><input type="number" id="e-big" name="big" min="0" step="1" value="0" inputmode="numeric"></div>
+          <div class="three" id="e-sizes">
+            <div class="field"><label for="e-2xl">How many 2XL <span class="hint" data-up="2XL">(optional)</span></label><input type="number" id="e-2xl" name="size-2xl" min="0" step="1" value="0" inputmode="numeric"></div>
+            <div class="field"><label for="e-3xl">How many 3XL <span class="hint" data-up="3XL">(optional)</span></label><input type="number" id="e-3xl" name="size-3xl" min="0" step="1" value="0" inputmode="numeric"></div>
+            <div class="field"><label for="e-4xl">How many 4XL <span class="hint" data-up="4XL">(optional)</span></label><input type="number" id="e-4xl" name="size-4xl" min="0" step="1" value="0" inputmode="numeric"></div>
           </div>
+          <div class="field" style="max-width:340px"><label for="q-date">Need it by <span class="hint">(optional)</span></label><input type="date" id="q-date" name="date"></div>
           <p class="rush" id="rush-note" hidden>That's a tight window. We'll confirm whether rush production fits.</p>
           <div class="drop">
             <div class="file-row"><input type="file" id="q-art" name="art" accept="image/*,.pdf,.ai,.eps,.svg"><label for="q-art">Attach your logo or artwork</label></div>
@@ -1359,15 +1361,22 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       return '<optgroup label="' + esc(c) + '">' + groups[c].map(function(g){ return '<option value="' + esc(g.id) + '">' + esc((g.style ? g.style + " · " : "") + g.name) + '</option>'; }).join("") + '</optgroup>';
     }).join("");
     $("#q-date").min = todayISO();
+    if (P) P.sizeUpcharge.forEach(function(u){ var h = $('#e-sizes [data-up="' + u[0] + '"]'); if (h) h.textContent = "(+" + money(u[1]).replace(".00", "") + " each)"; });
   })();
 
   function computeEstimate(){
-    var g = currentGarment(), qty = intVal("#e-qty", 1), big = Math.min(intVal("#e-big", 0), qty);
+    var g = currentGarment(), qty = intVal("#e-qty", 1), left = qty, big = 0, bigCost = 0, bigParts = [];
+    (P ? P.sizeUpcharge : []).forEach(function(u){
+      var n = Math.min(intVal("#e-" + u[0].toLowerCase(), 0), left); if (!n) return;
+      left -= n; big += n; bigCost += n * u[1]; bigParts.push(n + " × " + u[0]);
+    });
     var dark = $("#e-dark").checked, method = methodVal();
-    var r = { garment: g, qty: qty, big: big, dark: dark, method: method, lines: [], setup: [], custom: false, call: null, note: null, deco: "" };
+    var r = { garment: g, qty: qty, big: big, bigLabel: bigParts.join(", "), dark: dark, method: method, lines: [], setup: [], custom: false, call: null, note: null, deco: "" };
     if (!P || g.category === "jacket" || g.category === "other") { r.custom = true; return r; }
-    r.tbd = !!P.sample && g.category !== "own";
-    r.lines.push([g.category === "own" ? "Your garments" : "Garment (" + g.style + ")", r.tbd ? null : g.price]);
+    var own = g.category === "own", gt = 0;
+    P.garmentTiers.forEach(function(t, i){ if (qty >= t) gt = i; });
+    r.tbd = !own && (!!P.sample || !g.prices);
+    r.lines.push([own ? "Your garments" : "Garment (" + g.style + ")", r.tbd ? null : own ? 0 : g.prices[gt]]);
     if (method === "digital") { r.note = "DTG / DTF printing is priced on your quote."; r.deco = "DTG / DTF"; return r; }
     if (method === "screen" || method === "unsure") {
       var S = P.screen, ti = tierIndex(S.tiers, qty);
@@ -1395,7 +1404,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     }
     r.each = r.lines.reduce(function(t, l){ return t + (l[1] || 0); }, 0);
     r.setupTotal = r.setup.reduce(function(t, l){ return t + l[1]; }, 0);
-    r.bigTotal = r.tbd ? 0 : big * g.add2xl;
+    r.bigTotal = r.tbd || own || g.category === "cap" ? 0 : bigCost;
     r.total = r.each * qty + r.bigTotal + r.setupTotal;
     return r;
   }
@@ -1404,7 +1413,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     if (r.custom) return head + ". Priced by the shop.";
     if (r.call) return head + ". " + r.call;
     if (!r.total) return head + ". " + (r.deco || METHOD_LABEL[r.method]) + ". " + (r.note || "Priced by the shop.");
-    return head + (r.big ? " (" + r.big + " in 2XL+)" : "") + ". " + r.deco + ". Estimate " + money(r.each) + " each + " + money(r.setupTotal) + " setup = " + money(r.total) + " total." + (r.tbd ? " Decoration only. Garments priced on your quote." : "");
+    return head + (r.big ? " (" + r.bigLabel + ")" : "") + ". " + r.deco + ". Estimate " + money(r.each) + " each + " + money(r.setupTotal) + " setup = " + money(r.total) + " total." + (r.tbd ? " Decoration only. Garments priced on your quote." : "");
   }
   function renderEstimate(){
     var r = computeEstimate(), m = r.method; lastEst = r;
@@ -1419,7 +1428,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     else {
       html = head + '<dl class="est-lines">' + r.lines.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + (l[1] === null ? 'On your quote' : money(l[1])) + '</dd></div>'; }).join("") +
         '<div class="each"><dt>' + (r.tbd ? 'Decoration, each' : 'Each') + '</dt><dd>' + money(r.each) + '</dd></div></dl>' +
-        (r.big && !r.tbd ? '<dl class="est-lines"><div><dt>2XL and up (' + r.big + ')</dt><dd>' + money(r.bigTotal) + '</dd></div></dl>' : '') +
+        (r.bigTotal ? '<dl class="est-lines"><div><dt>Bigger sizes (' + esc(r.bigLabel) + ')</dt><dd>' + money(r.bigTotal) + '</dd></div></dl>' : '') +
         '<dl class="est-lines">' + r.setup.map(function(l){ return '<div><dt>' + esc(l[0]) + ', one time</dt><dd>' + money(l[1]) + '</dd></div>'; }).join("") + '</dl>' +
         '<div class="est-total"><span>' + (r.tbd ? 'Decoration estimate' : 'Estimated total') + '</span><strong>' + money(r.total) + '</strong></div>' +
         '<p class="est-allin">About ' + money(r.total / r.qty) + (r.tbd ? ' each for decoration, setup included. Garments are priced on your quote.' : ' each, setup included.') + '</p>';
