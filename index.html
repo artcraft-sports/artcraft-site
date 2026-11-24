@@ -115,7 +115,7 @@ a,button,label{-webkit-tap-highlight-color:transparent}
 .facts dt{font:700 13px/1.2 var(--f-head);text-transform:uppercase;letter-spacing:.12em;color:var(--on-navy);margin-bottom:6px}
 .facts dd{margin:0;font:800 23px/1.05 var(--f-head);text-transform:uppercase;color:var(--white);max-width:12ch}
 .hero-art{position:relative;display:flex;justify-content:center}
-.hero-jersey{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.hero-jersey{width:100%;max-width:400px;height:auto;overflow:visible}
 .num{font-family:var(--f-display);font-size:186px}
 .num-border{fill:var(--white);stroke:var(--white);stroke-width:26px;stroke-linejoin:round}
 .num-fill{fill:var(--accent)}
@@ -486,6 +486,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     <pattern id="mesh" width="10" height="10" patternUnits="userSpaceOnUse">
       <circle cx="5" cy="5" r="1.5" fill="#ffffff" fill-opacity="0.07"></circle>
     </pattern>
+    <filter id="jerseyShadow" x="-40%" y="-40%" width="180%" height="190%"><feGaussianBlur stdDeviation="20"></feGaussianBlur></filter>
     <clipPath id="jerseyClip">
       <path d="M128 28 Q210 82 292 28 L392 70 L418 178 L338 196 L338 446 L82 446 L82 196 L2 178 L28 70 Z"></path>
     </clipPath>
@@ -542,6 +543,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       </div>
       <div class="hero-art">
         <svg class="hero-jersey" viewBox="0 0 420 460" role="img" aria-label="Navy jersey with the number 53, for the founding year 1953">
+          <path d="M128 28 Q210 82 292 28 L392 70 L418 178 L338 196 L338 446 L82 446 L82 196 L2 178 L28 70 Z" transform="translate(0 30)" fill="#000" fill-opacity=".35" filter="url(#jerseyShadow)"></path>
           <path d="M128 28 Q210 82 292 28 L392 70 L418 178 L338 196 L338 446 L82 446 L82 196 L2 178 L28 70 Z" fill="#0D3272" stroke="#2B4F94" stroke-width="2"></path>
           <rect x="0" y="0" width="420" height="460" fill="url(#mesh)" clip-path="url(#jerseyClip)"></rect>
           <path d="M128 28 Q210 82 292 28" fill="none" stroke="#BB1916" stroke-width="12" stroke-linecap="round"></path>
