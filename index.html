@@ -155,7 +155,7 @@ a,button,label{-webkit-tap-highlight-color:transparent}
 .patch-art svg + svg{width:92px}
 
 /* Decorate strip */
-.method-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--navy);border-radius:6px;overflow:hidden}
+.method-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--navy);border-radius:6px;overflow:hidden}
 .method-strip > div{padding:24px;border-right:2px solid var(--navy)}
 .method-strip > div:last-child{border-right:0}
 .method-strip h3{font-weight:800;text-transform:uppercase;font-size:22px;margin-bottom:6px}
@@ -418,9 +418,6 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   .path-grid,.work-grid{grid-template-columns:repeat(2,1fr)}
   .prod-grid{grid-template-columns:1fr 1fr}
   .prod-feature{grid-row:auto;grid-column:span 2}
-  .method-strip{grid-template-columns:1fr 1fr}
-  .method-strip > div:nth-child(2){border-right:0}
-  .method-strip > div:nth-child(-n+2){border-bottom:2px solid var(--navy)}
   .process{grid-template-columns:1fr 1fr}
   .logo-grid{grid-template-columns:repeat(3,1fr)}
   .jacket-stage{top:92px;z-index:5;padding:10px 12px;box-shadow:0 10px 24px rgba(14,26,51,.12)}
@@ -429,6 +426,9 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:1140px){
+  .method-strip{grid-template-columns:1fr 1fr}
+  .method-strip > div:nth-child(2n){border-right:0}
+  .method-strip > div:nth-child(-n+4){border-bottom:2px solid var(--navy)}
   .menu-btn{display:inline-flex}
   .site-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px 16px 20px;gap:2px;box-shadow:0 16px 30px rgba(14,26,51,.12)}
   .site-nav.open{display:flex}
@@ -530,14 +530,14 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <p class="eyebrow-display">We Do Apparel Right!</p>
         </div>
         <h1>Phoenix's team apparel shop since 1953.</h1>
-        <p class="lede">Uniforms, handcrafted letterman jackets and branded gear. Screen printing, embroidery, DTG and DTF, all done in-house for teams, schools, pro clubs and businesses across Arizona.</p>
+        <p class="lede">Uniforms, handcrafted letterman jackets and branded gear. Screen printing, embroidery, appliqué, DTG and DTF, all done in-house for teams, schools, pro clubs and businesses across Arizona.</p>
         <div class="cta-row">
           <a class="btn btn-gold to-quote" href="#quote">Start a Quote</a>
           <a class="btn btn-line" href="#jackets">Design a Letterman Jacket</a>
         </div>
         <dl class="facts">
           <div><dt>In business since</dt><dd>1953</dd></div>
-          <div><dt>Decoration</dt><dd>4 methods in-house</dd></div>
+          <div><dt>Decoration</dt><dd>5 methods in-house</dd></div>
           <div><dt>Letterman jackets</dt><dd>Handcrafted on site</dd></div>
         </dl>
       </div>
@@ -584,7 +584,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <a class="path-card" href="#pro">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 16v5"></path><path d="M7 4h10v5a5 5 0 0 1-10 0z"></path><path d="M7 6H4a3 3 0 0 0 3.5 4"></path><path d="M17 6h3a3 3 0 0 1-3.5 4"></path></svg>
           <h3>Pro &amp; College</h3>
-          <p>Game uniforms built to spec, plus staff and fan apparel.</p>
+          <p>Game uniforms built to spec. We made the original Suns jersey.</p>
           <span class="go">See how it works</span>
         </a>
         <a class="path-card" href="#business">
@@ -656,7 +656,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       <div class="sec-head">
         <div>
           <p class="kicker">How we decorate</p>
-          <h2 class="h2">Four methods, one roof.</h2>
+          <h2 class="h2">Five methods, one roof.</h2>
           <p>Not sure which one you need? Tell us about the job and we'll recommend the right method for your fabric, quantity and budget.</p>
         </div>
         <div class="cta-row" style="align-items:center;gap:20px"><a class="text-link" href="#decorate">Compare methods</a><a class="btn btn-gold to-quote" href="#quote">Get an instant price</a></div>
@@ -664,7 +664,8 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       <div class="method-strip">
         <div><h3>Screen Printing</h3><p>Ink pressed through a screen, one color at a time. Bold and built to last.</p><p class="ex"><b>Example:</b> 150 team tees with a 2-color logo.</p></div>
         <div><h3>Embroidery</h3><p>Your logo stitched in thread for a raised, premium look.</p><p class="ex"><b>Example:</b> a company logo on staff polos and hats.</p></div>
-        <div><h3>DTG <small>Direct-to-Garment</small></h3><p>Like an inkjet printer for shirts. Ink goes straight into the cotton, so any color and photo detail works.</p><p class="ex"><b>Example:</b> a full-color team photo on 12 cotton tees.</p></div>
+        <div><h3>Appliqué <small>Sewn-on twill</small></h3><p>Names, numbers and team crests cut from fabric and sewn onto the jersey.</p><p class="ex"><b>Example:</b> sewn names, numbers and a crest on team jerseys.</p></div>
+        <div><h3>DTG <small>Direct-to-Garment</small></h3><p>Like an inkjet printer for shirts. Water-based ink goes straight into the cotton for a very soft feel and photo detail.</p><p class="ex"><b>Example:</b> a full-color team photo on 12 cotton tees.</p></div>
         <div><h3>DTF <small>Direct-to-Film</small></h3><p>Your art is printed on a film, then heat-pressed on, like a heavy-duty iron-on.</p><p class="ex"><b>Example:</b> full-color names and numbers on polyester jerseys.</p></div>
       </div>
     </div>
@@ -891,9 +892,14 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
           <dl><dt>How it works</dt><dd>A machine stitches your logo with thousands of thread stitches.</dd><dt>Example job</dt><dd>A company logo on the chest of 40 staff polos and matching hats.</dd><dt>Feels like</dt><dd>Raised thread you can feel.</dd><dt>Best for</dt><dd>Polos, hats, jackets, staff wear</dd><dt>Minimum</dt><dd>12 pieces</dd><dt>Turnaround</dt><dd>7 to 10 business days</dd></dl>
         </article>
         <article class="method">
+          <h3>Appliqué <small>Sewn-on twill</small></h3>
+          <p>Names, numbers and team crests cut from fabric and sewn onto the jersey. The traditional look of a pro game jersey.</p>
+          <dl><dt>How it works</dt><dd>We cut each letter, number or crest from twill fabric, then stitch it onto the garment around the edges.</dd><dt>Example job</dt><dd>Sewn-on names and numbers plus a team crest on a set of game jerseys.</dd><dt>Feels like</dt><dd>Layered fabric with a stitched edge.</dd><dt>Best for</dt><dd>Jersey names and numbers, team crests</dd><dt>Minimum</dt><dd>12 pieces</dd><dt>Turnaround</dt><dd>7 to 10 business days</dd></dl>
+        </article>
+        <article class="method">
           <h3>DTG <small>Direct-to-Garment</small></h3>
           <p>Think of it as an inkjet printer for shirts. Unlimited colors and photo-level detail, with no screens to set up.</p>
-          <dl><dt>How it works</dt><dd>The printer sprays ink straight into the fabric, the same way a photo prints on paper.</dd><dt>Example job</dt><dd>A full-color team photo on 12 cotton tees for end-of-season gifts.</dd><dt>Feels like</dt><dd>Soft. The ink soaks into the cotton, so you barely feel it.</dd><dt>Best for</dt><dd>Small runs, photos and detailed art, 100% cotton</dd><dt>Minimum</dt><dd>12 pieces</dd><dt>Turnaround</dt><dd>7 to 10 business days</dd></dl>
+          <dl><dt>How it works</dt><dd>The printer sprays water-based ink straight into the fabric, the same way a photo prints on paper.</dd><dt>Example job</dt><dd>A full-color team photo on 12 cotton tees for end-of-season gifts.</dd><dt>Feels like</dt><dd>Very soft. The water-based ink soaks into the cotton, so you barely feel it.</dd><dt>Keep in mind</dt><dd>Colors are not as vibrant as the plastisol ink used in screen printing.</dd><dt>Best for</dt><dd>Small runs, photos and detailed art, 100% cotton</dd><dt>Minimum</dt><dd>12 pieces</dd><dt>Turnaround</dt><dd>7 to 10 business days</dd></dl>
         </article>
         <article class="method">
           <h3>DTF <small>Direct-to-Film</small></h3>
@@ -903,13 +909,15 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       </div>
       <div class="table-box" role="region" aria-label="Method comparison" tabindex="0">
         <table>
-          <thead><tr><th scope="col">If you need</th><th scope="col">Screen print</th><th scope="col">Embroidery</th><th scope="col">DTG (direct-to-garment)</th><th scope="col">DTF (direct-to-film)</th></tr></thead>
+          <thead><tr><th scope="col">If you need</th><th scope="col">Screen print</th><th scope="col">Embroidery</th><th scope="col">Appliqué</th><th scope="col">DTG (direct-to-garment)</th><th scope="col">DTF (direct-to-film)</th></tr></thead>
           <tbody>
-            <tr><th scope="row">100+ of the same design</th><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
-            <tr><th scope="row">A dozen or fewer</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
-            <tr><th scope="row">Full-color or photo art</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
-            <tr><th scope="row">Polyester performance wear</th><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td></tr>
-            <tr><th scope="row">Premium feel on polos and hats</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
+            <tr><th scope="row">100+ of the same design</th><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
+            <tr><th scope="row">A dozen or fewer</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Full-color or photo art</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Polyester performance wear</th><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td></tr>
+            <tr><th scope="row">Premium feel on polos and hats</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
+            <tr><th scope="row">Sewn names, numbers and crests on jerseys</th><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-no">Not ideal</span></td></tr>
+            <tr><th scope="row">The brightest, boldest color</th><td><span class="fit fit-great">Great</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-good">Good</span></td><td><span class="fit fit-no">Not ideal</span></td><td><span class="fit fit-good">Good</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -956,7 +964,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
         <li><span class="yr"><span class="ph">[Year]</span></span><p>Veteran-owned since <span class="ph">[year]</span>. <span class="ph">[Owner name, branch of service and years served, in his words]</span></p></li>
         <li><span class="yr"><span class="ph">[Year]</span></span><p><span class="ph">[Milestone: first letterman jackets, first school or pro contract]</span></p></li>
         <li><span class="yr"><span class="ph">[Year]</span></span><p><span class="ph">[Milestone: moved to the current shop]</span></p></li>
-        <li><span class="yr">Today</span><p>Screen printing, embroidery, DTG and DTF in-house, and letterman jackets handcrafted on site.</p></li>
+        <li><span class="yr">Today</span><p>Screen printing, embroidery, appliqué, DTG and DTF in-house, and letterman jackets handcrafted on site.</p></li>
       </ol>
     </div>
   </div>
@@ -1022,6 +1030,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
             <div class="pref" role="radiogroup" aria-label="Decoration">
               <label class="choice"><input type="radio" name="method" value="screen" id="e-m-screen" checked><span><strong>Screen print</strong></span></label>
               <label class="choice"><input type="radio" name="method" value="embroidery" id="e-m-embroidery"><span><strong>Embroidery</strong></span></label>
+              <label class="choice"><input type="radio" name="method" value="applique" id="e-m-applique"><span><strong>Appliqué</strong></span></label>
               <label class="choice"><input type="radio" name="method" value="digital" id="e-m-digital"><span><strong>DTG / DTF</strong></span></label>
               <label class="choice"><input type="radio" name="method" value="unsure" id="e-m-unsure"><span><strong>Not sure</strong></span></label>
             </div>
@@ -1046,6 +1055,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
               <label class="inline-check" style="margin:4px 0 0"><input type="checkbox" id="e-names" name="names" value="Yes"> Add individual names</label>
             </div>
             <p class="est-note est-panel" id="e-digital" hidden>DTG and DTF are priced by design size and colors. Attach your artwork and we'll price it.</p>
+            <p class="est-note est-panel" id="e-applique" hidden>Appliqué is priced by the names, numbers and crests on each piece. Describe them below and we'll price it.</p>
             <p class="est-note est-panel" id="e-unsure" hidden>No problem. We'll recommend the best method. The estimate assumes a 1-color screen print.</p>
           </div>
           <p class="est-note" id="e-custom" hidden>We'll price this one on your quote. Describe it below.</p>
@@ -1152,8 +1162,8 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
       headline: "Uniforms built to spec, on deadline.",
       intro: "Game uniforms and jerseys for professional and collegiate programs, plus staff, sideline and fan apparel.",
       makes: ["Game uniforms and jerseys", "Staff and sideline apparel", "Fan and promotional apparel", "Embroidered outerwear"],
-      extraTitle: "Built for programs on a deadline",
-      extra: "Arizona programs have trusted Artcraft since 1953. Call the shop at (602) 955-7301 to talk through your season.",
+      extraTitle: "Part of Arizona sports history",
+      extra: "Artcraft made the original Phoenix Suns jersey, worked with Buck Showalter to develop the color scheme for the original Arizona Diamondbacks jerseys, and worked with Wayne Gretzky on the Coyotes' howling coyote jerseys. Call the shop at (602) 955-7301 to talk through your season.",
       cats: ["football", "basketball", "baseball", "soccer"]
     },
     business: {
@@ -1341,7 +1351,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
   var form = $("#q-form");
   var CAT_LABEL = { tee: "T-shirts", longsleeve: "Long sleeve", hoodie: "Hoodies", polo: "Polos", cap: "Caps", own: "Your own garments", jacket: "Other", other: "Other" };
   var EXTRA = [{ id: "jacket", style: "", name: "Letterman jacket", category: "jacket" }, { id: "other", style: "", name: "Something else (describe it below)", category: "other" }];
-  var METHOD_LABEL = { screen: "Screen print", embroidery: "Embroidery", digital: "DTG / DTF", unsure: "Not sure, recommend one" };
+  var METHOD_LABEL = { screen: "Screen print", embroidery: "Embroidery", applique: "Appliqué", digital: "DTG / DTF", unsure: "Not sure, recommend one" };
   var lastEst = null;
   function money(n){ return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
   function tierIndex(tiers, q){ for (var i = 0; i < tiers.length; i++) if (q >= tiers[i][0] && q <= tiers[i][1]) return i; return -1; }
@@ -1377,6 +1387,7 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     P.garmentTiers.forEach(function(t, i){ if (qty >= t) gt = i; });
     r.tbd = !own && (!!P.sample || !g.prices);
     r.lines.push([own ? "Your garments" : "Garment (" + g.style + ")", r.tbd ? null : own ? 0 : g.prices[gt]]);
+    if (method === "applique") { r.note = "Appliqué is priced on your quote."; r.deco = "Appliqué"; return r; }
     if (method === "digital") { r.note = "DTG / DTF printing is priced on your quote."; r.deco = "DTG / DTF"; return r; }
     if (method === "screen" || method === "unsure") {
       var S = P.screen, ti = tierIndex(S.tiers, qty);
@@ -1419,12 +1430,12 @@ tbody tr:last-child th, tbody tr:last-child td{border-bottom:0}
     var r = computeEstimate(), m = r.method; lastEst = r;
     $("#e-deco").hidden = r.custom; $("#e-custom").hidden = !r.custom || !P;
     $("#e-screen").hidden = m !== "screen"; $("#e-emb").hidden = m !== "embroidery";
-    $("#e-digital").hidden = m !== "digital"; $("#e-unsure").hidden = m !== "unsure";
+    $("#e-digital").hidden = m !== "digital"; $("#e-applique").hidden = m !== "applique"; $("#e-unsure").hidden = m !== "unsure";
     var head = '<h3>Your estimate</h3><p class="for">' + r.qty.toLocaleString() + ' × ' + esc(garmentLabel(r.garment)) + '</p>';
     var html;
     if (r.custom) html = head + '<div class="est-call"><p>We\'ll price ' + (r.garment.category === "jacket" ? "letterman jackets" : "this") + ' on your quote.</p></div>';
-    else if (r.call || (r.note && !r.total && m !== "digital")) html = head + '<div class="est-call"><p>' + esc(r.call || r.note) + '</p></div>';
-    else if (m === "digital") html = head + '<dl class="est-lines"><div><dt>' + esc(r.lines[0][0]) + '</dt><dd>' + (r.lines[0][1] === null ? 'Priced on your quote' : money(r.lines[0][1]) + ' each') + '</dd></div></dl><div class="est-call"><p>' + esc(r.note) + '</p></div>';
+    else if (r.call || (r.note && !r.total && m !== "digital" && m !== "applique")) html = head + '<div class="est-call"><p>' + esc(r.call || r.note) + '</p></div>';
+    else if (m === "digital" || m === "applique") html = head + '<dl class="est-lines"><div><dt>' + esc(r.lines[0][0]) + '</dt><dd>' + (r.lines[0][1] === null ? 'Priced on your quote' : money(r.lines[0][1]) + ' each') + '</dd></div></dl><div class="est-call"><p>' + esc(r.note) + '</p></div>';
     else {
       html = head + '<dl class="est-lines">' + r.lines.map(function(l){ return '<div><dt>' + esc(l[0]) + '</dt><dd>' + (l[1] === null ? 'On your quote' : money(l[1])) + '</dd></div>'; }).join("") +
         '<div class="each"><dt>' + (r.tbd ? 'Decoration, each' : 'Each') + '</dt><dd>' + money(r.each) + '</dd></div></dl>' +
